@@ -1,1 +1,0 @@
-1averageRating: 4.0,2brandName: "HELLY HANSEN",3basePrice: "$50.00",6color: "White",7productID: 4293324,8productName: "'Mistral' Short Sleeve Tee",17gender: "Female",19productType: "T-shirt/Tee",20productParentType: "Tops",
