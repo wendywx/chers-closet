@@ -6,7 +6,6 @@ try:
 	conn = psycopg2.connect(database = "Wendy", user = "Wendy", password = "pass123", host = "localhost", port = "5432")
 except:
 	print("unable to open database")
-#print("opened database successfuly")
 
 cur = conn.cursor()
 
