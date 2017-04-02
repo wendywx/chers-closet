@@ -2,6 +2,7 @@
 
 import psycopg2
 
+
 def delete_tables():
 	commands = (
 		"DROP TABLE types CASCADE;",
@@ -10,10 +11,11 @@ def delete_tables():
 		"DROP TABLE users CASCADE;",
 		"DROP TABLE outfits CASCADE;",
 		)
-
+	dbname = input("Enter a database name: ")
+	user = input("Enter user name: ")
 	conn = None
 	try: 
-		conn = psycopg2.connect(database = "Wendy", user = "Wendy", password = "pass123", host = "localhost", port = "5432")
+		conn = psycopg2.connect(database = dbname, user = user, password = "pass123", host = "localhost", port = "5432")
 		cur = conn.cursor()
 		for command in commands:
 			cur.execute(command)

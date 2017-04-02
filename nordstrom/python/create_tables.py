@@ -107,8 +107,10 @@ def create_tables():
 """)
 
 	conn = None
+	dbname = input("Enter a database name: ")
+	user = input("Enter user name: ")
 	try: 
-		conn = psycopg2.connect(database = "Wendy", user = "Wendy", password = "pass123", host = "localhost", port = "5432")
+		conn = psycopg2.connect(database = dbname, user = user, password = "pass123", host = "localhost", port = "5432")
 		cur = conn.cursor()
 		for command in commands:
 			cur.execute(command)
