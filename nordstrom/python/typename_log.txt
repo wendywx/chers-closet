@@ -1,0 +1,56 @@
+         typename          
+---------------------------
+ Short
+ Stirrup/Legging
+ Pant
+ Skirt
+ Waist Support/Band
+ Panty/Brief
+ Tank/Cami/Shell
+ T-shirt/Tee
+ Shirt
+ Polo
+ Sweater
+ Camisole
+ Blouse/Top
+ Jacket
+ Blazer
+ Short Jacket/Coat
+ Jacket/Coat
+ 3/4 or Long Coat
+ Anorak/Parka
+ Sportcoat
+ Vest
+ Raincoat
+ Poncho/Cape
+ Bolero
+ Dress
+ Jumpsuit/Romper
+ Skirt Set
+ Sweatsuit/Warm-ups
+ Sweatshirt
+ Sweatshirt/Hoody/Zipfront
+ Shirtjacket
+ Tunic
+ Onesie
+ Sneaker
+ Flats
+ Sandals/Slides
+ Loafers
+ Boots
+ Pumps
+ Athletic
+ Mule
+ Clog
+ Slip on
+ Slippers
+ Oxfords
+ Sportshirt
+ Dress-shirt
+ Swim top
+ Shoe tree
+ Polish
+ Insoles
+ Brush
+(52 rows)
+
