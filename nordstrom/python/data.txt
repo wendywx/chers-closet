@@ -593,13 +593,9 @@
 4.1,"BROOKS","$46.00","Black",4410610,"Chaser 3 Running Shorts","Female","Short","Bottoms",http://g.nordstromimage.com/ImageGallery/store/product/Large/16/_12617896.jpg
 4.4,"HONEYDEW INTIMATES","$32.00",null,4336814,"Undrest Lounge Shorts","Female","Short","Bottoms",http://g.nordstromimage.com/ImageGallery/store/product/Large/0/_100267200.jpg
 0.0,"EILEEN FISHER","$148.00",null,4316347,"Drawstring Waist Bermuda Cargo Shorts","Female","Short","Bottoms",http://g.nordstromimage.com/ImageGallery/store/product/Large/2/_12519522.jpg
-3.9,"BELLY BANDIT","$39.95",null,3805263,"Thighs Disguise Maternity Support Shorts","Female","Waist Support/Band","Underwear/Lingerie",http://g.nordstromimage.com/ImageGallery/store/product/Large/10/_10987810.jpg
 5.0,"JOIE","$148.00",null,3926894,"Ilya Linen Cargo Shorts","Female","Short","Bottoms",http://g.nordstromimage.com/ImageGallery/store/product/Large/0/_10551460.jpg
-4.7,"NATORI","$18.00",null,4103652,"Bliss Girl Shorts","Female","Panty/Brief","Underwear/Lingerie",http://g.nordstromimage.com/ImageGallery/store/product/Large/18/_100134098.jpg
 4.8,"ROXY","$38.50",null,4280119,"Oceanside Linen Blend Shorts","Female","Short","Bottoms",http://g.nordstromimage.com/ImageGallery/store/product/Large/9/_100565329.jpg
 0.0,"NIKE","$50.00","Black/ White",4357404,"Baseline Tennis Shorts","Female","Short","Bottoms",http://g.nordstromimage.com/ImageGallery/store/product/Large/6/_100153066.jpg
-4.0,"SPANX","$38.00",null,3993027,"Higher Power Mid-Thigh Shaping Shorts","Female","Waist Support/Band","Underwear/Lingerie",http://g.nordstromimage.com/ImageGallery/store/product/Large/12/_11218612.jpg
-4.3,"SPANX","$58.00",null,4287438,"Thinstincts Mid Thigh Shorts","Female","Waist Support/Band","Underwear/Lingerie",http://g.nordstromimage.com/ImageGallery/store/product/Large/19/_12207059.jpg
 0.0,"IVY PARK","$45.00",null,4533722," Floral Running Shorts","Female","Short","Bottoms",http://g.nordstromimage.com/ImageGallery/store/product/Large/0/_100276540.jpg
 0.0,"NIKE","$35.00","Electro Lime/ Smokey Blue",4429791,"Sportswear Essential Logo Tank","Female","Tank/Cami/Shell","Tops",http://g.nordstromimage.com/ImageGallery/store/product/Large/11/_100206251.jpg
 4.3,"NIKE","$35.00","Carbon Heather/ Anthracite",4429731,"Essential Tank","Female","Tank/Cami/Shell","Tops",http://g.nordstromimage.com/ImageGallery/store/product/Large/4/_100204904.jpg

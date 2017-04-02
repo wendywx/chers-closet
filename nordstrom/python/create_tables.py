@@ -8,7 +8,8 @@ def create_tables():
 		CREATE TABLE types(
 			typeName TEXT PRIMARY KEY,
 			parentType VARCHAR(20),
-			season VARCHAR(10)
+			season VARCHAR(20),
+			occasion VARCHAR(30)
 		)
 """,
 """
