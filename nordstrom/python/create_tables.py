@@ -122,3 +122,4 @@ def create_tables():
 			conn.close()
 
 create_tables()
+print("all tables created successfully")
