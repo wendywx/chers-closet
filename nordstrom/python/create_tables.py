@@ -112,7 +112,7 @@ def create_tables():
 	user = input("Enter user name: ")
 	password = input("Enter password: ")
 	try: 
-		conn = psycopg2.connect(database = dbname, user = user, password = password, host = "db.cs.wm.edu", port = "5432")
+		conn = psycopg2.connect(database = dbname, user = user, password = "pass123", host = "localhost", port = "5432")
 		cur = conn.cursor()
 		for command in commands:
 			cur.execute(command)
