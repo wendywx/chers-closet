@@ -137,11 +137,11 @@ for line in f:
 		 	ON CONFLICT DO NOTHING;
 		""".format(product_type, parent_type, product_seasons, occasion_type))
 
-		# cur.execute("""
-		# 	INSERT INTO products(productId,productName,productType,brand,color,gender,price,rating,imgurl)
-		# 	VALUES ({0},'{1}','{2}','{3}','{4}','{5}',{6},{7},'{8}')
-		# 	ON CONFLICT DO NOTHING;
-		# """.format(product_id,product_name,product_type,brand,color,gender,price,rating,img_url))
+		cur.execute("""
+			INSERT INTO products(productId,productName,productType,brand,color,gender,price,rating,imgurl)
+		 	VALUES ({0},'{1}','{2}','{3}','{4}','{5}',{6},{7},'{8}')
+		 	ON CONFLICT DO NOTHING;
+		""".format(product_id,product_name,product_type,brand,color,gender,price,rating,img_url))
 		
 
 
