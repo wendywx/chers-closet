@@ -23,6 +23,10 @@ li{
 	float:left;
 	padding: 20px;
 }
+.prod_image{
+	width: 180px; 
+	height: 250px; 
+}	
 .nav{
 	background-color: #333;
 	overflow: hidden;
@@ -53,8 +57,6 @@ li{
 	<title>Cher's Closet</title>
 </head>
 <body background="https://s-media-cache-ak0.pinimg.com/736x/4b/99/1a/4b991a18a070d4d84dd77408ac92c074.jpg">
-</body>
-
 	<div class = "container">
 
 	<h1 class = "header">
@@ -77,20 +79,52 @@ li{
 	<div id = "sidebar">
 		<font face = "courier new" color = "white">
 			<center>
-			<p>Browse by</p>
-			<p>~Type~</p>
-			<p>~Color~</p>
-			<p>~Brand~</p>
-			<p>~Price~</p>
-			<p>~Gender~</p>
+			<p>Womens</p>
+			<p>Mens</p>
 		</center>
 		</font>
 	</div>
-	<div id = "main"><font face = "courier new">
-		Try to see if horizontal scrolling is a thing??</font>
-</div>
+	<div id = "main"><font face = "courier new"></font>
+		<p>Filter By: </p>
+		<div>
+		<select>
+		  <option value="type">ALL TYPES</option>
+		  <option value="dresses">Dresses</option>
+		<option value="jeans">Jeans</option>
+		  <option value="shorts">Shorts</option>
+		<option value="skirts">Skirts</option>
+		<option value="sweaters">Sweaters</option>
+		<option value="activewear">Activewear</option>
+		</select>
+		<select>
+		  <option value="volvo">ALL PRICES</option>
+		  <option value="saab">less than $20 </option>
+		  <option value="mercedes">$20 - 50</option>
+		  <option value="audi">$50 - $100</option>
+		</select>
+		<select>
+		  <option value="volvo">ALL BRANDS</option>
+		  <option value="saab">brand1</option>
+		  <option value="mercedes">brand2</option>
+		  <option value="audi">brand3</option>
+		</select>
+		</div>
+
+		<div class = "images"> 
+<img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/5/_100371025.jpg" alt="Dress1">
+<img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/5/_100055425.jpg" alt="Dress2">
+<img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/16/_100522836.jpg" alt="Dress3">
+<img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/2/_12853122.jpg" alt="Dress4">
+<img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/3/_100266503.jpg" alt="Dress5">
+<img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/8/_100549768.jpg" alt="Dress6">
+<img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/4/_100395764.jpg" alt="Dress7">
+<img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/4/_100779564.jpg" alt="Dress8">
+<img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/18/_100023058.jpg" alt="Dress9">
+		</div>
+ 	</div>
+
+
+	
 	</div>
-
-
 </body>
 </html>
