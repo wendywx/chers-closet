@@ -91,7 +91,7 @@ class Outfit(models.Model):
 class Product(models.Model):
     productid = models.IntegerField(primary_key=True)
     productname = models.TextField()
-    producttype = models.ForeignKey('Type',)
+    producttype = models.ForeignKey('Type', db_column = 'producttype')
     brand = models.TextField()
     color = models.TextField()
     gender = models.CharField(max_length=10)
@@ -121,7 +121,7 @@ class Type(models.Model):
     class Meta:
         managed = False
         db_table = 'types'
-        unique_together = (("typeName", "parentType", "season", "occasion"),)
+        unique_together = (("typename", "parenttype", "season", "occasion"),)
 
 class User(models.Model):
     userid = models.IntegerField(primary_key=True)
