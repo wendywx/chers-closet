@@ -13,6 +13,7 @@
 	font: courier;
 	font-size: 18px
 }
+
 li{
 	float:left;
 	padding: 20px;
@@ -20,8 +21,6 @@ li{
 .nav{
 	background-color: #333;
 	overflow: hidden;
-	font: courier;
-	size: 12;
 }
 .nav a{
 	float: left;
@@ -61,32 +60,27 @@ li{
 		</div>
 		</b>
 		</font>
+
 	</h1>
 
 	<div class = 'nav'>
 		<font face = "courier new">
-		<a href="home.html">Home</a>
-		<a href = "browse_products.html">Browse Products</a>
+		<a href="{% url "home" %}">Home</a>
+		<a href = "{% url "browse_products" %}">Browse Products</a>
 		<a href = "my_account.html">My Account</a>
 		</font>
 	</div>
 	<div id = "sidebar">
 		<font face = "courier new" color = "white">
 			<center>
-			<p><a href = "create_new_closet.html">~Create a new closet~</a></p>
-			<p><a href = "view_closet.html">~View a closet~</a></p>
-
-			<p><a href = "create_new_outfit.html">~Create a New Outfit~</a></p>
-
+			<p><a href="about.html"> ~About~</a></p>
+			<p>~Contact~</p>
 		</center>
 		</font>
 	</div>
-	<center>
-		This is the account homepage, where a user can view their closet, or create one. They can also see suggestion? for them?
-
-	</center>
-	</center>
 	</div>
+
+	<center><iframe width="660" height="405" src="https://www.youtube.com/embed/XNDubWJU0aU" frameborder="0" allowfullscreen></iframe></center>
 
 </body>
 </html>
