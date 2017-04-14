@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'nordstrom',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            '/Users/Wendy/Documents/WM/JUNIOR/DATABASE/chers-closet/mysite/templates',
+            '/Users/annapelleti/Documents/Senior Spring/Database/data/chers-closet/mysite/templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -77,8 +78,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'djangosite',
+        'USER': 'annapelleti',
+        'PASSWORD': 'annapelleti',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
