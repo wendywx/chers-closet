@@ -56,7 +56,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            '/Users/annapelleti/Documents/Senior Spring/Database/data/chers-closet/mysite/templates',
+            '/Users/Wendy/Documents/WM/JUNIOR/DATABASE/chers-closet/mysite/templates',
+
+
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -79,9 +81,9 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'djangosite',
-        'USER': 'annapelleti',
-        'PASSWORD': 'annapelleti',
+        'NAME': 'Wendy',
+        'USER': 'Wendy',
+        'PASSWORD': 'Wendy',
         'HOST': 'localhost',
         'PORT': '5432',
     }
