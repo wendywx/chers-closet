@@ -1,6 +1,5 @@
 <html lang="en">
-<<<<<<< HEAD:mysite/templates/browse_products.html
-=======
+
 <style>
 #container{
 	width: 960px;
@@ -96,6 +95,13 @@ li{
 	</div>
 	<div id = "main"><font face = "courier new"></font>
 		<p>Filter By: </p>
+
+		<form action="" method="post">
+		    <label for="your_name">Your name: </label>
+		    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+		    <input type="submit" value="OK">
+		</form>
+
 		<div>
 		<select>
 		  <option value="type">ALL TYPES</option>

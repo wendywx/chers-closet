@@ -75,9 +75,9 @@ class Closet(models.Model):
 
 class Outfit(models.Model):
     outfitid = models.IntegerField(primary_key=True)
-    top = models.ForeignKey('Product', related_name = 'top')
-    bottom = models.ForeignKey('Product', related_name = 'bottom')
-    shoes = models.ForeignKey('Product', related_name = 'shoes')
+    top = models.ForeignKey('Product', related_name = 'top', db_column='top')
+    bottom = models.ForeignKey('Product', related_name = 'bottom', db_column='bottom')
+    shoes = models.ForeignKey('Product', related_name = 'shoes', db_column='shoes')
     
     def __str__(self):
         return self.outfitid
@@ -91,7 +91,7 @@ class Outfit(models.Model):
 class Product(models.Model):
     productid = models.IntegerField(primary_key=True)
     productname = models.TextField()
-    producttype = models.ForeignKey('Type',)
+    producttype = models.ForeignKey('Type', db_column='producttype')
     brand = models.TextField()
     color = models.TextField()
     gender = models.CharField(max_length=10)
@@ -121,7 +121,7 @@ class Type(models.Model):
     class Meta:
         managed = False
         db_table = 'types'
-        unique_together = (("typeName", "parentType", "season", "occasion"),)
+        unique_together = (("typename", "parenttype", "season", "occasion"),)
 
 class User(models.Model):
     userid = models.IntegerField(primary_key=True)
