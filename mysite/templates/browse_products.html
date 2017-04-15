@@ -52,19 +52,15 @@ li{
 }
 
 </style>
->>>>>>> 31ed6dd2b4633cfab29623593198cfd45152b4b9:html/browse_products.html
 
 <head>
 	<meta charset="UTF-8">
 	<title>Cher's Closet</title>
 </head>
-<<<<<<< HEAD:mysite/templates/browse_products.html
 
 </body>
 
-=======
 <body background="https://s-media-cache-ak0.pinimg.com/736x/4b/99/1a/4b991a18a070d4d84dd77408ac92c074.jpg">
->>>>>>> 31ed6dd2b4633cfab29623593198cfd45152b4b9:html/browse_products.html
 	<div class = "container">
 
 	<h1 class = "header">
@@ -95,13 +91,15 @@ li{
 	</div>
 	<div id = "main"><font face = "courier new"></font>
 		<p>Filter By: </p>
-
-		<form action="" method="post">
-		    <label for="your_name">Your name: </label>
-		    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
-		    <input type="submit" value="OK">
+		<form action="/filterProducts/" method="get">
+			<fieldset>
+			    <legend>Type</legend>
+			    <input id="dresses" type="checkbox" name="types[]" value="Dress" />Dresses<br>
+			    <input id="shorts" type="checkbox" name="types[]" value="Short" />Shorts<br>
+			    <input type="submit" value="SUBMIT">
+		  </fieldset>
 		</form>
-
+	<!--
 		<div>
 		<select>
 		  <option value="type">ALL TYPES</option>
@@ -137,9 +135,8 @@ li{
 <img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/4/_100779564.jpg" alt="Dress8">
 <img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/18/_100023058.jpg" alt="Dress9">
 		</div>
+	-->
  	</div>
-
-
 	
 	</div>
 </body>

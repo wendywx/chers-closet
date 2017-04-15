@@ -91,11 +91,7 @@ class Outfit(models.Model):
 class Product(models.Model):
     productid = models.IntegerField(primary_key=True)
     productname = models.TextField()
-<<<<<<< HEAD
     producttype = models.ForeignKey('Type', db_column='producttype')
-=======
-    producttype = models.ForeignKey('Type', db_column = 'producttype')
->>>>>>> 2779d913ed5567ab1e564ad527e4fa81f3eb7e79
     brand = models.TextField()
     color = models.TextField()
     gender = models.CharField(max_length=10)

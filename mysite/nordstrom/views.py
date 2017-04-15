@@ -1,11 +1,32 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .models import Product
+
 def home(request):
 	return render(request, 'home.html', {})
 
 def browse_products(request):
 	return render(request, 'browse_products.html', {})
+
+def product_results(request):
+	return render(request, 'product_results.html', {})
+
+def filterProducts(request):
+	typeList = request.GET.getlist('types[]')
+
+	result = []	
+	for i in typeList:
+		productname_query = Product.objects.filter(producttype=i).values('imgurl') #list
+		print(productname_query[1])
+		#image_query = Product.objects.filter(producttype=i).values('imgurl') #list of dicts
+		#price_query = Product.objects.filter(producttype=i).values('price') #list of dicts
+		#brand_query = Product.objects.filter(producttype=i).values('brand') #list of dicts
+		for j in productname_query:
+			product = []
+			result.extend(j.values())
+
+	return render(request, "product_results.html", {"results": result})
 
 def about(request):
 	return render(request, 'about.html', {})
