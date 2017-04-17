@@ -17,14 +17,14 @@ def filterProducts(request):
 
 	result = []	
 	for i in typeList:
-		productname_query = Product.objects.filter(producttype=i).values('imgurl') #list
-		print(productname_query[1])
-		#image_query = Product.objects.filter(producttype=i).values('imgurl') #list of dicts
-		#price_query = Product.objects.filter(producttype=i).values('price') #list of dicts
-		#brand_query = Product.objects.filter(producttype=i).values('brand') #list of dicts
-		for j in productname_query:
-			product = []
-			result.extend(j.values())
+		productname_query = Product.objects.filter(producttype=i) #list
+		image_query = Product.objects.filter(producttype=i).values('imgurl').values() #list ...
+		price_query = Product.objects.filter(producttype=i).values('price').values() #list 
+		brand_query = Product.objects.filter(producttype=i).values('brand').values() #list 
+		# for j in productname_query:
+		# 	product = []
+		# 	result.extend(j.values())
+		result = [productname_query, image_query, price_query, brand_query]
 
 	return render(request, "product_results.html", {"results": result})
 
