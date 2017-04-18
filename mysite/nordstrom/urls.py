@@ -17,4 +17,6 @@ urlpatterns = [
     url(r'^my_account.html$', views.my_account, name = 'my_account'),
     url(r'^register.html$', views.register, name = 'register'),
     url(r'^view_closet.html$', views.view_closet, name = 'view_closet'),
+    url(r'^addToCloset/$', views.addToCloset, name='addToCloset'),
+    url(r'^added_to_closet.html$', views.added_to_closet, name = 'added_to_closet'),
 ]
