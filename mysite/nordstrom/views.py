@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Product
+from .models import Product, Closet
 
 def home(request):
 	return render(request, 'home.html', {})
@@ -17,14 +17,15 @@ def added_to_closet(request):
 
 def addToCloset(request):
 	addedproductid = request.GET.get('newproductid')
-	closetid = request.GET.get('closetid')
-	print(closetid)
-	#add this product to the closet 
-	
-	Product.objects.filter(productid=addedproductid)
+	myclosetid = request.GET.get('closetid')
+	mycloset, created = Closet.objects.update_or_create(closetid=myclosetid, defaults={'closetid':myclosetid})
+	Closet.objects.filter(closetid=myclosetid).update(product1=addedproductid)
+	closet_query=Closet.objects.filter(closetid=myclosetid).values('product1')
+	print('dis is the closet product1')
+	print(closet_query[0]['product1'])
 
 	#return the product name and imgurl to the html
-	result = [addedproductid, closetid]
+	result = [addedproductid, myclosetid, closet_query[0]['product1']]
 	return render(request, "added_to_closet.html", {"results": result})
 
 def filterProducts(request):
