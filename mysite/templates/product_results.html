@@ -1,6 +1,9 @@
 <html lang="en">
 
 <style>
+
+{% load nordstrom_extras %}
+
 #container{
 	width: 960px;
 	margin: 0 auto;
@@ -91,9 +94,9 @@ li{
 		</font>
 	</div>
 	<div id = "main"><font face = "courier new"></font>
-		{% for item in results %}
-		<img src={{ item }} width="197px" height="304px">
-        <p>{{ item }}</p>
+		{% for i in results.1 %}
+		<img src={{ i }} width="197px" height="304px"> 
+        <p> {{ results|index:3|index:forloop.counter0 }} {{ results|index:0|index:forloop.counter0 }}, ${{ results|index:2|index:forloop.counter0 }} </p> 
         {% endfor %}
  	</div>
 	
