@@ -16,15 +16,20 @@ def filterProducts(request):
 	typeList = request.GET.getlist('types[]')
 
 	result = []	
+	images = []
+	prices = []
+	brands = []
 	for i in typeList:
 		productname_query = Product.objects.filter(producttype=i) #list
-		image_query = Product.objects.filter(producttype=i).values('imgurl').values() #list ...
-		price_query = Product.objects.filter(producttype=i).values('price').values() #list 
-		brand_query = Product.objects.filter(producttype=i).values('brand').values() #list 
-		# for j in productname_query:
-		# 	product = []
-		# 	result.extend(j.values())
-		result = [productname_query, image_query, price_query, brand_query]
+		image_query = Product.objects.filter(producttype=i).values('imgurl') #list ...
+		price_query = Product.objects.filter(producttype=i).values('price') #list 
+		brand_query = Product.objects.filter(producttype=i).values('brand') #list 
+		for j in range(0,len(image_query)):
+			images.append(image_query[j]['imgurl'])
+			prices.append(price_query[j]['price'])
+			brands.append(brand_query[j]['brand'])
+
+		result = [productname_query, images, prices, brands]
 
 	return render(request, "product_results.html", {"results": result})
 
