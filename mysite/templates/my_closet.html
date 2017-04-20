@@ -1,5 +1,4 @@
 <html lang="en">
-
 <style>
 #container{
 	width: 960px;
@@ -9,32 +8,26 @@
 #sidebar{
 	float: left;
 	width: 140px;
-	height: 100%;
 	padding: 14px 16px;
 	background-color: #333;
 	font: courier;
 	font-size: 18px
 }
 #main{
-	float: left;
 	margin: 0 auto;
-	width: 80%;
 	height: 100%;
-	padding: 20px 20px;
-	background-color: #F0F8FF;
-	overflow: scroll;
+	width: 70%;
+	background-color: #F0F8FF
 }
 li{
 	float:left;
 	padding: 20px;
 }
-.prod_image{
-	width: 180px; 
-	height: 250px; 
-}	
 .nav{
 	background-color: #333;
 	overflow: hidden;
+	font: courier;
+	size: 12;
 }
 .nav a{
 	float: left;
@@ -54,24 +47,17 @@ li{
 	background-color: #4CAF50;
 	color:white;
 }
-fieldset{
-	float: left;
-	width: 30%;
-	height: 30%;
-	overflow: scroll;
-}
+
 </style>
 
 <head>
 	<meta charset="UTF-8">
 	<title>Cher's Closet</title>
 </head>
-
+<body background="https://s-media-cache-ak0.pinimg.com/736x/4b/99/1a/4b991a18a070d4d84dd77408ac92c074.jpg">
 </body>
 
-<body background="https://s-media-cache-ak0.pinimg.com/736x/4b/99/1a/4b991a18a070d4d84dd77408ac92c074.jpg">
 	<div class = "container">
-
 	<h1 class = "header">
 		<font face= "courier new">
 		<b><center>
@@ -82,7 +68,7 @@ fieldset{
 		</b>
 		</font>
 	</h1>
-	
+
 	<div class = 'nav'>
 		<font face = "courier new">
 		<a href="{% url "home" %}">Home</a>
@@ -91,41 +77,16 @@ fieldset{
 		</font>
 	</div>
 
-	<div id = "sidebar">
-		<font face = "courier new" color = "white">
-			<center>
-			<p>Womens</p>
-			<p>Mens</p>
-		</center>
+	<div id = "main">
+		<font face = "courier new" color = "black">
+		<p>Choose a closet:</p>
+		<form action="/view_closet/" method="get">
+			 <input name="closetid" type="text"> 
+			 <input type="submit" value="Display Closet">
+		</form>
 		</font>
 	</div>
-
-	<div id="main">
-
-	<div id = "filter"><font face = "courier new"></font>
-		<p>Filter By: </p>
-		<form action="/filterProducts/" method="get">
-			<fieldset>
-			    <legend>Type</legend>
-
-			    {% for i in results.0 %}
-			    <input id="type" type="checkbox" name="types[]" value={{ i }} />{{ i }}<br>
-			    {% endfor %}
-
-		</fieldset>
-	  	<fieldset>
-			    <legend>Brand</legend>
-
-			    {% for j in results.1 %}
-			    <input id="brand" type="checkbox" name="brands[]" value="{{ j }}" />{{ j }}<br>
-			    {% endfor %}
-			 	
-		  </fieldset>
-		  <input type="submit" value="SUBMIT">
-		</form>
- 	</div>
-
 	</div>
-	</div>
+
 </body>
 </html>

@@ -22,12 +22,36 @@ def added_to_closet(request):
 
 def createNewOutfit(request):
 	addedproductid = request.GET.get('newproductid')
+	
 	name_query = Product.objects.filter(productid=addedproductid).values('productname')
 	name = name_query[0]['productname']
+	
 	image_query = Product.objects.filter(productid=addedproductid).values('imgurl')
 	imgurl = image_query[0]['imgurl']
-	result = [name, imgurl]
 
+	mygender_q = Product.objects.filter(productid=addedproductid).values('gender')
+	mygender = mygender_q[0]['gender']
+
+	myproducttype_q = Product.objects.filter(productid=addedproductid).values('producttype')
+	myproducttype = myproducttype_q[0]['producttype']
+
+	mybrand_q = Product.objects.filter(productid=addedproductid).values('brand')
+	mybrand = mybrand_q[0]['brand']
+
+	myparenttype_q = Type.objects.filter(typename=myproducttype).values('parenttype')
+	myparenttype = myparenttype_q[0]['parenttype']
+	
+	myseason_q= Type.objects.filter(typename=myproducttype).values('season')
+	myseason = myseason_q[0]['season']
+	
+	myoccasion_q= Type.objects.filter(typename=myproducttype).values('occasion')
+	myoccasion= myoccasion_q[0]['occasion']
+
+	
+	#myoutfitid # loop through outfit db and find next available id 
+
+	#result = [imgurls]
+	result = [name, imgurl, mygender, myproducttype, myparenttype, myseason, myoccasion]
 	return render(request, "create_new_outfit.html", {"results": result})
 
 
@@ -49,7 +73,7 @@ def addToCloset(request):
 	pid =query[0][cname]
 
 	
-	while pid is not 0 and pid is not None and colnum < 51:
+	while pid is not 0 and pid is not None and colnum < 50:
 		colnum += 1
 		cname = "product" + str(colnum)
 		query =  Closet.objects.filter(closetid=myclosetid).values(cname)
@@ -123,6 +147,9 @@ def about(request):
 def acct_home(request):
 	return render(request, 'acct_home.html', {})
 
+def my_closet(request):
+	return render(request, 'my_closet.html', {})
+
 def contact(request):
 	return render(request, 'contact.html', {})
 
@@ -142,9 +169,17 @@ def register(request):
 	return render(request, 'register.html', {})
 
 def view_closet(request):
-	return render(request, 'view_closet.html', {})
+	myclosetid = request.GET.get('closetid')
+	closetlist = Closet.objects.filter(closetid=myclosetid).values_list() #list
+	closettuple = closetlist[0]
+	result =[]
+	for x in range(1, len(closettuple)):
+		if(closettuple[x] is not None and closettuple[x] is not 0):
+			result.append(closettuple[x])
+
+	return render(request, 'view_closet.html', {"results": result})
 
 def null_closet(mycloset):
-	for i in range(1,51):
+	for i in range(1,50):
 		cname = "product" + str(i)
 		Closet.objects.filter(closetid=mycloset).update(**{cname: 0})

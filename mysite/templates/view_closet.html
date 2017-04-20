@@ -57,25 +57,26 @@ li{
 <body background="https://s-media-cache-ak0.pinimg.com/736x/4b/99/1a/4b991a18a070d4d84dd77408ac92c074.jpg">
 </body>
 
-	<div class = "container">
+<div class = "container">
 	<h1 class = "header">
 		<font face= "courier new">
-		<b><center>
-		Welcome to Cher's Closet!! ~Inspired by~ </center><div id = "content">
-		<a href= "http://www.imdb.com/title/tt0112697/">
-		<center><img src = "http://vignette1.wikia.nocookie.net/logopedia/images/2/25/Clueless_Logo.png/revision/latest?cb=20151114012714" width = "200" height = "110"></center></a>
-		</div>
-		</b>
+			<b><center>
+				Welcome to Cher's Closet!! ~Inspired by~ </center><div id = "content">
+				<a href= "http://www.imdb.com/title/tt0112697/">
+					<center><img src = "http://vignette1.wikia.nocookie.net/logopedia/images/2/25/Clueless_Logo.png/revision/latest?cb=20151114012714" width = "200" height = "110"></center></a>
+				</div>
+			</b>
 		</font>
 	</h1>
 
 	<div class = 'nav'>
 		<font face = "courier new">
-		<a href="{% url "home" %}">Home</a>
-		<a href = "{% url "browse_products" %}">Browse Products</a>
-		<a href = "{% url "my_account" %}">My Account</a>
+			<a href="{% url "home" %}">Home</a>
+			<a href = "{% url "browse_products" %}">Browse Products</a>
+			<a href = "{% url "my_closet" %}">My Closets</a>
 		</font>
 	</div>
+	<!--
 	<div id = "sidebar">
 		<font face = "courier new" color = "white">
 			<center>
@@ -85,12 +86,19 @@ li{
 		</center>
 		</font>
 	</div>
+-->
 
-		<div id = "main">
-			<font face = "courier new">
-			Users current products go here..arbitrarily and then they can choose them to create an outfit or do other stuff</font> 
-</div>
+	<div id = "main">
+	<font face = "courier new">
+		{% for i in results %}
+		<img src={{ i }} width="197px" height="304px">
+		<!-- <input id="type" type="checkbox" name="outfit[]" value={{ i }} />{{ i }}<br> -->
+		<!-- <img src={{ i }} width="197px" height="304px"> -->
+		{% endfor %}
+		Users current products go here..arbitrarily and then they can choose them to create an outfit or do other stuff</font> 
 	</div>
+
+</div>
 
 </body>
 </html>

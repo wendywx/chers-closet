@@ -85,7 +85,7 @@ li{
 		<font face = "courier new">
 		<a href="{% url "home" %}">Home</a>
 		<a href = "{% url "browse_products" %}">Browse Products</a>
-		<a href = "{% url "my_account" %}">My Account</a>
+		<a href = "{% url "my_closet" %}">My Closet</a>
 		</font>
 	</div>
 	<div id = "sidebar">
@@ -111,9 +111,7 @@ li{
 			 <input type="submit" value="Generate new outfit with product" >
 			 <input id="hidden" name="newproductid" value={{ results|index:4|index:forloop.counter0 }}>
 		
-
 		</form>
-
 
         <p> {{ results|index:3|index:forloop.counter0 }} {{ results|index:0|index:forloop.counter0 }}, ${{ results|index:2|index:forloop.counter0 }} </p> 
 
