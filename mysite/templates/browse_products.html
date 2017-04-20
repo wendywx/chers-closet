@@ -9,16 +9,20 @@
 #sidebar{
 	float: left;
 	width: 140px;
+	height: 100%;
 	padding: 14px 16px;
 	background-color: #333;
 	font: courier;
 	font-size: 18px
 }
 #main{
+	float: left;
 	margin: 0 auto;
+	width: 80%;
 	height: 100%;
-	width: 70%;
+	padding: 20px 20px;
 	background-color: #F0F8FF;
+	overflow: scroll;
 }
 li{
 	float:left;
@@ -50,7 +54,12 @@ li{
 	background-color: #4CAF50;
 	color:white;
 }
-
+fieldset{
+	float: left;
+	width: 30%;
+	height: 30%;
+	overflow: scroll;
+}
 </style>
 
 <head>
@@ -81,6 +90,7 @@ li{
 		<a href = "{% url "my_account" %}">My Account</a>
 		</font>
 	</div>
+
 	<div id = "sidebar">
 		<font face = "courier new" color = "white">
 			<center>
@@ -89,55 +99,33 @@ li{
 		</center>
 		</font>
 	</div>
-	<div id = "main"><font face = "courier new"></font>
+
+	<div id="main">
+
+	<div id = "filter"><font face = "courier new"></font>
 		<p>Filter By: </p>
 		<form action="/filterProducts/" method="get">
 			<fieldset>
 			    <legend>Type</legend>
-			    <input id="dresses" type="checkbox" name="types[]" value="Dress" />Dresses<br>
-			    <input id="shorts" type="checkbox" name="types[]" value="Short" />Shorts<br>
-			    <input type="submit" value="SUBMIT">
-		  </fieldset>
-		</form>
-	<!--
-		<div>
-		<select>
-		  <option value="type">ALL TYPES</option>
-		  <option value="dresses">Dresses</option>
-		<option value="jeans">Jeans</option>
-		  <option value="shorts">Shorts</option>
-		<option value="skirts">Skirts</option>
-		<option value="sweaters">Sweaters</option>
-		<option value="activewear">Activewear</option>
-		</select>
-		<select>
-		  <option value="volvo">ALL PRICES</option>
-		  <option value="saab">less than $20 </option>
-		  <option value="mercedes">$20 - 50</option>
-		  <option value="audi">$50 - $100</option>
-		</select>
-		<select>
-		  <option value="volvo">ALL BRANDS</option>
-		  <option value="saab">brand1</option>
-		  <option value="mercedes">brand2</option>
-		  <option value="audi">brand3</option>
-		</select>
-		</div>
 
-		<div class = "images"> 
-<img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/5/_100371025.jpg" alt="Dress1">
-<img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/5/_100055425.jpg" alt="Dress2">
-<img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/16/_100522836.jpg" alt="Dress3">
-<img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/2/_12853122.jpg" alt="Dress4">
-<img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/3/_100266503.jpg" alt="Dress5">
-<img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/8/_100549768.jpg" alt="Dress6">
-<img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/4/_100395764.jpg" alt="Dress7">
-<img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/4/_100779564.jpg" alt="Dress8">
-<img class = "prod_image" src="http://g.nordstromimage.com/ImageGallery/store/product/Large/18/_100023058.jpg" alt="Dress9">
-		</div>
-	-->
+			    {% for i in results.0 %}
+			    <input id="type" type="checkbox" name="types[]" value={{ i }} />{{ i }}<br>
+			    {% endfor %}
+
+		</fieldset>
+	  	<fieldset>
+			    <legend>Brand</legend>
+
+			    {% for j in results.1 %}
+			    <input id="brand" type="checkbox" name="brands[]" value="{{ j }}" />{{ j }}<br>
+			    {% endfor %}
+			 	
+		  </fieldset>
+		  <input type="submit" value="SUBMIT">
+		</form>
  	</div>
-	
+
+	</div>
 	</div>
 </body>
 </html>
