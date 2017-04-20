@@ -20,9 +20,22 @@ def product_results(request):
 def added_to_closet(request):
 	return render(request, "added_to_closet.html", {})
 
+def createNewOutfit(request):
+	addedproductid = request.GET.get('newproductid')
+	name_query = Product.objects.filter(productid=addedproductid).values('productname')
+	name = name_query[0]['productname']
+	image_query = Product.objects.filter(productid=addedproductid).values('imgurl')
+	imgurl = image_query[0]['imgurl']
+	result = [name, imgurl]
+
+	return render(request, "create_new_outfit.html", {"results": result})
+
+
 def addToCloset(request):
 	addedproductid = request.GET.get('newproductid')
 	myclosetid = request.GET.get('closetid')
+	print(addedproductid)
+	print(myclosetid)
 	closet_query=Closet.objects.filter(closetid=myclosetid).values('product1')
 
 	mycloset, created = Closet.objects.update_or_create(closetid=myclosetid, defaults={'closetid':myclosetid})
@@ -36,11 +49,15 @@ def addToCloset(request):
 	pid =query[0][cname]
 
 	
-	while pid is not 0 and colnum < 51:
+	while pid is not 0 and pid is not None and colnum < 51:
 		colnum += 1
 		cname = "product" + str(colnum)
 		query =  Closet.objects.filter(closetid=myclosetid).values(cname)
-		pid =int(query[0][cname]) 
+		print(query)
+		print(cname)
+		if(query[0][cname] is not None):
+			pid =int(query[0][cname]) 
+
 
 	if pid is 0:
 		Closet.objects.filter(closetid=myclosetid).update(**{cname: addedproductid})
@@ -94,7 +111,7 @@ def filterProducts(request):
 			prices.append(price_query[l]['price'])
 			brands.append(brand_query[l]['brand'])
 
-		
+	
 	result = [names, images, prices, brands, productids]
 
 

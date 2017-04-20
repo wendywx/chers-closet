@@ -23,6 +23,9 @@
 	width: 70%;
 	background-color: #F0F8FF;
 }
+#hidden{
+	visibility: hidden;
+}
 li{
 	float:left;
 	padding: 20px;
@@ -97,13 +100,21 @@ li{
 		{% for i in results.1 %}
 		<img src={{ i }} width="197px" height="304px"> 
 		<form action="/addToCloset/" method="get">
-			<fieldset>
-				<input name="closetid" type="text">
-			    <input name="newproductid" value={{ results|index:4|index:forloop.counter0 }}>
-			    <input type="submit" value="Add to closet" >
+		
+			 <input name="closetid" type="text">
 
-		  </fieldset>
+			 <input type="submit" value="Add to closet" >
+			 <input id="hidden" name="newproductid" value={{ results|index:4|index:forloop.counter0 }}>
 		</form>
+		<form action="/createNewOutfit" method="get">
+	
+			 <input type="submit" value="Generate new outfit with product" >
+			 <input id="hidden" name="newproductid" value={{ results|index:4|index:forloop.counter0 }}>
+		
+
+		</form>
+
+
         <p> {{ results|index:3|index:forloop.counter0 }} {{ results|index:0|index:forloop.counter0 }}, ${{ results|index:2|index:forloop.counter0 }} </p> 
 
         {% endfor %}

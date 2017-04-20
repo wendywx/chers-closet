@@ -12,6 +12,8 @@ urlpatterns = [
     url(r'^acct_home.html$', views.acct_home, name = 'acct_home'),
     url(r'^contact.html$', views.contact, name = 'contact'),
     url(r'^create_new_closet.html$', views.create_new_closet, name = 'create_new_closet'),
+    
+    url(r'^createNewOutfit/$', views.createNewOutfit, name='createNewOutfit'),
     url(r'^create_new_outfit.html$', views.create_new_outfit, name = 'create_new_outfit'),
     url(r'^log_in.html$', views.log_in, name = 'log_in'),
     url(r'^my_account.html$', views.my_account, name = 'my_account'),
