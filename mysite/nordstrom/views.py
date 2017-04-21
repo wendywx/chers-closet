@@ -1,3 +1,5 @@
+import random
+
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -83,20 +85,66 @@ def generateOutfit(mypid):
 	shoes_q = shoes_q.filter(producttype__in=occasions[myocc])
 	outerwear_q = outerwear_q.filter(producttype__in=occasions[myocc])
 
-	# 5 possible parenttype choices 
-	if(myparenttype == "tops"):
-		bottom = list(bottoms_q.values_list(flat=True))
-		mybottom = bottom[9]#pid
+
+	# 5 possible parenttype choices, generate random parenttypes based on our already filtered queries
+	if(myparenttype == "tops"): #need to generate outerwear, bottoms, shoes
+		
+		outerwear = list(outerwear_q.values_list(flat=True)) #generate random outerwear
+		if len(outerwear) > 0:
+			rand_num = random.randint(0,len(outerwear)-1)
+			print(rand_num)
+			myouterwear = outerwear[rand_num]#pid
+			image_query = Product.objects.filter(productid=myouterwear).values('imgurl')
+			outerwearimgurl = image_query[0]['imgurl']
+			result.append(outerwearimgurl)
+
+		image_query = Product.objects.filter(productid=mypid).values('imgurl') #user input top
+		topimgurl = image_query[0]['imgurl']
+		result.append(topimgurl)
+
+		bottom = list(bottoms_q.values_list(flat=True)) #generate random bottoms
+		rand_num = random.randint(0,len(bottom)-1)
+		mybottom = bottom[rand_num]#pid
 		image_query = Product.objects.filter(productid=mybottom).values('imgurl')
 		bottomimgurl = image_query[0]['imgurl']
 		result.append(bottomimgurl)
 
-		#result.append(mybottomurl)
-		#need one bottom and one shoe 
+		shoes = list(shoes_q.values_list(flat=True)) #generate random shoes
+		rand_num = random.randint(0,len(shoes)-1)
+		myshoes = shoes[rand_num]#pid
+		image_query = Product.objects.filter(productid=myshoes).values('imgurl')
+		shoesimgurl = image_query[0]['imgurl']
+		result.append(shoesimgurl)
+
 
 	elif(myparenttype == "bottoms"):
-		print("something")
-		#need one top and one shoe
+
+		outerwear = list(outerwear_q.values_list(flat=True)) #generate random outerwear
+		if len(outerwear) > 0:
+			rand_num = random.randint(0,len(outerwear)-1)
+			print(rand_num)
+			myouterwear = outerwear[rand_num]#pid
+			image_query = Product.objects.filter(productid=myouterwear).values('imgurl')
+			outerwearimgurl = image_query[0]['imgurl']
+			result.append(outerwearimgurl)
+
+		top = list(tops_q.values_list(flat=True)) #generate random tops
+		rand_num = random.randint(0,len(top)-1)
+		mytop = top[rand_num]#pid
+		image_query = Product.objects.filter(productid=mytop).values('imgurl')
+		topimgurl = image_query[0]['imgurl']
+		result.append(topimgurl)
+
+		image_query = Product.objects.filter(productid=mypid).values('imgurl') #user input bottom
+		topimgurl = image_query[0]['imgurl']
+		result.append(topimgurl)
+
+		shoes = list(shoes_q.values_list(flat=True)) #generate random shoes
+		rand_num = random.randint(0,len(shoes)-1)
+		myshoes = bottom[rand_num]#pid
+		image_query = Product.objects.filter(productid=myshoes).values('imgurl')
+		shoesimgurl = image_query[0]['imgurl']
+		result.append(shoesimgurl)
 
 	elif(myparenttype == "outerwear"):
 		print("something")
@@ -113,41 +161,20 @@ def generateOutfit(mypid):
 	else:
 		print("something is wrong w pareentype")
 
-	result.append(myimgurl)
 	return result
 
 def createNewOutfit(request):
 	addedproductid = request.GET.get('newproductid')
 	
-	name_query = Product.objects.filter(productid=addedproductid).values('productname')
-	name = name_query[0]['productname']
-	
-	image_query = Product.objects.filter(productid=addedproductid).values('imgurl')
-	imgurl = image_query[0]['imgurl']
 
-	mygender_q = Product.objects.filter(productid=addedproductid).values('gender')
-	mygender = mygender_q[0]['gender']
+	imgurls = generateOutfit(addedproductid)
 
-	myproducttype_q = Product.objects.filter(productid=addedproductid).values('producttype')
-	myproducttype = myproducttype_q[0]['producttype']
-
-	mybrand_q = Product.objects.filter(productid=addedproductid).values('brand')
-	mybrand = mybrand_q[0]['brand']
-
-	myparenttype_q = Type.objects.filter(typename=myproducttype).values('parenttype')
-	myparenttype = myparenttype_q[0]['parenttype']
-	
-	myseason_q= Type.objects.filter(typename=myproducttype).values('season')
-	myseason = myseason_q[0]['season']
-	
-	myoccasion_q= Type.objects.filter(typename=myproducttype).values('occasion')
-	myoccasion= myoccasion_q[0]['occasion']
 
 	
 	#myoutfitid # loop through outfit db and find next available id 
 
-	#result = [imgurls]
-	result = [name, imgurl, mygender, myproducttype, myparenttype, myseason, myoccasion]
+	result = [imgurls]
+	#result = [name, imgurl, mygender, myproducttype, myparenttype, myseason, myoccasion]
 	return render(request, "create_new_outfit.html", {"results": result})
 
 
