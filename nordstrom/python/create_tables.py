@@ -21,15 +21,16 @@ def create_tables():
 			color TEXT,
 			gender VARCHAR(10),
 			price FLOAT(2), 
-			rating FLOAT(2),
 			imgUrl TEXT
 		)
 """,
 """
 		CREATE TABLE outfits(
 			outfitId INTEGER PRIMARY KEY,
+			outerwear INTEGER REFERENCES products (productId),
 			top INTEGER REFERENCES products (productId),
 			bottom INTEGER REFERENCES products (productId),
+			dress INTEGER REFERENCES products (productId),
 			shoes INTEGER REFERENCES products (productId)
 		)
 """,
@@ -96,14 +97,6 @@ def create_tables():
 			outfit8 INTEGER REFERENCES outfits (outfitId),
 			outfit9 INTEGER REFERENCES outfits (outfitId),
 			outfit10 INTEGER REFERENCES outfits (outfitId)
-		)
-""",
-"""
-		CREATE TABLE users(
-			userId INTEGER PRIMARY KEY,
-			fName TEXT,
-			lName TEXT,
-			closetId INTEGER REFERENCES closets (closetId)
 		)
 """)
 
