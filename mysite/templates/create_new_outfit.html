@@ -89,14 +89,14 @@ li{
 	<center><font face = "courier new">
 		This is the page where users can create a new outfit, either picking clothes from their website or having the website pick a random website. </font> 
 
-		{% for i in results.1 %}
+		{% for i in results.0 %}
 
 			<img src={{ i }} width="197px" height="304px"> 
 		
 		{% endfor %}
 
 		Create outfit with product 
-		<p> {{ result }}</p>
+		<p> {{ results }}</p>
 
 			<center>
 				
