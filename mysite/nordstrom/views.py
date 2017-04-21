@@ -23,6 +23,10 @@ def product_results(request):
 def added_to_closet(request):
 	return render(request, "added_to_closet.html", {})
 
+<<<<<<< HEAD
+def view_closet(request):
+	return render(request, "view_closet.html", {})
+=======
 def generateOutfit(mypid):
 	result = []
 
@@ -162,6 +166,7 @@ def generateOutfit(mypid):
 		print("something is wrong w pareentype")
 
 	return result
+>>>>>>> 6aebc4d9fd456c7660b2481fe194a0968ee50933
 
 def createNewOutfit(request):
 	addedproductid = request.GET.get('newproductid')
@@ -181,8 +186,7 @@ def createNewOutfit(request):
 def addToCloset(request):
 	addedproductid = request.GET.get('newproductid')
 	myclosetid = request.GET.get('closetid')
-	print(addedproductid)
-	print(myclosetid)
+
 	closet_query=Closet.objects.filter(closetid=myclosetid).values('product1')
 
 	mycloset, created = Closet.objects.update_or_create(closetid=myclosetid, defaults={'closetid':myclosetid})
@@ -213,7 +217,7 @@ def addToCloset(request):
 		name = name_query[0]['productname']
 		image_query = Product.objects.filter(productid=addedproductid).values('imgurl')
 		imgurl = image_query[0]['imgurl']
-		result = [name+ " to closet " +myclosetid, imgurl]
+		result = [name+ " to closet " + myclosetid, imgurl, myclosetid]
 	else:
 		print("closet is full")
 		result = ["closet is full"]
@@ -352,6 +356,9 @@ def create_new_closet(request):
 def create_new_outfit(request):
 	return render(request, 'create_new_outfit.html', {})
 
+def generate_new_outfit(request):
+	return render(request, 'generate_new_outfit.html', {})
+
 def log_in(request):
 	return render(request, 'log_in.html', {})
 
@@ -361,15 +368,50 @@ def my_account(request):
 def register(request):
 	return render(request, 'register.html', {})
 
-def view_closet(request):
+def add_outfit(request):
+	return render(request, 'add_outfit.html', {})
+
+def addOutfit(request):
+
+	print("do i get inside addoutfit??")
+	result= ['addoutfit']
+	return render(request, 'add_outfit.html', {'results': result})
+
+def generate_new_outfit(request):
+	return render(request, 'generate_new_outfit.html', {})
+
+def generateNewOutfit(request):
+	print("do i get inside generate??")
+	result = ['createrandomoutfit']
+	return render(request, 'generate_new_outfit.html', {'results': result})
+
+def viewCloset(request):
 	myclosetid = request.GET.get('closetid')
 	closetlist = Closet.objects.filter(closetid=myclosetid).values_list() #list
 	closettuple = closetlist[0]
+	imgurls = []
+	names = []
+	brands = []
 	result =[]
+
 	for x in range(1, len(closettuple)):
 		if(closettuple[x] is not None and closettuple[x] is not 0):
-			result.append(closettuple[x])
+			image_query = Product.objects.filter(productid=closettuple[x]).values('imgurl')
+			imgurl = image_query[0]['imgurl']
 
+			name_query = Product.objects.filter(productid=closettuple[x]).values('productname')
+			name = name_query[0]['productname']
+
+			brand_query = Product.objects.filter(productid=closettuple[x]).values('brand')
+			brand = brand_query[0]['brand']
+
+			imgurls.append(imgurl)
+			names.append(name)
+			brands.append(brand)
+
+
+
+	result = [imgurls, names, brands]
 	return render(request, 'view_closet.html', {"results": result})
 
 def null_closet(mycloset):

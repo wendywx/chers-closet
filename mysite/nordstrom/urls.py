@@ -13,15 +13,22 @@ urlpatterns = [
     url(r'^contact.html$', views.contact, name = 'contact'),
     url(r'^create_new_closet.html$', views.create_new_closet, name = 'create_new_closet'),
     url(r'^my_closet.html$', views.my_closet, name = 'my_closet'),
+
     url(r'^createNewOutfit/$', views.createNewOutfit, name='createNewOutfit'),
     url(r'^create_new_outfit.html$', views.create_new_outfit, name = 'create_new_outfit'),
     url(r'^log_in.html$', views.log_in, name = 'log_in'),
     url(r'^my_account.html$', views.my_account, name = 'my_account'),
     url(r'^register.html$', views.register, name = 'register'),
 
-    url(r'^view_closet/$', views.view_closet, name = 'view_closet'),
+    url(r'^viewCloset/$', views.viewCloset, name = 'viewCloset'),
     url(r'^view_closet.html$', views.view_closet, name = 'view_closet'),
 
+    url(r'^addOutfit/$', views.addOutfit, name='addOutfit'),
+    url(r'^add_outfit.html$', views.add_outfit, name='add_outfit'),
+
+    url(r'^generateNewOutfit/$', views.generateNewOutfit, name='generateNewOutfit'),
+    url(r'^generate_new_outfit/$', views.generate_new_outfit, name='generate_new_outfit'),
+    
     url(r'^addToCloset/$', views.addToCloset, name='addToCloset'),
     url(r'^added_to_closet.html$', views.added_to_closet, name = 'added_to_closet'),
 ]
