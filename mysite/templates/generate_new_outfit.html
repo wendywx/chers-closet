@@ -76,16 +76,38 @@ li{
 		<a href = "{% url "my_closet" %}">My Closet</a>
 		</font>
 	</div>
-
-	<div id = "main">
-		<font face = "courier new" color = "black">
-		<p>Choose a closet:</p>
-		<form action="/viewCloset/" method="get">
-			 <input name="closetid" type="text"> 
-			 <input type="submit" value="Display Closet">
-		</form>
+	<div id = "sidebar">
+		<font face = "courier new" color = "white">
+			<center>
+			<p><a href = "{% url "create_new_closet" %}">~Create a new closet~</a></p>
+			<p><a href = "{% url "view_closet" %}">~View a closet~</a></p>
+			<p><a href = "{% url "create_new_outfit" %}">~Create a New Outfit~</a></p>
+		</center>
 		</font>
 	</div>
+	<div id = "main">
+	<center><font face = "courier new">
+		This is the page where users can create a new outfit, either picking clothes from their website or having the website pick a random website. </font> 
+		<img src={{ result.1 }} width="197px" height="304px"> 
+	GENERATING NEW OUTFIT 
+		<p> {{ result }}</p>
+
+			<center>
+				
+
+		<form action="/addOutfit/" method="get">
+			<input name="closetid" type="text" value="">
+		
+		  <input type="submit" value="Add Outfit to Closet">
+		</form>
+		<form action="/generateNewOutfit/" method="get">
+			
+		  <input type="submit" value="Generate Another Outfit">
+		</form>
+	</center>
+	</div>
+	</center>
+	</center>
 	</div>
 
 </body>

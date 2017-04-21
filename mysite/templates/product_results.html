@@ -26,6 +26,11 @@
 #hidden{
 	visibility: hidden;
 }
+#imagewithcaption {
+float:left;
+width: 178px;
+text-align:center;
+}
 li{
 	float:left;
 	padding: 20px;
@@ -97,12 +102,11 @@ li{
 		</font>
 	</div>
 	<div id = "main"><font face = "courier new"></font>
-		{% for i in results.1 %}
+		{% for i in results.1 %}=
 		<img src={{ i }} width="197px" height="304px"> 
-		<form action="/addToCloset/" method="get">
 		
+		<form action="/addToCloset/" method="get">
 			 <input name="closetid" type="text">
-
 			 <input type="submit" value="Add to closet" >
 			 <input id="hidden" name="newproductid" value={{ results|index:4|index:forloop.counter0 }}>
 		</form>
@@ -112,9 +116,8 @@ li{
 			 <input id="hidden" name="newproductid" value={{ results|index:4|index:forloop.counter0 }}>
 		
 		</form>
-
-        <p> {{ results|index:3|index:forloop.counter0 }} {{ results|index:0|index:forloop.counter0 }}, ${{ results|index:2|index:forloop.counter0 }} </p> 
-
+		    {{ results|index:3|index:forloop.counter0 }} {{ results|index:0|index:forloop.counter0 }}, ${{ results|index:2|index:forloop.counter0 }} 
+	       
         {% endfor %}
  	</div>
 	

@@ -1,5 +1,7 @@
 <html lang="en">
 <style>
+
+{% load nordstrom_extras %}
 #container{
 	width: 960px;
 	margin: 0 auto;
@@ -14,10 +16,20 @@
 	font-size: 18px
 }
 #main{
+
+	float:left;
 	margin: 0 auto;
 	height: 100%;
 	width: 70%;
 	background-color: #F0F8FF
+
+}
+
+#imagewithcaption {
+float:left;
+width: 178px;
+text-align:center;
+
 }
 li{
 	float:left;
@@ -47,6 +59,8 @@ li{
 	background-color: #4CAF50;
 	color:white;
 }
+
+
 
 </style>
 
@@ -90,12 +104,14 @@ li{
 
 	<div id = "main">
 	<font face = "courier new">
-		{% for i in results %}
-		<img src={{ i }} width="197px" height="304px">
+		{% for i in results.0 %}
+		<p id="imagewithcaption">
+		<img src={{ i }} width="197px" height="304px"/>
+		{{ results|index:2|index:forloop.counter0 }} {{ results|index:1|index:forloop.counter0 }}</p>
 		<!-- <input id="type" type="checkbox" name="outfit[]" value={{ i }} />{{ i }}<br> -->
 		<!-- <img src={{ i }} width="197px" height="304px"> -->
 		{% endfor %}
-		Users current products go here..arbitrarily and then they can choose them to create an outfit or do other stuff</font> 
+		</font> 
 	</div>
 
 </div>
