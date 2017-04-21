@@ -28,7 +28,11 @@ def view_closet(request):
 	return render(request, "view_closet.html", {})
 
 def generateOutfit(mypid):
+	#modify to return a list of imgurls, brands and names
 	result = []
+	imgurls = []
+	brands = []
+	names =[]
 
 	tops = list(Type.objects.filter(parenttype="tops").values_list(flat=True))
 	bottoms = list(Type.objects.filter(parenttype="bottoms").values_list(flat=True))
@@ -100,25 +104,64 @@ def generateOutfit(mypid):
 			myouterwear = outerwear[rand_num]#pid
 			image_query = Product.objects.filter(productid=myouterwear).values('imgurl')
 			outerwearimgurl = image_query[0]['imgurl']
-			result.append(outerwearimgurl)
+			
+			brand_query = Product.objects.filter(productid=myouterwear).values('brand')
+			brand = brand_query[0]['brand']
+			
+			name_query = Product.objects.filter(productid=myouterwear).values('productname')
+			name = name_query[0]['productname']
+			
+			brands.append(brand)
+			names.append(name)
+
+			imgurls.append(outerwearimgurl)
+
+
 
 		image_query = Product.objects.filter(productid=mypid).values('imgurl') #user input top
 		topimgurl = image_query[0]['imgurl']
-		result.append(topimgurl)
+		imgurls.append(topimgurl)
+
+		brand_query = Product.objects.filter(productid=mypid).values('brand')
+		brand = brand_query[0]['brand']
+			
+		name_query = Product.objects.filter(productid=mypid).values('productname')
+		name = name_query[0]['productname']
+			
+		brands.append(brand)
+		names.append(name)
 
 		bottom = list(bottoms_q.values_list(flat=True)) #generate random bottoms
 		rand_num = random.randint(0,len(bottom)-1)
 		mybottom = bottom[rand_num]#pid
 		image_query = Product.objects.filter(productid=mybottom).values('imgurl')
 		bottomimgurl = image_query[0]['imgurl']
-		result.append(bottomimgurl)
+		imgurls.append(bottomimgurl)
+
+		brand_query = Product.objects.filter(productid=mybottom).values('brand')
+		brand = brand_query[0]['brand']
+			
+		name_query = Product.objects.filter(productid=mybottom).values('productname')
+		name = name_query[0]['productname']
+		
+		brands.append(brand)
+		names.append(name)
 
 		shoes = list(shoes_q.values_list(flat=True)) #generate random shoes
 		rand_num = random.randint(0,len(shoes)-1)
 		myshoes = shoes[rand_num]#pid
 		image_query = Product.objects.filter(productid=myshoes).values('imgurl')
 		shoesimgurl = image_query[0]['imgurl']
-		result.append(shoesimgurl)
+		imgurls.append(shoesimgurl)
+
+		brand_query = Product.objects.filter(productid=myshoes).values('brand')
+		brand = brand_query[0]['brand']
+			
+		name_query = Product.objects.filter(productid=myshoes).values('productname')
+		name = name_query[0]['productname']
+			
+		brands.append(brand)
+		names.append(name)
 
 
 	elif(myparenttype == "bottoms"): #need to generate outerwear, tops, shoes
@@ -130,31 +173,76 @@ def generateOutfit(mypid):
 			myouterwear = outerwear[rand_num]#pid
 			image_query = Product.objects.filter(productid=myouterwear).values('imgurl')
 			outerwearimgurl = image_query[0]['imgurl']
-			result.append(outerwearimgurl)
+			imgurls.append(outerwearimgurl)
+
+			brand_query = Product.objects.filter(productid=myouterwear).values('brand')
+			brand = brand_query[0]['brand']
+			
+			name_query = Product.objects.filter(productid=myouterwear).values('productname')
+			name = name_query[0]['productname']
+			
+			brands.append(brand)
+			names.append(name)
 
 		top = list(tops_q.values_list(flat=True)) #generate random tops
 		rand_num = random.randint(0,len(top)-1)
 		mytop = top[rand_num]#pid
 		image_query = Product.objects.filter(productid=mytop).values('imgurl')
 		topimgurl = image_query[0]['imgurl']
-		result.append(topimgurl)
+		imgurls.append(topimgurl)
+
+		brand_query = Product.objects.filter(productid=mytop).values('brand')
+		brand = brand_query[0]['brand']
+		
+		name_query = Product.objects.filter(productid=mytop).values('productname')
+		name = name_query[0]['productname']
+			
+		brands.append(brand)
+		names.append(name)
 
 		image_query = Product.objects.filter(productid=mypid).values('imgurl') #user input bottom
 		bottomimgurl = image_query[0]['imgurl']
-		result.append(bottomimgurl)
+		imgurls.append(bottomimgurl)
+		brand_query = Product.objects.filter(productid=mypid).values('brand')
+		brand = brand_query[0]['brand']
+			
+		name_query = Product.objects.filter(productid=mypid).values('productname')
+		name = name_query[0]['productname']
+			
+		brands.append(brand)
+		names.append(name)
+
 
 		shoes = list(shoes_q.values_list(flat=True)) #generate random shoes
 		rand_num = random.randint(0,len(shoes)-1)
 		myshoes = shoes[rand_num]#pid
 		image_query = Product.objects.filter(productid=myshoes).values('imgurl')
 		shoesimgurl = image_query[0]['imgurl']
-		result.append(shoesimgurl)
+		imgurls.append(shoesimgurl)
+
+		brand_query = Product.objects.filter(productid=myshoes).values('brand')
+		brand = brand_query[0]['brand']
+		
+		name_query = Product.objects.filter(productid=myshoes).values('productname')
+		name = name_query[0]['productname']
+		
+		brands.append(brand)
+		names.append(name)
 
 	elif(myparenttype == "outerwear"): #need to generate either dress and shoes or set of tops, bottoms, shoes
 
 		image_query = Product.objects.filter(productid=mypid).values('imgurl') #user input outerwear
 		outerwearimgurl = image_query[0]['imgurl']
-		result.append(outerwearimgurl)
+		imgurls.append(outerwearimgurl)
+
+		brand_query = Product.objects.filter(productid=mypid).values('brand')
+		brand = brand_query[0]['brand']
+			
+		name_query = Product.objects.filter(productid=mypid).values('productname')
+		name = name_query[0]['productname']
+			
+		brands.append(brand)
+		names.append(name)
 
 		dress = list(dresses_q.values_list(flat=True)) #generate random dress
 		if len(dress) > 0:
@@ -166,14 +254,30 @@ def generateOutfit(mypid):
 				mytop = top[rand_num]#pid
 				image_query = Product.objects.filter(productid=mytop).values('imgurl')
 				topimgurl = image_query[0]['imgurl']
-				result.append(topimgurl)
+				imgurls.append(topimgurl)
+				brand_query = Product.objects.filter(productid=mytop).values('brand')
+				brand = brand_query[0]['brand']
+				name_query = Product.objects.filter(productid=mytop).values('productname')
+				name = name_query[0]['productname']
+			
+				brands.append(brand)
+				names.append(name)
 
 				bottom = list(bottoms_q.values_list(flat=True)) #generate random bottoms
 				rand_num = random.randint(0,len(bottom)-1)
 				mybottom = bottom[rand_num]#pid
 				image_query = Product.objects.filter(productid=mybottom).values('imgurl')
 				bottomimgurl = image_query[0]['imgurl']
-				result.append(bottomimgurl)
+				imgurls.append(bottomimgurl)
+
+				brand_query = Product.objects.filter(productid=mybottom).values('brand')
+				brand = brand_query[0]['brand']
+			
+				name_query = Product.objects.filter(productid=mybottom).values('productname')
+				name = name_query[0]['productname']
+			
+				brands.append(brand)
+				names.append(name)
 
 			else:
 
@@ -181,7 +285,16 @@ def generateOutfit(mypid):
 				mydress = dress[rand_num]#pid
 				image_query = Product.objects.filter(productid=mydress).values('imgurl')
 				dressimgurl = image_query[0]['imgurl']
-				result.append(dressimgurl)
+				imgurls.append(dressimgurl)
+
+				brand_query = Product.objects.filter(productid=mydress).values('brand')
+				brand = brand_query[0]['brand']
+				
+				name_query = Product.objects.filter(productid=mydress).values('productname')
+				name = name_query[0]['productname']
+				
+				brands.append(brand)
+				names.append(name)
 
 		else:
 			top = list(tops_q.values_list(flat=True)) #generate random tops
@@ -189,21 +302,48 @@ def generateOutfit(mypid):
 			mytop = top[rand_num]#pid
 			image_query = Product.objects.filter(productid=mytop).values('imgurl')
 			topimgurl = image_query[0]['imgurl']
-			result.append(topimgurl)
+			imgurls.append(topimgurl)
+
+			brand_query = Product.objects.filter(productid=mytop).values('brand')
+			brand = brand_query[0]['brand']
+			
+			name_query = Product.objects.filter(productid=mytop).values('productname')
+			name = name_query[0]['productname']
+			
+			brands.append(brand)
+			names.append(name)
 
 			bottom = list(bottoms_q.values_list(flat=True)) #generate random bottoms
 			rand_num = random.randint(0,len(bottom)-1)
 			mybottom = bottom[rand_num]#pid
 			image_query = Product.objects.filter(productid=mybottom).values('imgurl')
 			bottomimgurl = image_query[0]['imgurl']
-			result.append(bottomimgurl)
+			imgurls.append(bottomimgurl)
+
+			brand_query = Product.objects.filter(productid=mybottom).values('brand')
+			brand = brand_query[0]['brand']
+			
+			name_query = Product.objects.filter(productid=mybottom).values('productname')
+			name = name_query[0]['productname']
+			
+			brands.append(brand)
+			names.append(name)
 
 		shoes = list(shoes_q.values_list(flat=True)) #generate random shoes
 		rand_num = random.randint(0,len(shoes)-1)
 		myshoes = shoes[rand_num]#pid
 		image_query = Product.objects.filter(productid=myshoes).values('imgurl')
 		shoesimgurl = image_query[0]['imgurl']
-		result.append(shoesimgurl)
+		imgurls.append(shoesimgurl)
+
+		brand_query = Product.objects.filter(productid=myshoes).values('brand')
+		brand = brand_query[0]['brand']
+		
+		name_query = Product.objects.filter(productid=myshoes).values('productname')
+		name = name_query[0]['productname']
+		
+		brands.append(brand)
+		names.append(name)
 
 	elif(myparenttype == "dresses"): #need to generate outerwear and shoes
 
@@ -214,18 +354,42 @@ def generateOutfit(mypid):
 			myouterwear = outerwear[rand_num]#pid
 			image_query = Product.objects.filter(productid=myouterwear).values('imgurl')
 			outerwearimgurl = image_query[0]['imgurl']
-			result.append(outerwearimgurl)
+			imgurls.append(outerwearimgurl)
+			brand_query = Product.objects.filter(productid=myouterwear).values('brand')
+			brand = brand_query[0]['brand']
+			
+			name_query = Product.objects.filter(productid=myouterwear).values('productname')
+			name = name_query[0]['productname']
+			
+			brands.append(brand)
+			names.append(name)
 
 		image_query = Product.objects.filter(productid=mypid).values('imgurl') #user input outerwear
 		dressimgurl = image_query[0]['imgurl']
-		result.append(dressimgurl)
+		imgurls.append(dressimgurl)
+		brand_query = Product.objects.filter(productid=mypid).values('brand')
+		brand = brand_query[0]['brand']
+		
+		name_query = Product.objects.filter(productid=mypid).values('productname')
+		name = name_query[0]['productname']
+		
+		brands.append(brand)
+		names.append(name)
 
 		shoes = list(shoes_q.values_list(flat=True)) #generate random shoes
 		rand_num = random.randint(0,len(shoes)-1)
 		myshoes = shoes[rand_num]#pid
 		image_query = Product.objects.filter(productid=myshoes).values('imgurl')
 		shoesimgurl = image_query[0]['imgurl']
-		result.append(shoesimgurl)
+		imgurls.append(shoesimgurl)
+		brand_query = Product.objects.filter(productid=myshoes).values('brand')
+		brand = brand_query[0]['brand']
+		
+		name_query = Product.objects.filter(productid=myshoes).values('productname')
+		name = name_query[0]['productname']
+		
+		brands.append(brand)
+		names.append(name)
 
 	elif(myparenttype == "shoes"):
 
@@ -236,7 +400,15 @@ def generateOutfit(mypid):
 			myouterwear = outerwear[rand_num]#pid
 			image_query = Product.objects.filter(productid=myouterwear).values('imgurl')
 			outerwearimgurl = image_query[0]['imgurl']
-			result.append(outerwearimgurl)
+			imgurls.append(outerwearimgurl)
+			brand_query = Product.objects.filter(productid=myouterwear).values('brand')
+			brand = brand_query[0]['brand']
+			
+			name_query = Product.objects.filter(productid=myouterwear).values('productname')
+			name = name_query[0]['productname']
+			
+			brands.append(brand)
+			names.append(name)
 
 		dress = list(dresses_q.values_list(flat=True)) #generate random dress
 		if len(dress) > 0:
@@ -248,14 +420,30 @@ def generateOutfit(mypid):
 				mytop = top[rand_num]#pid
 				image_query = Product.objects.filter(productid=mytop).values('imgurl')
 				topimgurl = image_query[0]['imgurl']
-				result.append(topimgurl)
+				imgurls.append(topimgurl)
+				brand_query = Product.objects.filter(productid=mytop).values('brand')
+				brand = brand_query[0]['brand']
+				
+				name_query = Product.objects.filter(productid=mytop).values('productname')
+				name = name_query[0]['productname']
+				
+				brands.append(brand)
+				names.append(name)
 
 				bottom = list(bottoms_q.values_list(flat=True)) #generate random bottoms
 				rand_num = random.randint(0,len(bottom)-1)
 				mybottom = bottom[rand_num]#pid
 				image_query = Product.objects.filter(productid=mybottom).values('imgurl')
 				bottomimgurl = image_query[0]['imgurl']
-				result.append(bottomimgurl)
+				imgurls.append(bottomimgurl)
+				brand_query = Product.objects.filter(productid=mybottom).values('brand')
+				brand = brand_query[0]['brand']
+				
+				name_query = Product.objects.filter(productid=mybottom).values('productname')
+				name = name_query[0]['productname']
+				
+				brands.append(brand)
+				names.append(name)
 
 			else:
 
@@ -263,7 +451,15 @@ def generateOutfit(mypid):
 				mydress = dress[rand_num]#pid
 				image_query = Product.objects.filter(productid=mydress).values('imgurl')
 				dressimgurl = image_query[0]['imgurl']
-				result.append(dressimgurl)
+				imgurls.append(dressimgurl)
+				brand_query = Product.objects.filter(productid=mydress).values('brand')
+				brand = brand_query[0]['brand']
+				
+				name_query = Product.objects.filter(productid=mydress).values('productname')
+				name = name_query[0]['productname']
+				
+				brands.append(brand)
+				names.append(name)
 
 		else:
 			
@@ -272,22 +468,47 @@ def generateOutfit(mypid):
 			mytop = top[rand_num]#pid
 			image_query = Product.objects.filter(productid=mytop).values('imgurl')
 			topimgurl = image_query[0]['imgurl']
-			result.append(topimgurl)
+			imgurls.append(topimgurl)
+
+			brand_query = Product.objects.filter(productid=mytop).values('brand')
+			brand = brand_query[0]['brand']
+			name_query = Product.objects.filter(productid=mytop).values('productname')
+			name = name_query[0]['productname']
+			
+			brands.append(brand)
+			names.append(name)
 
 			bottom = list(bottoms_q.values_list(flat=True)) #generate random bottoms
 			rand_num = random.randint(0,len(bottom)-1)
 			mybottom = bottom[rand_num]#pid
 			image_query = Product.objects.filter(productid=mybottom).values('imgurl')
 			bottomimgurl = image_query[0]['imgurl']
-			result.append(bottomimgurl)
+			imgurls.append(bottomimgurl)
+			brand_query = Product.objects.filter(productid=mybottom).values('brand')
+			brand = brand_query[0]['brand']
+			
+			name_query = Product.objects.filter(productid=mybottom).values('productname')
+			name = name_query[0]['productname']
+			
+			brands.append(brand)
+			names.append(name)
 
 		image_query = Product.objects.filter(productid=mypid).values('imgurl') #user input outerwear
 		shoesimgurl = image_query[0]['imgurl']
-		result.append(shoesimgurl)
+		imgurls.append(shoesimgurl)
+		brand_query = Product.objects.filter(productid=mypid).values('brand')
+		brand = brand_query[0]['brand']
+		
+		name_query = Product.objects.filter(productid=mypid).values('productname')
+		name = name_query[0]['productname']
+		
+		brands.append(brand)
+		names.append(name)
 
 	else:
 		print("error: something is wrong with parenttype")
 
+	result =[imgurls, brands, names]
 	return result
 
 def createMyOutfit(request):
@@ -312,7 +533,8 @@ def createNewOutfit(request):
 	addedproductid = request.GET.get('newproductid')
 	imgurls = generateOutfit(addedproductid)
 
-	result = [imgurls]
+	result = imgurls
+	result.append(addedproductid)
 	#result = [name, imgurl, mygender, myproducttype, myparenttype, myseason, myoccasion]
 	return render(request, "create_new_outfit.html", {"results": result})
 

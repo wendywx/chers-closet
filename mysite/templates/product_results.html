@@ -3,34 +3,38 @@
 <style>
 
 {% load nordstrom_extras %}
-
-#container{
-	width: 960px;
+h1{
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 50px; 
+	background-color: white; 
+}
+.container{
 	margin: 0 auto;
-	overflow: hidden;
+	overflow: scroll;
+	height: 100%;
 }
 #sidebar{
 	float: left;
-	width: 140px;
+	height: 100%;
+	width: 10%;
 	padding: 14px 16px;
 	background-color: #333;
-	font: courier;
+	font-family: "Trebuchet MS", Helvetica, sans-serif; 
 	font-size: 18px
 }
 #main{
+	float: left;
 	margin: 0 auto;
 	height: 100%;
-	width: 70%;
+	width: 85%;
 	background-color: #F0F8FF;
+	font-family: "Trebuchet MS", Helvetica, sans-serif; 
+
 }
 #hidden{
 	visibility: hidden;
 }
-#imagewithcaption {
-float:left;
-width: 178px;
-text-align:center;
-}
+
 li{
 	float:left;
 	padding: 20px;
@@ -51,6 +55,8 @@ li{
 	padding: 14px 16px;
 	text-decoration: none;
 	font-size: 18px;
+	font-family: "Trebuchet MS", Helvetica, sans-serif; 
+
 }
 .nav a:hover{
 	background-color: #ddd;
@@ -60,6 +66,12 @@ li{
 .nav a.active{
 	background-color: #4CAF50;
 	color:white;
+}
+.product {
+	display: inline-block;
+	float:left;
+	width: 220px;
+	text-align:center;
 }
 
 </style>
@@ -75,16 +87,11 @@ li{
 <body background="https://s-media-cache-ak0.pinimg.com/736x/4b/99/1a/4b991a18a070d4d84dd77408ac92c074.jpg">
 	<div class = "container">
 
-	<h1 class = "header">
-		<font face= "courier new">
-		<b><center>
-		Welcome to Cher's Closet!! ~Inspired by~ </center><div id = "content">
-		<a href= "http://www.imdb.com/title/tt0112697/">
-		<center><img src = "http://vignette1.wikia.nocookie.net/logopedia/images/2/25/Clueless_Logo.png/revision/latest?cb=20151114012714" width = "200" height = "110"></center></a>
-		</div>
-		</b>
-		</font>
-	</h1>
+	<header>
+		<h1>
+			<b><center>Cher's Closet!</center></b>
+		</h1>
+	</header>
 	
 	<div class = 'nav'>
 		<font face = "courier new">
@@ -93,20 +100,17 @@ li{
 		<a href = "{% url "my_closet" %}">My Closet</a>
 		</font>
 	</div>
+
 	<div id = "sidebar">
-		<font face = "courier new" color = "white">
-			<center>
-			<p>Womens</p>
-			<p>Mens</p>
-		</center>
-		</font>
 	</div>
-	<div id = "main"><font face = "courier new"></font>
 
-
+	<div id = "main">
 
 		<p>{{ results|index:3|length }} products found:</p>
+
 		{% for i in results.1 %}
+		<div class="product">
+
 		<img src={{ i }} width="197px" height="304px"> 
 		
 		<form action="/addToCloset/" method="get">
@@ -114,7 +118,7 @@ li{
 			 <input type="submit" value="Add to closet" >
 			 <input type="hidden" name="newproductid" value={{ results|index:4|index:forloop.counter0 }}>
 		</form>
-		<form action="/createNewOutfit" method="get">
+		<form action="/createNewOutfit/" method="get">
 	
 			 <input type="submit" value="Generate new outfit with product" >
 			 <input type="hidden" name="newproductid" value={{ results|index:4|index:forloop.counter0 }}>
@@ -122,6 +126,8 @@ li{
 		</form>
 		    <p>{{ results|index:3|index:forloop.counter0 }} {{ results|index:0|index:forloop.counter0 }}, ${{ results|index:2|index:forloop.counter0 }} 
 	       </p>
+
+	   </div>
         {% endfor %}
  	</div>
 	
