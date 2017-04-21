@@ -121,7 +121,7 @@ def generateOutfit(mypid):
 		result.append(shoesimgurl)
 
 
-	elif(myparenttype == "bottoms"):
+	elif(myparenttype == "bottoms"): #need to generate outerwear, tops, shoes
 
 		outerwear = list(outerwear_q.values_list(flat=True)) #generate random outerwear
 		if len(outerwear) > 0:
@@ -140,30 +140,153 @@ def generateOutfit(mypid):
 		result.append(topimgurl)
 
 		image_query = Product.objects.filter(productid=mypid).values('imgurl') #user input bottom
-		topimgurl = image_query[0]['imgurl']
-		result.append(topimgurl)
+		bottomimgurl = image_query[0]['imgurl']
+		result.append(bottomimgurl)
 
 		shoes = list(shoes_q.values_list(flat=True)) #generate random shoes
 		rand_num = random.randint(0,len(shoes)-1)
-		myshoes = bottom[rand_num]#pid
+		myshoes = shoes[rand_num]#pid
 		image_query = Product.objects.filter(productid=myshoes).values('imgurl')
 		shoesimgurl = image_query[0]['imgurl']
 		result.append(shoesimgurl)
 
-	elif(myparenttype == "outerwear"):
-		print("something")
-		#need one top and one bottom
+	elif(myparenttype == "outerwear"): #need to generate either dress and shoes or set of tops, bottoms, shoes
 
-	elif(myparenttype == "dresses"):
-		print("something")
-		# need one shoes 
+		image_query = Product.objects.filter(productid=mypid).values('imgurl') #user input outerwear
+		outerwearimgurl = image_query[0]['imgurl']
+		result.append(outerwearimgurl)
+
+		dress = list(dresses_q.values_list(flat=True)) #generate random dress
+		if len(dress) > 0:
+
+			if random.randint(0,1) == 0: #randomly choose whether to match outerwear with dress or with top/bottom
+
+				top = list(tops_q.values_list(flat=True)) #generate random tops
+				rand_num = random.randint(0,len(top)-1)
+				mytop = top[rand_num]#pid
+				image_query = Product.objects.filter(productid=mytop).values('imgurl')
+				topimgurl = image_query[0]['imgurl']
+				result.append(topimgurl)
+
+				bottom = list(bottoms_q.values_list(flat=True)) #generate random bottoms
+				rand_num = random.randint(0,len(bottom)-1)
+				mybottom = bottom[rand_num]#pid
+				image_query = Product.objects.filter(productid=mybottom).values('imgurl')
+				bottomimgurl = image_query[0]['imgurl']
+				result.append(bottomimgurl)
+
+			else:
+
+				rand_num = random.randint(0,len(dress)-1)
+				mydress = dress[rand_num]#pid
+				image_query = Product.objects.filter(productid=mydress).values('imgurl')
+				dressimgurl = image_query[0]['imgurl']
+				result.append(dressimgurl)
+
+		else:
+			top = list(tops_q.values_list(flat=True)) #generate random tops
+			rand_num = random.randint(0,len(top)-1)
+			mytop = top[rand_num]#pid
+			image_query = Product.objects.filter(productid=mytop).values('imgurl')
+			topimgurl = image_query[0]['imgurl']
+			result.append(topimgurl)
+
+			bottom = list(bottoms_q.values_list(flat=True)) #generate random bottoms
+			rand_num = random.randint(0,len(bottom)-1)
+			mybottom = bottom[rand_num]#pid
+			image_query = Product.objects.filter(productid=mybottom).values('imgurl')
+			bottomimgurl = image_query[0]['imgurl']
+			result.append(bottomimgurl)
+
+		shoes = list(shoes_q.values_list(flat=True)) #generate random shoes
+		rand_num = random.randint(0,len(shoes)-1)
+		myshoes = shoes[rand_num]#pid
+		image_query = Product.objects.filter(productid=myshoes).values('imgurl')
+		shoesimgurl = image_query[0]['imgurl']
+		result.append(shoesimgurl)
+
+	elif(myparenttype == "dresses"): #need to generate outerwear and shoes
+
+		outerwear = list(outerwear_q.values_list(flat=True)) #generate random outerwear
+		if len(outerwear) > 0:
+			rand_num = random.randint(0,len(outerwear)-1)
+			print(rand_num)
+			myouterwear = outerwear[rand_num]#pid
+			image_query = Product.objects.filter(productid=myouterwear).values('imgurl')
+			outerwearimgurl = image_query[0]['imgurl']
+			result.append(outerwearimgurl)
+
+		image_query = Product.objects.filter(productid=mypid).values('imgurl') #user input outerwear
+		dressimgurl = image_query[0]['imgurl']
+		result.append(dressimgurl)
+
+		shoes = list(shoes_q.values_list(flat=True)) #generate random shoes
+		rand_num = random.randint(0,len(shoes)-1)
+		myshoes = shoes[rand_num]#pid
+		image_query = Product.objects.filter(productid=myshoes).values('imgurl')
+		shoesimgurl = image_query[0]['imgurl']
+		result.append(shoesimgurl)
 
 	elif(myparenttype == "shoes"):
-		print("something")
-		# need one top one bottom 
+
+		outerwear = list(outerwear_q.values_list(flat=True)) #generate random outerwear
+		if len(outerwear) > 0:
+			rand_num = random.randint(0,len(outerwear)-1)
+			print(rand_num)
+			myouterwear = outerwear[rand_num]#pid
+			image_query = Product.objects.filter(productid=myouterwear).values('imgurl')
+			outerwearimgurl = image_query[0]['imgurl']
+			result.append(outerwearimgurl)
+
+		dress = list(dresses_q.values_list(flat=True)) #generate random dress
+		if len(dress) > 0:
+
+			if random.randint(0,1) == 0: #randomly choose whether to match outerwear with dress or with top/bottom
+
+				top = list(tops_q.values_list(flat=True)) #generate random tops
+				rand_num = random.randint(0,len(top)-1)
+				mytop = top[rand_num]#pid
+				image_query = Product.objects.filter(productid=mytop).values('imgurl')
+				topimgurl = image_query[0]['imgurl']
+				result.append(topimgurl)
+
+				bottom = list(bottoms_q.values_list(flat=True)) #generate random bottoms
+				rand_num = random.randint(0,len(bottom)-1)
+				mybottom = bottom[rand_num]#pid
+				image_query = Product.objects.filter(productid=mybottom).values('imgurl')
+				bottomimgurl = image_query[0]['imgurl']
+				result.append(bottomimgurl)
+
+			else:
+
+				rand_num = random.randint(0,len(dress)-1)
+				mydress = dress[rand_num]#pid
+				image_query = Product.objects.filter(productid=mydress).values('imgurl')
+				dressimgurl = image_query[0]['imgurl']
+				result.append(dressimgurl)
+
+		else:
+			
+			top = list(tops_q.values_list(flat=True)) #generate random tops
+			rand_num = random.randint(0,len(top)-1)
+			mytop = top[rand_num]#pid
+			image_query = Product.objects.filter(productid=mytop).values('imgurl')
+			topimgurl = image_query[0]['imgurl']
+			result.append(topimgurl)
+
+			bottom = list(bottoms_q.values_list(flat=True)) #generate random bottoms
+			rand_num = random.randint(0,len(bottom)-1)
+			mybottom = bottom[rand_num]#pid
+			image_query = Product.objects.filter(productid=mybottom).values('imgurl')
+			bottomimgurl = image_query[0]['imgurl']
+			result.append(bottomimgurl)
+
+		image_query = Product.objects.filter(productid=mypid).values('imgurl') #user input outerwear
+		shoesimgurl = image_query[0]['imgurl']
+		result.append(shoesimgurl)
 
 	else:
-		print("something is wrong w pareentype")
+		print("error: something is wrong with parenttype")
 
 	return result
 
