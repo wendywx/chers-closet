@@ -102,7 +102,11 @@ li{
 		</font>
 	</div>
 	<div id = "main"><font face = "courier new"></font>
+
 		{% for i in results.1 %}=
+
+		<p>{{ results|index:3|length }} products found:</p>
+		{% for i in results.1 %}
 		<img src={{ i }} width="197px" height="304px"> 
 		
 		<form action="/addToCloset/" method="get">
