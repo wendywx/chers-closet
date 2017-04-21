@@ -76,16 +76,36 @@ li{
 		<a href = "{% url "my_closet" %}">My Closet</a>
 		</font>
 	</div>
-	<div id = "main">
-		<font face = "courier new" color = "black">
+	<div id = "sidebar">
+		<font face = "courier new" color = "white">
 			<center>
-		adding outfit and associated products to closet
+			<p><a href = "{% url "create_new_closet" %}">~Create a new closet~</a></p>
+			<p><a href = "{% url "view_closet" %}">~View a closet~</a></p>
+			<p><a href = "{% url "create_new_outfit" %}">~Create a New Outfit~</a></p>
 		</center>
-
 		</font>
-		<center>
+	</div>
+	<div id = "main">
+	<center><font face = "courier new">
+		This is the page where users can create a new outfit by picking clothes in their closet </font> 
+
+		{% for i in results %}
+		<img src={{ i }} width="197px" height="304px"/>
+	
+		{% endfor %}
+
+
+			<center>
+				
+		<form action="/addOutfit/" method="get">
+		  <input type="submit" value="Add Outfit to Closet">
+		</form>
+
+
 	</center>
 	</div>
+	</center>
+	</center>
 	</div>
 
 </body>
