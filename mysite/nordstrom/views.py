@@ -21,10 +21,10 @@ def product_results(request):
 def added_to_closet(request):
 	return render(request, "added_to_closet.html", {})
 
-<<<<<<< HEAD
+
 def view_closet(request):
 	return render(request, "view_closet.html", {})
-=======
+
 def generateOutfit(mypid):
 	result = []
 
@@ -119,7 +119,6 @@ def generateOutfit(mypid):
 
 	result.append(myimgurl)
 	return result
->>>>>>> 6aebc4d9fd456c7660b2481fe194a0968ee50933
 
 def createNewOutfit(request):
 	addedproductid = request.GET.get('newproductid')

@@ -103,7 +103,7 @@ li{
 	</div>
 	<div id = "main"><font face = "courier new"></font>
 
-		{% for i in results.1 %}=
+
 
 		<p>{{ results|index:3|length }} products found:</p>
 		{% for i in results.1 %}
@@ -112,16 +112,16 @@ li{
 		<form action="/addToCloset/" method="get">
 			 <input name="closetid" type="text">
 			 <input type="submit" value="Add to closet" >
-			 <input id="hidden" name="newproductid" value={{ results|index:4|index:forloop.counter0 }}>
+			 <input type="hidden" name="newproductid" value={{ results|index:4|index:forloop.counter0 }}>
 		</form>
 		<form action="/createNewOutfit" method="get">
 	
 			 <input type="submit" value="Generate new outfit with product" >
-			 <input id="hidden" name="newproductid" value={{ results|index:4|index:forloop.counter0 }}>
+			 <input type="hidden" name="newproductid" value={{ results|index:4|index:forloop.counter0 }}>
 		
 		</form>
-		    {{ results|index:3|index:forloop.counter0 }} {{ results|index:0|index:forloop.counter0 }}, ${{ results|index:2|index:forloop.counter0 }} 
-	       
+		    <p>{{ results|index:3|index:forloop.counter0 }} {{ results|index:0|index:forloop.counter0 }}, ${{ results|index:2|index:forloop.counter0 }} 
+	       </p>
         {% endfor %}
  	</div>
 	
