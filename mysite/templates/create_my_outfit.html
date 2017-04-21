@@ -1,5 +1,10 @@
 <html lang="en">
 <style>
+h1{
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 50px; 
+	background-color: white; 
+}
 #container{
 	width: 960px;
 	margin: 0 auto;
@@ -8,16 +13,20 @@
 #sidebar{
 	float: left;
 	width: 140px;
+	height: 100%;
 	padding: 14px 16px;
 	background-color: #333;
 	font: courier;
-	font-size: 18px
+	font-size: 18px; 
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 #main{
-	margin: 0 auto;
+	float: left;
+	padding-top: 30px; 
 	height: 100%;
-	width: 70%;
-	background-color: #F0F8FF
+	width: 80%;
+	background-color: #F0F8FF; 
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 li{
 	float:left;
@@ -37,6 +46,7 @@ li{
 	padding: 14px 16px;
 	text-decoration: none;
 	font-size: 18px;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 .nav a:hover{
 	background-color: #ddd;
@@ -58,46 +68,30 @@ li{
 </body>
 
 	<div class = "container">
-	<h1 class = "header">
-		<font face= "courier new">
-		<b><center>
-		Welcome to Cher's Closet!! ~Inspired by~ </center><div id = "content">
-		<a href= "http://www.imdb.com/title/tt0112697/">
-		<center><img src = "http://vignette1.wikia.nocookie.net/logopedia/images/2/25/Clueless_Logo.png/revision/latest?cb=20151114012714" width = "200" height = "110"></center></a>
-		</div>
-		</b>
-		</font>
-	</h1>
+
+	<header>
+		<h1>
+			<b><center>Cher's Closet!</center></b>
+		</h1>
+	</header>
 
 	<div class = 'nav'>
-		<font face = "courier new">
 		<a href="{% url "home" %}">Home</a>
 		<a href = "{% url "browse_products" %}">Browse Products</a>
 		<a href = "{% url "my_closet" %}">My Closet</a>
-		</font>
 	</div>
 	<div id = "sidebar">
-		<font face = "courier new" color = "white">
-			<center>
-			<p><a href = "{% url "create_new_closet" %}">~Create a new closet~</a></p>
-			<p><a href = "{% url "view_closet" %}">~View a closet~</a></p>
-			<p><a href = "{% url "create_new_outfit" %}">~Create a New Outfit~</a></p>
-		</center>
-		</font>
 	</div>
 	<div id = "main">
-	<center><font face = "courier new">
-		This is the page where users can create a new outfit by picking clothes in their closet </font> 
-
+	<center>
 		{% for i in results %}
 		<img src={{ i }} width="197px" height="304px"/>
 	
 		{% endfor %}
-
-
-			<center>
+		<center>
 				
 		<form action="/addOutfit/" method="get">
+			<input name="closetid" type="hidden" value="">
 		  <input type="submit" value="Add Outfit to Closet">
 		</form>
 

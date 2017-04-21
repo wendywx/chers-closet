@@ -1,5 +1,11 @@
 <html lang="en">
 <style>
+{% load nordstrom_extras %}
+h1{
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-size: 50px; 
+	background-color: white; 
+}
 #container{
 	width: 960px;
 	margin: 0 auto;
@@ -18,6 +24,12 @@
 	height: 100%;
 	width: 70%;
 	background-color: #F0F8FF
+}
+#imagewithcaption {
+float:left;
+width: 178px;
+text-align:center;
+
 }
 li{
 	float:left;
@@ -58,45 +70,39 @@ li{
 </body>
 
 	<div class = "container">
-	<h1 class = "header">
-		<font face= "courier new">
-		<b><center>
-		Welcome to Cher's Closet!! ~Inspired by~ </center><div id = "content">
-		<a href= "http://www.imdb.com/title/tt0112697/">
-		<center><img src = "http://vignette1.wikia.nocookie.net/logopedia/images/2/25/Clueless_Logo.png/revision/latest?cb=20151114012714" width = "200" height = "110"></center></a>
-		</div>
-		</b>
-		</font>
-	</h1>
+
+	<header>
+		<h1>
+			<b><center>Cher's Closet!</center></b>
+		</h1>
+	</header>
 
 	<div class = 'nav'>
-		<font face = "courier new">
 		<a href="{% url "home" %}">Home</a>
 		<a href = "{% url "browse_products" %}">Browse Products</a>
 		<a href = "{% url "my_closet" %}">My Closet</a>
-		</font>
 	</div>
+
 	<div id = "sidebar">
-		<font face = "courier new" color = "white">
 			<center>
 			<p><a href = "{% url "create_new_closet" %}">~Create a new closet~</a></p>
 			<p><a href = "{% url "view_closet" %}">~View a closet~</a></p>
 			<p><a href = "{% url "create_new_outfit" %}">~Create a New Outfit~</a></p>
 		</center>
-		</font>
 	</div>
+
 	<div id = "main">
-	<center><font face = "courier new">
-		This is the page where users can create a new outfit, either picking clothes from their website or having the website pick a random website. </font> 
-
+	<center>
 		{% for i in results.0 %}
-
+		<p id="imagewithcaption">
 			<img src={{ i }} width="197px" height="304px"> 
-		
+			{{ results|index:1|index:forloop.counter0 }}
+			{{ results|index:2|index:forloop.counter0 }} 	
+
+		</p>
 		{% endfor %}
 
-		Create outfit with product 
-		<p> {{ results }}</p>
+
 
 			<center>
 				
@@ -104,9 +110,9 @@ li{
 			<input name="closetid" type="text" value="">
 		  <input type="submit" value="Add Outfit to Closet">
 		</form>
-		<form action="/generateNewOutfit/" method="get">
-			
-		  <input type="submit" value="Generate Another Outfit">
+		<form action="/createNewOutfit/" method="get">
+			<input type="hidden" name="newproductid" value={{ results.3 }}>
+		  <input type="submit" value="Regenerate Another Outfit">
 		</form>
 
 	</center>
