@@ -89,13 +89,13 @@ class Outfit(models.Model):
         #unique_together = (("char", "alias_name"),) has to do with foreign key??
 
 class Product(models.Model):
-    productid = models.IntegerField(primary_key=True)
-    productname = models.TextField()
+    productid = models.IntegerField(db_index=True, primary_key=True)
+    productname = models.TextField(db_index=True)
     producttype = models.ForeignKey('Type', db_column='producttype')
-    brand = models.TextField()
+    brand = models.TextField(db_index=True)
     color = models.TextField()
     gender = models.CharField(max_length=10)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(db_index=True, max_digits=10, decimal_places=2)
     rating = models.DecimalField(max_digits=10, decimal_places=2)
     imgurl = models.TextField()
 

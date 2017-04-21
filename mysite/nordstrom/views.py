@@ -8,10 +8,11 @@ def home(request):
 
 def browse_products(request):
 	
-	result0 = Type.objects.all()
-	result1 = Product.objects.order_by().values_list('brand', flat=True).distinct()
+	types = Type.objects.order_by('typename').all()
+	brands = Product.objects.order_by('brand').values_list('brand', flat=True).distinct()
+	prices = ['$0-$49','$50-$99', '$100-$199', '$200-$399','$400-$1000']
 	
-	result = [result0, result1]
+	result = [types, brands, prices]
 	return render(request, 'browse_products.html', {"results": result})
 
 def product_results(request):
@@ -98,8 +99,15 @@ def addToCloset(request):
 	return render(request, "added_to_closet.html", {"results": result})
 
 def filterProducts(request):
-	typeList = request.GET.getlist('types[]')
-	brandList = request.GET.getlist('brands[]')
+	type_list = request.GET.getlist('types[]')
+	brand_list = request.GET.getlist('brands[]')
+	price_list = request.GET.getlist('prices[]')
+	reformatted_price_list = []
+
+	for i in price_list:
+		for char in '$':
+			i = i.replace(char,'')
+		reformatted_price_list.append(i.split('-'))
 
 	result = []	
 	names = []
@@ -107,7 +115,8 @@ def filterProducts(request):
 	images = []
 	prices = []
 	brands = []
-	for i in typeList:
+
+	for i in type_list:
 		productname_query = Product.objects.filter(producttype=i).values('productname') #list
 		pid_query = Product.objects.filter(producttype=i).values('productid')
 		image_query = Product.objects.filter(producttype=i).values('imgurl') #list ...
@@ -122,7 +131,7 @@ def filterProducts(request):
 
 		#result = [productname_query, images, prices, brands, productids]
 
-	for k in brandList:
+	for k in brand_list:
 		productname_query = Product.objects.filter(brand=k).values('productname') #list
 		pid_query = Product.objects.filter(brand=k).values('productid')
 		image_query = Product.objects.filter(brand=k).values('imgurl') #list ...
@@ -134,6 +143,21 @@ def filterProducts(request):
 			images.append(image_query[l]['imgurl'])
 			prices.append(price_query[l]['price'])
 			brands.append(brand_query[l]['brand'])
+
+	for l in reformatted_price_list:
+		minimum = l[0]
+		maximum = l[1]
+		productname_query = Product.objects.filter(price__range=(minimum, maximum)).values('productname') #list
+		pid_query = Product.objects.filter(price__range=(minimum, maximum)).values('productid')
+		image_query = Product.objects.filter(price__range=(minimum, maximum)).values('imgurl') #list ...
+		price_query = Product.objects.filter(price__range=(minimum, maximum)).values('price') #list 
+		brand_query = Product.objects.filter(price__range=(minimum, maximum)).values('brand') #list 
+		for m in range(0,len(pid_query)):
+			names.append(productname_query[m]['productname'])
+			productids.append(pid_query[m]['productid'])
+			images.append(image_query[m]['imgurl'])
+			prices.append(price_query[m]['price'])
+			brands.append(brand_query[m]['brand'])
 
 	
 	result = [names, images, prices, brands, productids]

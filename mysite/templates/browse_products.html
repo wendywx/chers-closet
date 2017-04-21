@@ -105,7 +105,7 @@ fieldset{
 	<div id = "filter"><font face = "courier new"></font>
 		<p>Filter By: </p>
 		<form action="/filterProducts/" method="get">
-			<fieldset>
+		<fieldset>
 			    <legend>Type</legend>
 
 			    {% for i in results.0 %}
@@ -120,8 +120,16 @@ fieldset{
 			    <input id="brand" type="checkbox" name="brands[]" value="{{ j }}" />{{ j }}<br>
 			    {% endfor %}
 			 	
-		  </fieldset>
-		  <input type="submit" value="SUBMIT">
+		</fieldset>
+		<fieldset>
+			    <legend>Price</legend>
+
+			    {% for k in results.2 %}
+			    <input id="brand" type="checkbox" name="prices[]" value="{{ k }}" />{{ k }}<br>
+			    {% endfor %}
+			 	
+		</fieldset>
+		<input type="submit" value="SUBMIT">
 		</form>
  	</div>
 

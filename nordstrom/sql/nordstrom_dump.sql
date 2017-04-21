@@ -469,6 +469,7 @@ CREATE TABLE products (
     imgurl text
 );
 
+CREATE INDEX productindex ON products (productid);
 
 ALTER TABLE products OWNER TO "Wendy";
 
