@@ -136,7 +136,7 @@ for line in f:
 		 	INSERT INTO types(typeName,parentType,season,occasion)
 		 	VALUES ('{0}','{1}','{2}','{3}')
 		 	ON CONFLICT DO NOTHING;
-		""".format(product_type, parent_type, product_seasons, occasion_type))
+		""".format(product_type, parent_type, product_seasons[:-1], occasion_type))
 
 		cur.execute("""
 			INSERT INTO products(productId,productName,productType,brand,color,gender,price,rating,imgurl)
