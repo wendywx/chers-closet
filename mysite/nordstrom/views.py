@@ -290,15 +290,27 @@ def generateOutfit(mypid):
 
 	return result
 
+def createMyOutfit(request):
+	pidList = request.GET.getlist('pids[]')
+	myclosetid = request.GET.get('closetid')
+	print(myclosetid)
+	result = []
+
+	for pid in pidList:
+
+		image_query = Product.objects.filter(productid=pid).values('imgurl')
+		imgurl = image_query[0]['imgurl']
+		result.append(imgurl)		
+
+
+	return render(request, "create_my_outfit.html", {"results": result})
+
+def create_my_outfit(request):
+	return render(request, "create_my_outfit.html", {})
+
 def createNewOutfit(request):
 	addedproductid = request.GET.get('newproductid')
-	
-
 	imgurls = generateOutfit(addedproductid)
-
-
-	
-	#myoutfitid # loop through outfit db and find next available id 
 
 	result = [imgurls]
 	#result = [name, imgurl, mygender, myproducttype, myparenttype, myseason, myoccasion]
@@ -405,58 +417,6 @@ def filterProducts(request):
 
 	result = [names, images, prices, brands, productids]
 
-	# productname_query = result.values('productname') #list
-	# pid_query = result.values('productid')
-	# image_query = result.values('imgurl') #list ...
-	# price_query = result.values('price') #list 
-	# brand_query = result.values('brand') #list 
-
-	# for i in type_list:
-	# 	productname_query = Product.objects.filter(producttype=i).values('productname') #list
-	# 	pid_query = Product.objects.filter(producttype=i).values('productid')
-	# 	image_query = Product.objects.filter(producttype=i).values('imgurl') #list ...
-	# 	price_query = Product.objects.filter(producttype=i).values('price') #list 
-	# 	brand_query = Product.objects.filter(producttype=i).values('brand') #list 
-	# 	for j in range(0,len(image_query)):
-	# 		names.append(productname_query[j]['productname'])
-	# 		productids.append(pid_query[j]['productid'])
-	# 		images.append(image_query[j]['imgurl'])
-	# 		prices.append(price_query[j]['price'])
-	# 		brands.append(brand_query[j]['brand'])
-
-	# 	#result = [productname_query, images, prices, brands, productids]
-
-	# for k in brand_list:
-	# 	productname_query = Product.objects.filter(brand=k).values('productname') #list
-	# 	pid_query = Product.objects.filter(brand=k).values('productid')
-	# 	image_query = Product.objects.filter(brand=k).values('imgurl') #list ...
-	# 	price_query = Product.objects.filter(brand=k).values('price') #list 
-	# 	brand_query = Product.objects.filter(brand=k).values('brand') #list 
-	# 	for l in range(0,len(pid_query)):
-	# 		names.append(productname_query[l]['productname'])
-	# 		productids.append(pid_query[l]['productid'])
-	# 		images.append(image_query[l]['imgurl'])
-	# 		prices.append(price_query[l]['price'])
-	# 		brands.append(brand_query[l]['brand'])
-
-	# for l in reformatted_price_list:
-	# 	minimum = l[0]
-	# 	maximum = l[1]
-	# 	productname_query = Product.objects.filter(price__range=(minimum, maximum)).values('productname') #list
-	# 	pid_query = Product.objects.filter(price__range=(minimum, maximum)).values('productid')
-	# 	image_query = Product.objects.filter(price__range=(minimum, maximum)).values('imgurl') #list ...
-	# 	price_query = Product.objects.filter(price__range=(minimum, maximum)).values('price') #list 
-	# 	brand_query = Product.objects.filter(price__range=(minimum, maximum)).values('brand') #list 
-	# 	for m in range(0,len(pid_query)):
-	# 		names.append(productname_query[m]['productname'])
-	# 		productids.append(pid_query[m]['productid'])
-	# 		images.append(image_query[m]['imgurl'])
-	# 		prices.append(price_query[m]['price'])
-	# 		brands.append(brand_query[m]['brand'])
-
-
-	# result = [names, images, prices, brands, productids]
-
 
 	return render(request, "product_results.html", {"results": result})
 
@@ -494,9 +454,8 @@ def add_outfit(request):
 	return render(request, 'add_outfit.html', {})
 
 def addOutfit(request):
-
-	print("do i get inside addoutfit??")
-	result= ['addoutfit']
+	myclosetid = request.GET.get('closetid')
+	result= [myclosetid]
 	return render(request, 'add_outfit.html', {'results': result})
 
 def generate_new_outfit(request):
@@ -514,6 +473,7 @@ def viewCloset(request):
 	imgurls = []
 	names = []
 	brands = []
+	pids = []
 	result =[]
 
 	for x in range(1, len(closettuple)):
@@ -527,13 +487,17 @@ def viewCloset(request):
 			brand_query = Product.objects.filter(productid=closettuple[x]).values('brand')
 			brand = brand_query[0]['brand']
 
+
+			pid_query = Product.objects.filter(productid=closettuple[x]).values('productid')
+			pid = pid_query[0]['productid']
+
 			imgurls.append(imgurl)
 			names.append(name)
 			brands.append(brand)
+			pids.append(pid)
 
-
-
-	result = [imgurls, names, brands]
+	print(pids)
+	result = [imgurls, names, brands, pids, myclosetid]
 	return render(request, 'view_closet.html', {"results": result})
 
 def null_closet(mycloset):

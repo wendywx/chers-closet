@@ -16,6 +16,10 @@ urlpatterns = [
 
     url(r'^createNewOutfit/$', views.createNewOutfit, name='createNewOutfit'),
     url(r'^create_new_outfit.html$', views.create_new_outfit, name = 'create_new_outfit'),
+
+    url(r'^createMyOutfit/$', views.createMyOutfit, name='createMyOutfit'),
+    url(r'^create_my_outfit.html$', views.create_my_outfit, name = 'create_my_outfit'),
+    
     url(r'^log_in.html$', views.log_in, name = 'log_in'),
     url(r'^my_account.html$', views.my_account, name = 'my_account'),
     url(r'^register.html$', views.register, name = 'register'),
