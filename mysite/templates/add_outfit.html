@@ -19,6 +19,12 @@
 	width: 70%;
 	background-color: #F0F8FF
 }
+#imagewithcaption {
+float:left;
+width: 178px;
+text-align:center;
+
+}
 li{
 	float:left;
 	padding: 20px;
@@ -79,7 +85,16 @@ li{
 	<div id = "main">
 		<font face = "courier new" color = "black">
 			<center>
-		adding outfit and associated products to closet 
+
+		adding outfit and associated products to closet {{ results.0 }}
+
+		{% for i in results.1 %}
+	
+		<p id="imagewithcaption">
+			<img src={{ i }} width="197px" height="304px"> 
+			{{ i }}
+		</p>
+		{% endfor %}
 
 		</center>
 

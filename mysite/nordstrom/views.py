@@ -2,7 +2,8 @@ import random
 
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Product, Closet, Type
+
+from .models import Product, Closet, Type, Outfit
 
 def home(request):
 	return render(request, 'home.html', {})
@@ -49,8 +50,12 @@ def generate_product(query, myseason, myoccasion):
 		productimgurl = findprodattrib(myproduct, 'imgurl')
 		brand = findprodattrib(myproduct,'brand')
 		name = findprodattrib(myproduct,'productname')
-		return [productimgurl, brand, name]
+
+		pid = findprodattrib(myproduct, 'productid')
+
+		return [productimgurl, brand, name, pid]
 	else:
+		print("something is wrong inside generate product")
 		return [0]
 
 
@@ -84,6 +89,7 @@ def generateOutfit(mypid):
 	imgurls = []
 	brands = []
 	names =[]
+	pids = []
 
 	tops = list(Type.objects.filter(parenttype="tops").values_list(flat=True))
 	bottoms = list(Type.objects.filter(parenttype="bottoms").values_list(flat=True))
@@ -122,23 +128,29 @@ def generateOutfit(mypid):
 			imgurls.append(generated_outerwear[0])
 			brands.append(generated_outerwear[1])
 			names.append(generated_outerwear[2])
+			pids.append(generated_outerwear[3])
 
 		topimgurl = findprodattrib(mypid,'imgurl') #user chosen top
 		brand = findprodattrib(mypid,'brand')
 		name = findprodattrib(mypid,'productname')
+		pid = findprodattrib(mypid, 'productid')
+
 		imgurls.append(topimgurl)	
 		brands.append(brand)
 		names.append(name)
+		pids.append(pid)
 
 		generated_bottom = generate_product(bottoms_q, myseason, myoccasion) #generate bottom
 		imgurls.append(generated_bottom[0])
 		brands.append(generated_bottom[1])
 		names.append(generated_bottom[2])
+		pids.append(generated_bottom[3])
 
 		generated_shoes = generate_product(shoes_q, myseason, myoccasion) #generate top
 		imgurls.append(generated_shoes[0])
 		brands.append(generated_shoes[1])
 		names.append(generated_shoes[2])
+		pids.append(generated_shoes[3])
 
 	elif(myparenttype == "bottoms"): 
 
@@ -147,23 +159,29 @@ def generateOutfit(mypid):
 			imgurls.append(generated_outerwear[0])
 			brands.append(generated_outerwear[1])
 			names.append(generated_outerwear[2])
+			pids.append(generated_outerwear[3])
 
 		generated_top = generate_product(tops_q, myseason, myoccasion) #generate top
 		imgurls.append(generated_top[0])
 		brands.append(generated_top[1])
 		names.append(generated_top[2])
+		pids.append(generated_top[3])
 
 		bottomimgurl = findprodattrib(mypid,'imgurl') #user chosen bottom
 		imgurls.append(bottomimgurl)
 		brand = findprodattrib(mypid,'brand')
 		name = findprodattrib(mypid,'productname')
+		pid = findprodattrib(mypid, 'productid')
 		brands.append(brand)
 		names.append(name)
+		pids.append(pid)
+
 
 		generated_shoes = generate_product(shoes_q, myseason, myoccasion) #generate shoes
 		imgurls.append(generated_shoes[0])
 		brands.append(generated_shoes[1])
 		names.append(generated_shoes[2])
+		pids.append(generated_shoes[3])
 
 	elif(myparenttype == "outerwear"): 
 
@@ -171,8 +189,10 @@ def generateOutfit(mypid):
 		imgurls.append(outerwearimgurl)
 		brand = findprodattrib(mypid,'brand')
 		name = findprodattrib(mypid,'productname')	
+		pid = findprodattrib(mypid, 'productid')
 		brands.append(brand)
 		names.append(name)
+		pids.append(pid)
 
 		if 'dressy' in myoccasion: #since dresses are categorized only as dressy
 			if random.randint(0,1) == 0: #randomly choose whether to match outerwear with dress or with top/bottom
@@ -181,33 +201,39 @@ def generateOutfit(mypid):
 				imgurls.append(generated_top[0])
 				brands.append(generated_top[1])
 				names.append(generated_top[2])
+				pids.append(generated_top[3])
 
 				generated_bottom = generate_product(bottoms_q, myseason, myoccasion)
 				imgurls.append(generated_bottom[0])
 				brands.append(generated_bottom[1])
 				names.append(generated_bottom[2])
+				pids.append(generated_bottom[3])
 
 			else:
 				generated_dress = generate_product(dresses_q, myseason, myoccasion)
 				imgurls.append(generated_dress[0])
 				brands.append(generated_dress[1])
 				names.append(generated_dress[2])
+				pids.append(generated_dress[3])
 
 		else: 
 			generated_top = generate_product(tops_q, myseason, myoccasion)
 			imgurls.append(generated_top[0])
 			brands.append(generated_top[1])
 			names.append(generated_top[2])
+			pids.append(generated_top[3])
 
 			generated_bottom = generate_product(bottoms_q, myseason, myoccasion)
 			imgurls.append(generated_bottom[0])
 			brands.append(generated_bottom[1])
 			names.append(generated_bottom[2])
+			pids.append(generated_bottom[3])
 
 		generated_shoes = generate_product(shoes_q, myseason, myoccasion)
 		imgurls.append(generated_shoes[0])
 		brands.append(generated_shoes[1])
 		names.append(generated_shoes[2])
+		pids.append(generated_shoes[3])
 
 	elif(myparenttype == "dresses"): 
 
@@ -216,19 +242,23 @@ def generateOutfit(mypid):
 			imgurls.append(generated_outerwear[0])
 			brands.append(generated_outerwear[1])
 			names.append(generated_outerwear[2])
+			pids.append(generated_outerwear[3])
 
 		#user input dress
 		dressimgurl = findprodattrib(mypid,'imgurl')
 		imgurls.append(dressimgurl)
 		brand = findprodattrib(mypid,'brand')
 		name = findprodattrib(mypid,'productname')
+		pid = findprodattrib(mypid, 'productid')
 		brands.append(brand)
 		names.append(name)
+		pids.append(pid)
 
 		generated_shoes = generate_product(shoes_q, myseason, myoccasion)
 		imgurls.append(generated_shoes[0])
 		brands.append(generated_shoes[1])
 		names.append(generated_shoes[2])
+		pids.append(generated_shoes[3])
 
 	elif(myparenttype == "shoes"):
 
@@ -237,6 +267,7 @@ def generateOutfit(mypid):
 			imgurls.append(generated_outerwear[0])
 			brands.append(generated_outerwear[1])
 			names.append(generated_outerwear[2])
+			pids.append(generated_outerwear[3])
 
 		dress = list(dresses_q.values_list(flat=True)) #generate random dress
 		if 'dressy' in myoccasion:
@@ -245,58 +276,59 @@ def generateOutfit(mypid):
 				imgurls.append(generated_top[0])
 				brands.append(generated_top[1])
 				names.append(generated_top[2])
+				pids.append(generated_top[3])
 
 				generated_bottom = generate_product(bottoms_q, myseason, myoccasion)
 				imgurls.append(generated_bottom[0])
 				brands.append(generated_bottom[1])
 				names.append(generated_bottom[2])
+				pids.append(generated_bottom[3])
 
 			else:
 				generated_dress = generate_product(dresses_q, myseason, myoccasion)
 				imgurls.append(generated_dress[0])
 				brands.append(generated_dress[1])
 				names.append(generated_dress[2])
+				pids.append(generated_dress[3])
 
 		else:	
 			generated_top = generate_product(tops_q, myseason, myoccasion)
 			imgurls.append(generated_top[0])
 			brands.append(generated_top[1])
 			names.append(generated_top[2])
+			pids.append(generated_top[3])
 
 			generated_bottom = generate_product(bottoms_q, myseason, myoccasion)
 			imgurls.append(generated_bottom[0])
 			brands.append(generated_bottom[1])
 			names.append(generated_bottom[2])
+			pids.append(generated_bottom[3])
 
 		#user input shoes
 		shoesimgurl = findprodattrib(mypid, 'imgurl')
 		imgurls.append(shoesimgurl)
 		brand = findprodattrib(mypid,'brand')
 		name = findprodattrib(mypid,'productname')
+		pid = findprodattrib(mypid, 'productid')
 		brands.append(brand)
 		names.append(name)
+		pids.append(pid)
 
 	else:
 		print("error: something is wrong with parenttype")
 
-	result =[imgurls, brands, names]
+	result =[imgurls, brands, names, pids]
 	return result
 
 
 def createMyOutfit(request):
 	pidList = request.GET.getlist('pids[]')
-	top = 0; 
-	bottom = 0; 
-	dress = 0; 
-	outerwear = 0; 
-	shoes = 0; 
-
 	myclosetid = request.GET.get('closetid')
 	print(myclosetid)
-
 	result = []
 
 	for pid in pidList:
+
 		image_query = Product.objects.filter(productid=pid).values('imgurl')
 		imgurl = image_query[0]['imgurl']
 		result.append(imgurl)		
@@ -312,53 +344,62 @@ def create_my_outfit(request):
 def createNewOutfit(request):
 	addedproductid = request.GET.get('newproductid')
 
-	imgurls = generateOutfit(addedproductid)
-
-	result = imgurls
+	outfitinfo = generateOutfit(addedproductid)
+	# pids are the last of the outfitinfo 
+	result = outfitinfo
 	result.append(addedproductid)
+
+	print("added product info is : " + str(result))
+	#result = [name, imgurl, mygender, myproducttype, myparenttype, myseason, myoccasion]
+
 	return render(request, "create_new_outfit.html", {"results": result})
 
 
 def addToCloset(request):
 	addedproductid = request.GET.get('newproductid')
 	myclosetid = request.GET.get('closetid')
+	productname = findprodattrib(addedproductid, 'productname')
+	imgurl = findprodattrib(addedproductid, 'imgurl')
 
+	#see if closet has been created
 	closet_query=Closet.objects.filter(closetid=myclosetid).values('product1')
 
 	mycloset, created = Closet.objects.update_or_create(closetid=myclosetid, defaults={'closetid':myclosetid})
 	if(created):
 		null_closet(myclosetid)
 
+	added = addProductToCloset(addedproductid, myclosetid)
+
+	if added == 0:
+		print("closet full, add failed")
+		result = ["Closet is full, product add failed"]
+	else:
+		result = ["Succesfully added " + productname + "to closet " + myclosetid, imgurl, myclosetid]
+	return render(request, "added_to_closet.html", {"results": result})
+
+#assuming closet iexists
+def addProductToCloset(addedproductid, myclosetid):
 	colnum = 1
 	cname = "product" + str(colnum)
 	query =  Closet.objects.filter(closetid=myclosetid).values(cname)
 
-	pid =query[0][cname]
+	pid = query[0][cname]
 
-	
+	#look for an empty spot
 	while pid is not 0 and pid is not None and colnum < 50:
 		colnum += 1
 		cname = "product" + str(colnum)
 		query =  Closet.objects.filter(closetid=myclosetid).values(cname)
-		print(query)
-		print(cname)
 		if(query[0][cname] is not None):
 			pid =int(query[0][cname]) 
 
-
+	# at the end, either exited because no space, or found an empty space
 	if pid is 0:
 		Closet.objects.filter(closetid=myclosetid).update(**{cname: addedproductid})
-		closet_query=Closet.objects.filter(closetid=myclosetid).values(cname)	
-		name_query = Product.objects.filter(productid=addedproductid).values('productname')
-		name = name_query[0]['productname']
-		image_query = Product.objects.filter(productid=addedproductid).values('imgurl')
-		imgurl = image_query[0]['imgurl']
-		result = [name+ " to closet " + myclosetid, imgurl, myclosetid]
+		result = 1
 	else:
 		print("closet is full")
-		result = ["closet is full"]
-
-	return render(request, "added_to_closet.html", {"results": result})
+		result = 0
 
 def filterProducts(request):
 	type_list = request.GET.getlist('types[]')
@@ -465,8 +506,66 @@ def add_outfit(request):
 
 def addOutfit(request):
 	myclosetid = request.GET.get('closetid')
-	#if every outfit is filled, say closet is full
-	result= [myclosetid]
+	pids = request.GET.getlist('pids[]')
+	pids = pids[0]
+	pids = eval(pids)
+
+	closet_query=Closet.objects.filter(closetid=myclosetid).values('outfit1')
+	mycloset, created = Closet.objects.update_or_create(closetid=myclosetid, defaults={'closetid':myclosetid})
+	if(created):
+		null_closet(myclosetid)
+
+
+	#FIRST ADD TO OUTFIT RELATION
+	outfitlen = Outfit.objects.count()
+	myoutfitid = outfitlen
+	Outfit.objects.create(outfitid=myoutfitid)
+	#determine which pids belong to which parenttype 
+	#		Closet.objects.filter(closetid=myclosetid).update(**{cname: addedproductid})
+	for i in range(0, len(pids)):
+
+		mytype = findprodattrib(pids[i], 'producttype')
+		myparent = findtypeattrib(mytype, 'parenttype')
+
+		if(myparent == 'tops'):
+			myparent = 'top'
+		if(myparent== 'bottoms'):
+			myparent = 'bottom'
+		if(myparent == 'dresses'):
+			myparent = 'dress'
+		Outfit.objects.filter(outfitid=myoutfitid).update(**{myparent: pids[i]})
+		added = addProductToCloset(pids[i], myclosetid)
+
+		if(added == 0):
+			print('closet is full')
+
+	#ADD TO CLOSET RELATION
+	#find the closet to put the outfit in
+	colnum = 1
+	cname = "outfit" + str(colnum)
+	query =  Closet.objects.filter(closetid=myclosetid).values(cname)
+
+	oid = query[0][cname]
+
+	#look for an empty spot in THE CLOSET
+	while oid is not 0 and oid is not None and colnum < 10:
+		colnum += 1
+		cname = "outfit" + str(colnum)
+		query =  Closet.objects.filter(closetid=myclosetid).values(cname)
+
+		if(query[0][cname] is not None):
+			oid =int(query[0][cname]) 
+
+	# at the end, either exited because no space, or found an empty space
+	if oid is 0:
+		#find an empty spot for the outfit to create an outfit id 
+		Closet.objects.filter(closetid=myclosetid).update(**{cname: myoutfitid})
+		result = [myclosetid, pids]
+	else:
+		print("closet is full, no more room for this outfit")
+		result = ["closet is full, no more room for this outfit"]
+
+
 	return render(request, 'add_outfit.html', {'results': result})
 
 
@@ -480,25 +579,30 @@ def generateNewOutfit(request):
 	return render(request, 'generate_new_outfit.html', {'results': result})
 
 
+#TODO: change so that outfits and closets are separate??
+
 def viewCloset(request):
 	myclosetid = request.GET.get('closetid')
 	closetlist = Closet.objects.filter(closetid=myclosetid).values_list() #list
 	closettuple = closetlist[0]
+	print("my closet tuple")
 	print(closettuple)
+
 	imgurls = []
 	names = []
 	brands = []
 	pids = []
+	outfits = []
 	result =[]
 
 	for x in range(1, len(closettuple)):
-		if(closettuple[x] is not None and closettuple[x] is not 0):
+		# product id 
+		if(closettuple[x] is not None and closettuple[x] != 0 and x < 51):
 			image_query = Product.objects.filter(productid=closettuple[x]).values('imgurl')
+			print(image_query)
 			imgurl = image_query[0]['imgurl']
-
 			name_query = Product.objects.filter(productid=closettuple[x]).values('productname')
 			name = name_query[0]['productname']
-
 			brand_query = Product.objects.filter(productid=closettuple[x]).values('brand')
 			brand = brand_query[0]['brand']
 
@@ -510,8 +614,12 @@ def viewCloset(request):
 			brands.append(brand)
 			pids.append(pid)
 
-	print(pids)
-	result = [imgurls, names, brands, pids, myclosetid]
+		if(closettuple[x] is not None and closettuple[x] != 0 and x > 50):
+			#valid outfit ids 
+			outfits.append(closettuple[x])
+
+	print(outfits)
+	result = [imgurls, names, brands, pids, outfits, myclosetid]
 	return render(request, 'view_closet.html', {"results": result})
 
 
@@ -519,7 +627,7 @@ def null_closet(mycloset):
 	for i in range(1,51):
 		cname = "product" + str(i)
 		Closet.objects.filter(closetid=mycloset).update(**{cname: 0})
-
+	
 	for j in range(1,11):
 		cname = "outfit" + str(j)
 		Closet.objects.filter(closetid=mycloset).update(**{cname: 0})

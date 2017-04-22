@@ -101,21 +101,19 @@ li{
 
 		</p>
 		{% endfor %}
-
-
-
-			<center>
+		<center>
 				
 		<form action="/addOutfit/" method="get">
 			<input name="closetid" type="text" value="">
+			<input name='pids[]' type="hidden" value="{{ results.3 }}">
 		  <input type="submit" value="Add Outfit to Closet">
 		</form>
 		<form action="/createNewOutfit/" method="get">
-			<input type="hidden" name="newproductid" value={{ results.3 }}>
+			<input type="hidden" name="newproductid" value={{ results.4 }}>
 		  <input type="submit" value="Regenerate Another Outfit">
 		</form>
 
-	</center>
+		</center>
 	</div>
 	</center>
 	</center>

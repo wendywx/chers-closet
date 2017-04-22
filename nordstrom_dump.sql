@@ -35,7 +35,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: auth_group; Type: TABLE; Schema: public; Owner: Wendy
+-- Name: auth_group; Type: TABLE; Schema: public; Owner: annapelleti
 --
 
 CREATE TABLE auth_group (
@@ -44,10 +44,10 @@ CREATE TABLE auth_group (
 );
 
 
-ALTER TABLE auth_group OWNER TO "Wendy";
+ALTER TABLE auth_group OWNER TO annapelleti;
 
 --
--- Name: auth_group_id_seq; Type: SEQUENCE; Schema: public; Owner: Wendy
+-- Name: auth_group_id_seq; Type: SEQUENCE; Schema: public; Owner: annapelleti
 --
 
 CREATE SEQUENCE auth_group_id_seq
@@ -58,17 +58,17 @@ CREATE SEQUENCE auth_group_id_seq
     CACHE 1;
 
 
-ALTER TABLE auth_group_id_seq OWNER TO "Wendy";
+ALTER TABLE auth_group_id_seq OWNER TO annapelleti;
 
 --
--- Name: auth_group_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Wendy
+-- Name: auth_group_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: annapelleti
 --
 
 ALTER SEQUENCE auth_group_id_seq OWNED BY auth_group.id;
 
 
 --
--- Name: auth_group_permissions; Type: TABLE; Schema: public; Owner: Wendy
+-- Name: auth_group_permissions; Type: TABLE; Schema: public; Owner: annapelleti
 --
 
 CREATE TABLE auth_group_permissions (
@@ -78,10 +78,10 @@ CREATE TABLE auth_group_permissions (
 );
 
 
-ALTER TABLE auth_group_permissions OWNER TO "Wendy";
+ALTER TABLE auth_group_permissions OWNER TO annapelleti;
 
 --
--- Name: auth_group_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: Wendy
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: annapelleti
 --
 
 CREATE SEQUENCE auth_group_permissions_id_seq
@@ -92,17 +92,17 @@ CREATE SEQUENCE auth_group_permissions_id_seq
     CACHE 1;
 
 
-ALTER TABLE auth_group_permissions_id_seq OWNER TO "Wendy";
+ALTER TABLE auth_group_permissions_id_seq OWNER TO annapelleti;
 
 --
--- Name: auth_group_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Wendy
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: annapelleti
 --
 
 ALTER SEQUENCE auth_group_permissions_id_seq OWNED BY auth_group_permissions.id;
 
 
 --
--- Name: auth_permission; Type: TABLE; Schema: public; Owner: Wendy
+-- Name: auth_permission; Type: TABLE; Schema: public; Owner: annapelleti
 --
 
 CREATE TABLE auth_permission (
@@ -113,10 +113,10 @@ CREATE TABLE auth_permission (
 );
 
 
-ALTER TABLE auth_permission OWNER TO "Wendy";
+ALTER TABLE auth_permission OWNER TO annapelleti;
 
 --
--- Name: auth_permission_id_seq; Type: SEQUENCE; Schema: public; Owner: Wendy
+-- Name: auth_permission_id_seq; Type: SEQUENCE; Schema: public; Owner: annapelleti
 --
 
 CREATE SEQUENCE auth_permission_id_seq
@@ -127,17 +127,17 @@ CREATE SEQUENCE auth_permission_id_seq
     CACHE 1;
 
 
-ALTER TABLE auth_permission_id_seq OWNER TO "Wendy";
+ALTER TABLE auth_permission_id_seq OWNER TO annapelleti;
 
 --
--- Name: auth_permission_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Wendy
+-- Name: auth_permission_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: annapelleti
 --
 
 ALTER SEQUENCE auth_permission_id_seq OWNED BY auth_permission.id;
 
 
 --
--- Name: auth_user; Type: TABLE; Schema: public; Owner: Wendy
+-- Name: auth_user; Type: TABLE; Schema: public; Owner: annapelleti
 --
 
 CREATE TABLE auth_user (
@@ -155,10 +155,10 @@ CREATE TABLE auth_user (
 );
 
 
-ALTER TABLE auth_user OWNER TO "Wendy";
+ALTER TABLE auth_user OWNER TO annapelleti;
 
 --
--- Name: auth_user_groups; Type: TABLE; Schema: public; Owner: Wendy
+-- Name: auth_user_groups; Type: TABLE; Schema: public; Owner: annapelleti
 --
 
 CREATE TABLE auth_user_groups (
@@ -168,10 +168,10 @@ CREATE TABLE auth_user_groups (
 );
 
 
-ALTER TABLE auth_user_groups OWNER TO "Wendy";
+ALTER TABLE auth_user_groups OWNER TO annapelleti;
 
 --
--- Name: auth_user_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: Wendy
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: annapelleti
 --
 
 CREATE SEQUENCE auth_user_groups_id_seq
@@ -182,17 +182,17 @@ CREATE SEQUENCE auth_user_groups_id_seq
     CACHE 1;
 
 
-ALTER TABLE auth_user_groups_id_seq OWNER TO "Wendy";
+ALTER TABLE auth_user_groups_id_seq OWNER TO annapelleti;
 
 --
--- Name: auth_user_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Wendy
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: annapelleti
 --
 
 ALTER SEQUENCE auth_user_groups_id_seq OWNED BY auth_user_groups.id;
 
 
 --
--- Name: auth_user_id_seq; Type: SEQUENCE; Schema: public; Owner: Wendy
+-- Name: auth_user_id_seq; Type: SEQUENCE; Schema: public; Owner: annapelleti
 --
 
 CREATE SEQUENCE auth_user_id_seq
@@ -203,17 +203,17 @@ CREATE SEQUENCE auth_user_id_seq
     CACHE 1;
 
 
-ALTER TABLE auth_user_id_seq OWNER TO "Wendy";
+ALTER TABLE auth_user_id_seq OWNER TO annapelleti;
 
 --
--- Name: auth_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Wendy
+-- Name: auth_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: annapelleti
 --
 
 ALTER SEQUENCE auth_user_id_seq OWNED BY auth_user.id;
 
 
 --
--- Name: auth_user_user_permissions; Type: TABLE; Schema: public; Owner: Wendy
+-- Name: auth_user_user_permissions; Type: TABLE; Schema: public; Owner: annapelleti
 --
 
 CREATE TABLE auth_user_user_permissions (
@@ -223,10 +223,10 @@ CREATE TABLE auth_user_user_permissions (
 );
 
 
-ALTER TABLE auth_user_user_permissions OWNER TO "Wendy";
+ALTER TABLE auth_user_user_permissions OWNER TO annapelleti;
 
 --
--- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: Wendy
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: annapelleti
 --
 
 CREATE SEQUENCE auth_user_user_permissions_id_seq
@@ -237,17 +237,17 @@ CREATE SEQUENCE auth_user_user_permissions_id_seq
     CACHE 1;
 
 
-ALTER TABLE auth_user_user_permissions_id_seq OWNER TO "Wendy";
+ALTER TABLE auth_user_user_permissions_id_seq OWNER TO annapelleti;
 
 --
--- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Wendy
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: annapelleti
 --
 
 ALTER SEQUENCE auth_user_user_permissions_id_seq OWNED BY auth_user_user_permissions.id;
 
 
 --
--- Name: closets; Type: TABLE; Schema: public; Owner: Wendy
+-- Name: closets; Type: TABLE; Schema: public; Owner: annapelleti
 --
 
 CREATE TABLE closets (
@@ -315,10 +315,10 @@ CREATE TABLE closets (
 );
 
 
-ALTER TABLE closets OWNER TO "Wendy";
+ALTER TABLE closets OWNER TO annapelleti;
 
 --
--- Name: django_admin_log; Type: TABLE; Schema: public; Owner: Wendy
+-- Name: django_admin_log; Type: TABLE; Schema: public; Owner: annapelleti
 --
 
 CREATE TABLE django_admin_log (
@@ -334,10 +334,10 @@ CREATE TABLE django_admin_log (
 );
 
 
-ALTER TABLE django_admin_log OWNER TO "Wendy";
+ALTER TABLE django_admin_log OWNER TO annapelleti;
 
 --
--- Name: django_admin_log_id_seq; Type: SEQUENCE; Schema: public; Owner: Wendy
+-- Name: django_admin_log_id_seq; Type: SEQUENCE; Schema: public; Owner: annapelleti
 --
 
 CREATE SEQUENCE django_admin_log_id_seq
@@ -348,17 +348,17 @@ CREATE SEQUENCE django_admin_log_id_seq
     CACHE 1;
 
 
-ALTER TABLE django_admin_log_id_seq OWNER TO "Wendy";
+ALTER TABLE django_admin_log_id_seq OWNER TO annapelleti;
 
 --
--- Name: django_admin_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Wendy
+-- Name: django_admin_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: annapelleti
 --
 
 ALTER SEQUENCE django_admin_log_id_seq OWNED BY django_admin_log.id;
 
 
 --
--- Name: django_content_type; Type: TABLE; Schema: public; Owner: Wendy
+-- Name: django_content_type; Type: TABLE; Schema: public; Owner: annapelleti
 --
 
 CREATE TABLE django_content_type (
@@ -368,10 +368,10 @@ CREATE TABLE django_content_type (
 );
 
 
-ALTER TABLE django_content_type OWNER TO "Wendy";
+ALTER TABLE django_content_type OWNER TO annapelleti;
 
 --
--- Name: django_content_type_id_seq; Type: SEQUENCE; Schema: public; Owner: Wendy
+-- Name: django_content_type_id_seq; Type: SEQUENCE; Schema: public; Owner: annapelleti
 --
 
 CREATE SEQUENCE django_content_type_id_seq
@@ -382,17 +382,17 @@ CREATE SEQUENCE django_content_type_id_seq
     CACHE 1;
 
 
-ALTER TABLE django_content_type_id_seq OWNER TO "Wendy";
+ALTER TABLE django_content_type_id_seq OWNER TO annapelleti;
 
 --
--- Name: django_content_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Wendy
+-- Name: django_content_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: annapelleti
 --
 
 ALTER SEQUENCE django_content_type_id_seq OWNED BY django_content_type.id;
 
 
 --
--- Name: django_migrations; Type: TABLE; Schema: public; Owner: Wendy
+-- Name: django_migrations; Type: TABLE; Schema: public; Owner: annapelleti
 --
 
 CREATE TABLE django_migrations (
@@ -403,10 +403,10 @@ CREATE TABLE django_migrations (
 );
 
 
-ALTER TABLE django_migrations OWNER TO "Wendy";
+ALTER TABLE django_migrations OWNER TO annapelleti;
 
 --
--- Name: django_migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: Wendy
+-- Name: django_migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: annapelleti
 --
 
 CREATE SEQUENCE django_migrations_id_seq
@@ -417,17 +417,17 @@ CREATE SEQUENCE django_migrations_id_seq
     CACHE 1;
 
 
-ALTER TABLE django_migrations_id_seq OWNER TO "Wendy";
+ALTER TABLE django_migrations_id_seq OWNER TO annapelleti;
 
 --
--- Name: django_migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Wendy
+-- Name: django_migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: annapelleti
 --
 
 ALTER SEQUENCE django_migrations_id_seq OWNED BY django_migrations.id;
 
 
 --
--- Name: django_session; Type: TABLE; Schema: public; Owner: Wendy
+-- Name: django_session; Type: TABLE; Schema: public; Owner: annapelleti
 --
 
 CREATE TABLE django_session (
@@ -437,10 +437,10 @@ CREATE TABLE django_session (
 );
 
 
-ALTER TABLE django_session OWNER TO "Wendy";
+ALTER TABLE django_session OWNER TO annapelleti;
 
 --
--- Name: outfits; Type: TABLE; Schema: public; Owner: Wendy
+-- Name: outfits; Type: TABLE; Schema: public; Owner: annapelleti
 --
 
 CREATE TABLE outfits (
@@ -453,10 +453,10 @@ CREATE TABLE outfits (
 );
 
 
-ALTER TABLE outfits OWNER TO "Wendy";
+ALTER TABLE outfits OWNER TO annapelleti;
 
 --
--- Name: products; Type: TABLE; Schema: public; Owner: Wendy
+-- Name: products; Type: TABLE; Schema: public; Owner: annapelleti
 --
 
 CREATE TABLE products (
@@ -471,10 +471,10 @@ CREATE TABLE products (
 );
 
 
-ALTER TABLE products OWNER TO "Wendy";
+ALTER TABLE products OWNER TO annapelleti;
 
 --
--- Name: types; Type: TABLE; Schema: public; Owner: Wendy
+-- Name: types; Type: TABLE; Schema: public; Owner: annapelleti
 --
 
 CREATE TABLE types (
@@ -485,73 +485,73 @@ CREATE TABLE types (
 );
 
 
-ALTER TABLE types OWNER TO "Wendy";
+ALTER TABLE types OWNER TO annapelleti;
 
 --
--- Name: auth_group id; Type: DEFAULT; Schema: public; Owner: Wendy
+-- Name: auth_group id; Type: DEFAULT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_group ALTER COLUMN id SET DEFAULT nextval('auth_group_id_seq'::regclass);
 
 
 --
--- Name: auth_group_permissions id; Type: DEFAULT; Schema: public; Owner: Wendy
+-- Name: auth_group_permissions id; Type: DEFAULT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_group_permissions ALTER COLUMN id SET DEFAULT nextval('auth_group_permissions_id_seq'::regclass);
 
 
 --
--- Name: auth_permission id; Type: DEFAULT; Schema: public; Owner: Wendy
+-- Name: auth_permission id; Type: DEFAULT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_permission ALTER COLUMN id SET DEFAULT nextval('auth_permission_id_seq'::regclass);
 
 
 --
--- Name: auth_user id; Type: DEFAULT; Schema: public; Owner: Wendy
+-- Name: auth_user id; Type: DEFAULT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_user ALTER COLUMN id SET DEFAULT nextval('auth_user_id_seq'::regclass);
 
 
 --
--- Name: auth_user_groups id; Type: DEFAULT; Schema: public; Owner: Wendy
+-- Name: auth_user_groups id; Type: DEFAULT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_user_groups ALTER COLUMN id SET DEFAULT nextval('auth_user_groups_id_seq'::regclass);
 
 
 --
--- Name: auth_user_user_permissions id; Type: DEFAULT; Schema: public; Owner: Wendy
+-- Name: auth_user_user_permissions id; Type: DEFAULT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_user_user_permissions ALTER COLUMN id SET DEFAULT nextval('auth_user_user_permissions_id_seq'::regclass);
 
 
 --
--- Name: django_admin_log id; Type: DEFAULT; Schema: public; Owner: Wendy
+-- Name: django_admin_log id; Type: DEFAULT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY django_admin_log ALTER COLUMN id SET DEFAULT nextval('django_admin_log_id_seq'::regclass);
 
 
 --
--- Name: django_content_type id; Type: DEFAULT; Schema: public; Owner: Wendy
+-- Name: django_content_type id; Type: DEFAULT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY django_content_type ALTER COLUMN id SET DEFAULT nextval('django_content_type_id_seq'::regclass);
 
 
 --
--- Name: django_migrations id; Type: DEFAULT; Schema: public; Owner: Wendy
+-- Name: django_migrations id; Type: DEFAULT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY django_migrations ALTER COLUMN id SET DEFAULT nextval('django_migrations_id_seq'::regclass);
 
 
 --
--- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: Wendy
+-- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: annapelleti
 --
 
 COPY auth_group (id, name) FROM stdin;
@@ -559,14 +559,14 @@ COPY auth_group (id, name) FROM stdin;
 
 
 --
--- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Wendy
+-- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: annapelleti
 --
 
 SELECT pg_catalog.setval('auth_group_id_seq', 1, false);
 
 
 --
--- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: Wendy
+-- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: annapelleti
 --
 
 COPY auth_group_permissions (id, group_id, permission_id) FROM stdin;
@@ -574,14 +574,14 @@ COPY auth_group_permissions (id, group_id, permission_id) FROM stdin;
 
 
 --
--- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Wendy
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: annapelleti
 --
 
 SELECT pg_catalog.setval('auth_group_permissions_id_seq', 1, false);
 
 
 --
--- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: Wendy
+-- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: annapelleti
 --
 
 COPY auth_permission (id, name, content_type_id, codename) FROM stdin;
@@ -622,14 +622,14 @@ COPY auth_permission (id, name, content_type_id, codename) FROM stdin;
 
 
 --
--- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Wendy
+-- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: annapelleti
 --
 
 SELECT pg_catalog.setval('auth_permission_id_seq', 33, true);
 
 
 --
--- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: Wendy
+-- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: annapelleti
 --
 
 COPY auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
@@ -638,7 +638,7 @@ COPY auth_user (id, password, last_login, is_superuser, username, first_name, la
 
 
 --
--- Data for Name: auth_user_groups; Type: TABLE DATA; Schema: public; Owner: Wendy
+-- Data for Name: auth_user_groups; Type: TABLE DATA; Schema: public; Owner: annapelleti
 --
 
 COPY auth_user_groups (id, user_id, group_id) FROM stdin;
@@ -646,21 +646,21 @@ COPY auth_user_groups (id, user_id, group_id) FROM stdin;
 
 
 --
--- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Wendy
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: annapelleti
 --
 
 SELECT pg_catalog.setval('auth_user_groups_id_seq', 1, false);
 
 
 --
--- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Wendy
+-- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: annapelleti
 --
 
 SELECT pg_catalog.setval('auth_user_id_seq', 1, true);
 
 
 --
--- Data for Name: auth_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: Wendy
+-- Data for Name: auth_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: annapelleti
 --
 
 COPY auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
@@ -668,22 +668,23 @@ COPY auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
 
 
 --
--- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Wendy
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: annapelleti
 --
 
 SELECT pg_catalog.setval('auth_user_user_permissions_id_seq', 1, false);
 
 
 --
--- Data for Name: closets; Type: TABLE DATA; Schema: public; Owner: Wendy
+-- Data for Name: closets; Type: TABLE DATA; Schema: public; Owner: annapelleti
 --
 
 COPY closets (closetid, product1, product2, product3, product4, product5, product6, product7, product8, product9, product10, product11, product12, product13, product14, product15, product16, product17, product18, product19, product20, product21, product22, product23, product24, product25, product26, product27, product28, product29, product30, product31, product32, product33, product34, product35, product36, product37, product38, product39, product40, product41, product42, product43, product44, product45, product46, product47, product48, product49, product50, outfit1, outfit2, outfit3, outfit4, outfit5, outfit6, outfit7, outfit8, outfit9, outfit10) FROM stdin;
+1	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
 \.
 
 
 --
--- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: Wendy
+-- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: annapelleti
 --
 
 COPY django_admin_log (id, action_time, object_id, object_repr, action_flag, change_message, content_type_id, user_id) FROM stdin;
@@ -691,14 +692,14 @@ COPY django_admin_log (id, action_time, object_id, object_repr, action_flag, cha
 
 
 --
--- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Wendy
+-- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: annapelleti
 --
 
 SELECT pg_catalog.setval('django_admin_log_id_seq', 1, false);
 
 
 --
--- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: Wendy
+-- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: annapelleti
 --
 
 COPY django_content_type (id, app_label, model) FROM stdin;
@@ -717,14 +718,14 @@ COPY django_content_type (id, app_label, model) FROM stdin;
 
 
 --
--- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Wendy
+-- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: annapelleti
 --
 
 SELECT pg_catalog.setval('django_content_type_id_seq', 11, true);
 
 
 --
--- Data for Name: django_migrations; Type: TABLE DATA; Schema: public; Owner: Wendy
+-- Data for Name: django_migrations; Type: TABLE DATA; Schema: public; Owner: annapelleti
 --
 
 COPY django_migrations (id, app, name, applied) FROM stdin;
@@ -746,14 +747,14 @@ COPY django_migrations (id, app, name, applied) FROM stdin;
 
 
 --
--- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Wendy
+-- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: annapelleti
 --
 
 SELECT pg_catalog.setval('django_migrations_id_seq', 14, true);
 
 
 --
--- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: Wendy
+-- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: annapelleti
 --
 
 COPY django_session (session_key, session_data, expire_date) FROM stdin;
@@ -762,7 +763,7 @@ COPY django_session (session_key, session_data, expire_date) FROM stdin;
 
 
 --
--- Data for Name: outfits; Type: TABLE DATA; Schema: public; Owner: Wendy
+-- Data for Name: outfits; Type: TABLE DATA; Schema: public; Owner: annapelleti
 --
 
 COPY outfits (outfitid, outerwear, top, bottom, dress, shoes) FROM stdin;
@@ -771,7 +772,7 @@ COPY outfits (outfitid, outerwear, top, bottom, dress, shoes) FROM stdin;
 
 
 --
--- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: Wendy
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: annapelleti
 --
 
 COPY products (productid, productname, producttype, brand, color, gender, price, imgurl) FROM stdin;
@@ -17304,11 +17305,12 @@ COPY products (productid, productname, producttype, brand, color, gender, price,
 3767567	Suede Driving Shoe	Slip on	MINNETONKA	Taupe	Male	59.9500008	http://g.nordstromimage.com/ImageGallery/store/product/Large/5/_9110505.jpg\n
 4373479	Marlo Sneaker	Sneaker	MAGNANNI	Cognac	Male	350	http://g.nordstromimage.com/ImageGallery/store/product/Large/3/_13181723.jpg\n
 4391205	Porter High Top Sneaker	Sneaker	TCG	Oil Black Leather	Male	180	http://g.nordstromimage.com/ImageGallery/store/product/Large/13/_13185173.jpg\n
+0	\N	\N	\N	\N	\N	\N	\N
 \.
 
 
 --
--- Data for Name: types; Type: TABLE DATA; Schema: public; Owner: Wendy
+-- Data for Name: types; Type: TABLE DATA; Schema: public; Owner: annapelleti
 --
 
 COPY types (typename, parenttype, season, occasion) FROM stdin;
@@ -17366,7 +17368,7 @@ Brush	shoes		work
 
 
 --
--- Name: auth_group auth_group_name_key; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_group auth_group_name_key; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_group
@@ -17374,7 +17376,7 @@ ALTER TABLE ONLY auth_group
 
 
 --
--- Name: auth_group_permissions auth_group_permissions_group_id_permission_id_0cd325b0_uniq; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_group_permissions auth_group_permissions_group_id_permission_id_0cd325b0_uniq; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_group_permissions
@@ -17382,7 +17384,7 @@ ALTER TABLE ONLY auth_group_permissions
 
 
 --
--- Name: auth_group_permissions auth_group_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_group_permissions auth_group_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_group_permissions
@@ -17390,7 +17392,7 @@ ALTER TABLE ONLY auth_group_permissions
 
 
 --
--- Name: auth_group auth_group_pkey; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_group auth_group_pkey; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_group
@@ -17398,7 +17400,7 @@ ALTER TABLE ONLY auth_group
 
 
 --
--- Name: auth_permission auth_permission_content_type_id_codename_01ab375a_uniq; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_permission auth_permission_content_type_id_codename_01ab375a_uniq; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_permission
@@ -17406,7 +17408,7 @@ ALTER TABLE ONLY auth_permission
 
 
 --
--- Name: auth_permission auth_permission_pkey; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_permission auth_permission_pkey; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_permission
@@ -17414,7 +17416,7 @@ ALTER TABLE ONLY auth_permission
 
 
 --
--- Name: auth_user_groups auth_user_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_user_groups auth_user_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_user_groups
@@ -17422,7 +17424,7 @@ ALTER TABLE ONLY auth_user_groups
 
 
 --
--- Name: auth_user_groups auth_user_groups_user_id_group_id_94350c0c_uniq; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_user_groups auth_user_groups_user_id_group_id_94350c0c_uniq; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_user_groups
@@ -17430,7 +17432,7 @@ ALTER TABLE ONLY auth_user_groups
 
 
 --
--- Name: auth_user auth_user_pkey; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_user auth_user_pkey; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_user
@@ -17438,7 +17440,7 @@ ALTER TABLE ONLY auth_user
 
 
 --
--- Name: auth_user_user_permissions auth_user_user_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_user_user_permissions auth_user_user_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_user_user_permissions
@@ -17446,7 +17448,7 @@ ALTER TABLE ONLY auth_user_user_permissions
 
 
 --
--- Name: auth_user_user_permissions auth_user_user_permissions_user_id_permission_id_14a6b632_uniq; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_user_user_permissions auth_user_user_permissions_user_id_permission_id_14a6b632_uniq; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_user_user_permissions
@@ -17454,7 +17456,7 @@ ALTER TABLE ONLY auth_user_user_permissions
 
 
 --
--- Name: auth_user auth_user_username_key; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_user auth_user_username_key; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_user
@@ -17462,7 +17464,7 @@ ALTER TABLE ONLY auth_user
 
 
 --
--- Name: closets closets_pkey; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_pkey; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17470,7 +17472,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: django_admin_log django_admin_log_pkey; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: django_admin_log django_admin_log_pkey; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY django_admin_log
@@ -17478,7 +17480,7 @@ ALTER TABLE ONLY django_admin_log
 
 
 --
--- Name: django_content_type django_content_type_app_label_model_76bd3d3b_uniq; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: django_content_type django_content_type_app_label_model_76bd3d3b_uniq; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY django_content_type
@@ -17486,7 +17488,7 @@ ALTER TABLE ONLY django_content_type
 
 
 --
--- Name: django_content_type django_content_type_pkey; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: django_content_type django_content_type_pkey; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY django_content_type
@@ -17494,7 +17496,7 @@ ALTER TABLE ONLY django_content_type
 
 
 --
--- Name: django_migrations django_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: django_migrations django_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY django_migrations
@@ -17502,7 +17504,7 @@ ALTER TABLE ONLY django_migrations
 
 
 --
--- Name: django_session django_session_pkey; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: django_session django_session_pkey; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY django_session
@@ -17510,7 +17512,7 @@ ALTER TABLE ONLY django_session
 
 
 --
--- Name: outfits outfits_pkey; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: outfits outfits_pkey; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY outfits
@@ -17518,7 +17520,7 @@ ALTER TABLE ONLY outfits
 
 
 --
--- Name: products products_pkey; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: products products_pkey; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY products
@@ -17526,7 +17528,7 @@ ALTER TABLE ONLY products
 
 
 --
--- Name: types types_pkey; Type: CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: types types_pkey; Type: CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY types
@@ -17534,98 +17536,98 @@ ALTER TABLE ONLY types
 
 
 --
--- Name: auth_group_name_a6ea08ec_like; Type: INDEX; Schema: public; Owner: Wendy
+-- Name: auth_group_name_a6ea08ec_like; Type: INDEX; Schema: public; Owner: annapelleti
 --
 
 CREATE INDEX auth_group_name_a6ea08ec_like ON auth_group USING btree (name varchar_pattern_ops);
 
 
 --
--- Name: auth_group_permissions_group_id_b120cbf9; Type: INDEX; Schema: public; Owner: Wendy
+-- Name: auth_group_permissions_group_id_b120cbf9; Type: INDEX; Schema: public; Owner: annapelleti
 --
 
 CREATE INDEX auth_group_permissions_group_id_b120cbf9 ON auth_group_permissions USING btree (group_id);
 
 
 --
--- Name: auth_group_permissions_permission_id_84c5c92e; Type: INDEX; Schema: public; Owner: Wendy
+-- Name: auth_group_permissions_permission_id_84c5c92e; Type: INDEX; Schema: public; Owner: annapelleti
 --
 
 CREATE INDEX auth_group_permissions_permission_id_84c5c92e ON auth_group_permissions USING btree (permission_id);
 
 
 --
--- Name: auth_permission_content_type_id_2f476e4b; Type: INDEX; Schema: public; Owner: Wendy
+-- Name: auth_permission_content_type_id_2f476e4b; Type: INDEX; Schema: public; Owner: annapelleti
 --
 
 CREATE INDEX auth_permission_content_type_id_2f476e4b ON auth_permission USING btree (content_type_id);
 
 
 --
--- Name: auth_user_groups_group_id_97559544; Type: INDEX; Schema: public; Owner: Wendy
+-- Name: auth_user_groups_group_id_97559544; Type: INDEX; Schema: public; Owner: annapelleti
 --
 
 CREATE INDEX auth_user_groups_group_id_97559544 ON auth_user_groups USING btree (group_id);
 
 
 --
--- Name: auth_user_groups_user_id_6a12ed8b; Type: INDEX; Schema: public; Owner: Wendy
+-- Name: auth_user_groups_user_id_6a12ed8b; Type: INDEX; Schema: public; Owner: annapelleti
 --
 
 CREATE INDEX auth_user_groups_user_id_6a12ed8b ON auth_user_groups USING btree (user_id);
 
 
 --
--- Name: auth_user_user_permissions_permission_id_1fbb5f2c; Type: INDEX; Schema: public; Owner: Wendy
+-- Name: auth_user_user_permissions_permission_id_1fbb5f2c; Type: INDEX; Schema: public; Owner: annapelleti
 --
 
 CREATE INDEX auth_user_user_permissions_permission_id_1fbb5f2c ON auth_user_user_permissions USING btree (permission_id);
 
 
 --
--- Name: auth_user_user_permissions_user_id_a95ead1b; Type: INDEX; Schema: public; Owner: Wendy
+-- Name: auth_user_user_permissions_user_id_a95ead1b; Type: INDEX; Schema: public; Owner: annapelleti
 --
 
 CREATE INDEX auth_user_user_permissions_user_id_a95ead1b ON auth_user_user_permissions USING btree (user_id);
 
 
 --
--- Name: auth_user_username_6821ab7c_like; Type: INDEX; Schema: public; Owner: Wendy
+-- Name: auth_user_username_6821ab7c_like; Type: INDEX; Schema: public; Owner: annapelleti
 --
 
 CREATE INDEX auth_user_username_6821ab7c_like ON auth_user USING btree (username varchar_pattern_ops);
 
 
 --
--- Name: django_admin_log_content_type_id_c4bce8eb; Type: INDEX; Schema: public; Owner: Wendy
+-- Name: django_admin_log_content_type_id_c4bce8eb; Type: INDEX; Schema: public; Owner: annapelleti
 --
 
 CREATE INDEX django_admin_log_content_type_id_c4bce8eb ON django_admin_log USING btree (content_type_id);
 
 
 --
--- Name: django_admin_log_user_id_c564eba6; Type: INDEX; Schema: public; Owner: Wendy
+-- Name: django_admin_log_user_id_c564eba6; Type: INDEX; Schema: public; Owner: annapelleti
 --
 
 CREATE INDEX django_admin_log_user_id_c564eba6 ON django_admin_log USING btree (user_id);
 
 
 --
--- Name: django_session_expire_date_a5c62663; Type: INDEX; Schema: public; Owner: Wendy
+-- Name: django_session_expire_date_a5c62663; Type: INDEX; Schema: public; Owner: annapelleti
 --
 
 CREATE INDEX django_session_expire_date_a5c62663 ON django_session USING btree (expire_date);
 
 
 --
--- Name: django_session_session_key_c0390e0f_like; Type: INDEX; Schema: public; Owner: Wendy
+-- Name: django_session_session_key_c0390e0f_like; Type: INDEX; Schema: public; Owner: annapelleti
 --
 
 CREATE INDEX django_session_session_key_c0390e0f_like ON django_session USING btree (session_key varchar_pattern_ops);
 
 
 --
--- Name: auth_group_permissions auth_group_permissio_permission_id_84c5c92e_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_group_permissions auth_group_permissio_permission_id_84c5c92e_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_group_permissions
@@ -17633,7 +17635,7 @@ ALTER TABLE ONLY auth_group_permissions
 
 
 --
--- Name: auth_group_permissions auth_group_permissions_group_id_b120cbf9_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_group_permissions auth_group_permissions_group_id_b120cbf9_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_group_permissions
@@ -17641,7 +17643,7 @@ ALTER TABLE ONLY auth_group_permissions
 
 
 --
--- Name: auth_permission auth_permission_content_type_id_2f476e4b_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_permission auth_permission_content_type_id_2f476e4b_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_permission
@@ -17649,7 +17651,7 @@ ALTER TABLE ONLY auth_permission
 
 
 --
--- Name: auth_user_groups auth_user_groups_group_id_97559544_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_user_groups auth_user_groups_group_id_97559544_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_user_groups
@@ -17657,7 +17659,7 @@ ALTER TABLE ONLY auth_user_groups
 
 
 --
--- Name: auth_user_groups auth_user_groups_user_id_6a12ed8b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_user_groups auth_user_groups_user_id_6a12ed8b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_user_groups
@@ -17665,7 +17667,7 @@ ALTER TABLE ONLY auth_user_groups
 
 
 --
--- Name: auth_user_user_permissions auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_user_user_permissions auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_user_user_permissions
@@ -17673,7 +17675,7 @@ ALTER TABLE ONLY auth_user_user_permissions
 
 
 --
--- Name: auth_user_user_permissions auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: auth_user_user_permissions auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY auth_user_user_permissions
@@ -17681,7 +17683,7 @@ ALTER TABLE ONLY auth_user_user_permissions
 
 
 --
--- Name: closets closets_outfit10_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_outfit10_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17689,7 +17691,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_outfit1_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_outfit1_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17697,7 +17699,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_outfit2_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_outfit2_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17705,7 +17707,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_outfit3_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_outfit3_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17713,7 +17715,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_outfit4_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_outfit4_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17721,7 +17723,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_outfit5_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_outfit5_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17729,7 +17731,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_outfit6_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_outfit6_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17737,7 +17739,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_outfit7_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_outfit7_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17745,7 +17747,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_outfit8_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_outfit8_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17753,7 +17755,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_outfit9_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_outfit9_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17761,7 +17763,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product10_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product10_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17769,7 +17771,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product11_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product11_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17777,7 +17779,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product12_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product12_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17785,7 +17787,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product13_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product13_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17793,7 +17795,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product14_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product14_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17801,7 +17803,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product15_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product15_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17809,7 +17811,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product16_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product16_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17817,7 +17819,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product17_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product17_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17825,7 +17827,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product18_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product18_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17833,7 +17835,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product19_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product19_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17841,7 +17843,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product1_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product1_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17849,7 +17851,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product20_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product20_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17857,7 +17859,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product21_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product21_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17865,7 +17867,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product22_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product22_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17873,7 +17875,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product23_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product23_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17881,7 +17883,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product24_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product24_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17889,7 +17891,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product25_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product25_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17897,7 +17899,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product26_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product26_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17905,7 +17907,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product27_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product27_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17913,7 +17915,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product28_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product28_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17921,7 +17923,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product29_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product29_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17929,7 +17931,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product2_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product2_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17937,7 +17939,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product30_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product30_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17945,7 +17947,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product31_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product31_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17953,7 +17955,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product32_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product32_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17961,7 +17963,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product33_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product33_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17969,7 +17971,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product34_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product34_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17977,7 +17979,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product35_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product35_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17985,7 +17987,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product36_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product36_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -17993,7 +17995,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product37_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product37_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18001,7 +18003,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product38_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product38_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18009,7 +18011,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product39_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product39_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18017,7 +18019,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product3_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product3_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18025,7 +18027,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product40_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product40_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18033,7 +18035,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product41_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product41_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18041,7 +18043,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product42_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product42_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18049,7 +18051,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product43_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product43_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18057,7 +18059,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product44_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product44_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18065,7 +18067,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product45_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product45_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18073,7 +18075,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product46_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product46_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18081,7 +18083,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product47_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product47_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18089,7 +18091,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product48_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product48_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18097,7 +18099,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product49_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product49_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18105,7 +18107,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product4_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product4_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18113,7 +18115,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product50_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product50_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18121,7 +18123,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product5_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product5_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18129,7 +18131,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product6_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product6_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18137,7 +18139,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product7_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product7_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18145,7 +18147,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product8_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product8_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18153,7 +18155,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: closets closets_product9_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: closets closets_product9_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY closets
@@ -18161,7 +18163,7 @@ ALTER TABLE ONLY closets
 
 
 --
--- Name: django_admin_log django_admin_log_content_type_id_c4bce8eb_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: django_admin_log django_admin_log_content_type_id_c4bce8eb_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY django_admin_log
@@ -18169,7 +18171,7 @@ ALTER TABLE ONLY django_admin_log
 
 
 --
--- Name: django_admin_log django_admin_log_user_id_c564eba6_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: django_admin_log django_admin_log_user_id_c564eba6_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY django_admin_log
@@ -18177,7 +18179,7 @@ ALTER TABLE ONLY django_admin_log
 
 
 --
--- Name: outfits outfits_bottom_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: outfits outfits_bottom_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY outfits
@@ -18185,7 +18187,7 @@ ALTER TABLE ONLY outfits
 
 
 --
--- Name: outfits outfits_dress_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: outfits outfits_dress_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY outfits
@@ -18193,7 +18195,7 @@ ALTER TABLE ONLY outfits
 
 
 --
--- Name: outfits outfits_outerwear_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: outfits outfits_outerwear_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY outfits
@@ -18201,7 +18203,7 @@ ALTER TABLE ONLY outfits
 
 
 --
--- Name: outfits outfits_shoes_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: outfits outfits_shoes_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY outfits
@@ -18209,7 +18211,7 @@ ALTER TABLE ONLY outfits
 
 
 --
--- Name: outfits outfits_top_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: outfits outfits_top_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY outfits
@@ -18217,7 +18219,7 @@ ALTER TABLE ONLY outfits
 
 
 --
--- Name: products products_producttype_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Wendy
+-- Name: products products_producttype_fkey; Type: FK CONSTRAINT; Schema: public; Owner: annapelleti
 --
 
 ALTER TABLE ONLY products
