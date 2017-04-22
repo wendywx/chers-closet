@@ -107,7 +107,6 @@ for line in f:
 				a[count] = attrib
 			count += 1
 
-		rating = a[0]
 		brand = a[1]
 		price = a[2]
 		color = a[3]
@@ -130,7 +129,7 @@ for line in f:
 		product_seasons = ""
 		for season in seasons:
 			if product_type.lower() in season:
-				product_seasons += season[0]
+				product_seasons += season[0] + ':'
 
 		cur.execute("""
 		 	INSERT INTO types(typeName,parentType,season,occasion)
@@ -139,10 +138,10 @@ for line in f:
 		""".format(product_type, parent_type, product_seasons[:-1], occasion_type))
 
 		cur.execute("""
-			INSERT INTO products(productId,productName,productType,brand,color,gender,price,rating,imgurl)
-		 	VALUES ({0},'{1}','{2}','{3}','{4}','{5}',{6},{7},'{8}')
+			INSERT INTO products(productId,productName,productType,brand,color,gender,price,imgurl)
+		 	VALUES ({0},'{1}','{2}','{3}','{4}','{5}',{6},'{7}')
 		 	ON CONFLICT DO NOTHING;
-		""".format(product_id,product_name,product_type,brand,color,gender,price,rating,img_url))
+		""".format(product_id,product_name,product_type,brand,color,gender,price,img_url))
 		
 
 

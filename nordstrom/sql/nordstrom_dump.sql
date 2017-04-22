@@ -469,7 +469,6 @@ CREATE TABLE products (
     imgurl text
 );
 
-CREATE INDEX productindex ON products (productid);
 
 ALTER TABLE products OWNER TO "Wendy";
 
@@ -693,6 +692,8 @@ SELECT pg_catalog.setval('auth_user_user_permissions_id_seq', 1, false);
 --
 
 COPY closets (closetid, product1, product2, product3, product4, product5, product6, product7, product8, product9, product10, product11, product12, product13, product14, product15, product16, product17, product18, product19, product20, product21, product22, product23, product24, product25, product26, product27, product28, product29, product30, product31, product32, product33, product34, product35, product36, product37, product38, product39, product40, product41, product42, product43, product44, product45, product46, product47, product48, product49, product50, outfit1, outfit2, outfit3, outfit4, outfit5, outfit6, outfit7, outfit8, outfit9, outfit10) FROM stdin;
+2	4485999	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+1	4581892	4528245	4598347	4228177	4505691	4476919	4532720	4532720	4526399	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
 \.
 
 
@@ -17317,6 +17318,7 @@ COPY products (productid, productname, producttype, brand, color, gender, price,
 3767567	Suede Driving Shoe	Slip on	MINNETONKA	Taupe	Male	59.9500008	0	http://g.nordstromimage.com/ImageGallery/store/product/Large/5/_9110505.jpg\n
 4373479	Marlo Sneaker	Sneaker	MAGNANNI	Cognac	Male	350	5	http://g.nordstromimage.com/ImageGallery/store/product/Large/3/_13181723.jpg\n
 4391205	Porter High Top Sneaker	Sneaker	TCG	Oil Black Leather	Male	180	0	http://g.nordstromimage.com/ImageGallery/store/product/Large/13/_13185173.jpg\n
+0	\N	\N	\N	\N	\N	\N	\N	\N
 \.
 
 

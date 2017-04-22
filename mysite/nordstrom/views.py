@@ -62,7 +62,7 @@ def generateOutfit(mypid):
 
 	mygender = mygender_q[0]['gender']
 	myparenttype = myparenttype_q[0]['parenttype']
-	myseason = myseason_q[0]['season']
+	myseason = myseason_q[0]['season'].split(':') #ex. ['fall', 'spr', 'sum']
 	myoccasion= myoccasion_q[0]['occasion']
 
 	occasions=[athletic, casual, dressy, work]

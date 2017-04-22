@@ -8,7 +8,6 @@ def delete_tables():
 		"DROP TABLE types CASCADE;",
 		"DROP TABLE products CASCADE;"
 		"DROP TABLE closets CASCADE;",
-		"DROP TABLE users CASCADE;",
 		"DROP TABLE outfits CASCADE;",
 		)
 	dbname = input("Enter a database name: ")
