@@ -89,15 +89,15 @@ li{
 	</div>
 	
 	<div id = "main">
-		Inside closet {{ results.5 }}
+		Inside closet {{ results.0 }}
 	<form action="/createMyOutfit/" method="get">
 
-		{% for i in results.0 %}
+		{% for i in results.1 %}
 		<p id="imagewithcaption">
 		<img src={{ i }} width="197px" height="304px"/>
-		{{ results|index:2|index:forloop.counter0 }} 
-		{{ results|index:1|index:forloop.counter0 }}
-		<input id="pid" type="checkbox" name="pids[]" value={{ results|index:3|index:forloop.counter0}} /> <br>
+		{{ results|index:3|index:forloop.counter0 }} 
+		{{ results|index:2|index:forloop.counter0 }}
+		<input id="pid" type="checkbox" name="pids[]" value={{ results|index:4|index:forloop.counter0}} /> <br>
 		</p>
 
 
@@ -106,9 +106,23 @@ li{
 		<!-- <img src={{ i }} width="197px" height="304px"> -->
 		{% endfor %}
 
-		<input type="hidden" name="closetid" value={{ results.4 }}>
+		<input type="hidden" name="closetid" value={{ results.0 }}>
 		<input type="submit" value="Create Outfit with Selected Products">
 		</form>
+
+		
+
+		{% for i in results.5 %}
+		<fieldset>
+		Outfit {{ i }}
+
+		{% endfor %}
+
+	
+		<!-- <input id="type" type="checkbox" name="outfit[]" value={{ i }} />{{ i }}<br> -->
+		<!-- <img src={{ i }} width="197px" height="304px"> -->
+		{% endfor %}
+
 		</font> 
 	</div>
 
