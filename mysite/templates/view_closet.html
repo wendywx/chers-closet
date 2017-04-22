@@ -84,12 +84,14 @@ li{
 			<a href = "{% url "my_closet" %}">My Closets</a>
 		</font>
 	</div>
-	
+
 	<div class="sidebar">
 	</div>
 	
 	<div id = "main">
+		Inside closet {{ results.5 }}
 	<form action="/createMyOutfit/" method="get">
+
 		{% for i in results.0 %}
 		<p id="imagewithcaption">
 		<img src={{ i }} width="197px" height="304px"/>
@@ -97,6 +99,8 @@ li{
 		{{ results|index:1|index:forloop.counter0 }}
 		<input id="pid" type="checkbox" name="pids[]" value={{ results|index:3|index:forloop.counter0}} /> <br>
 		</p>
+
+
 
 		<!-- <input id="type" type="checkbox" name="outfit[]" value={{ i }} />{{ i }}<br> -->
 		<!-- <img src={{ i }} width="197px" height="304px"> -->
