@@ -77,6 +77,8 @@ class Outfit(models.Model):
     outfitid = models.IntegerField(primary_key=True)
     top = models.ForeignKey('Product', related_name = 'top', db_column='top')
     bottom = models.ForeignKey('Product', related_name = 'bottom', db_column='bottom')
+    dress = models.ForeignKey('Product', related_name = 'dress', db_column='dress')
+    outerwear = models.ForeignKey('Product', related_name = 'outerwear', db_column='outerwear')
     shoes = models.ForeignKey('Product', related_name = 'shoes', db_column='shoes')
     
     def __str__(self):
@@ -96,7 +98,6 @@ class Product(models.Model):
     color = models.TextField()
     gender = models.CharField(max_length=10)
     price = models.DecimalField(db_index=True, max_digits=10, decimal_places=2)
-    rating = models.DecimalField(max_digits=10, decimal_places=2)
     imgurl = models.TextField()
 
     def __str__(self):
@@ -122,18 +123,3 @@ class Type(models.Model):
         managed = False
         db_table = 'types'
         unique_together = (("typename", "parenttype", "season", "occasion"),)
-
-class User(models.Model):
-    userid = models.IntegerField(primary_key=True)
-    fname = models.TextField()
-    lname = models.TextField()        
-
-    def __str__(self):
-        return str(self.fname + self.lname)
-
-
-    class Meta:
-        managed = False
-        db_table = 'users'
-
-
