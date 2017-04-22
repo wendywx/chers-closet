@@ -513,18 +513,12 @@ def generateOutfit(mypid):
 
 def createMyOutfit(request):
 	pidList = request.GET.getlist('pids[]')
-	top = 0; 
-	bottom = 0; 
-	dress = 0; 
-	outerwear = 0; 
-	shoes = 0; 
-
 	myclosetid = request.GET.get('closetid')
 	print(myclosetid)
-
 	result = []
 
 	for pid in pidList:
+
 		image_query = Product.objects.filter(productid=pid).values('imgurl')
 		imgurl = image_query[0]['imgurl']
 		result.append(imgurl)		
@@ -683,11 +677,7 @@ def add_outfit(request):
 
 def addOutfit(request):
 	myclosetid = request.GET.get('closetid')
-	#myoutfitid = request.GET.get('outfitid')
-	#if every outfit is filled, say closet is full
-
 	result= [myclosetid]
-	# send it 
 	return render(request, 'add_outfit.html', {'results': result})
 
 def generate_new_outfit(request):
@@ -702,7 +692,6 @@ def viewCloset(request):
 	myclosetid = request.GET.get('closetid')
 	closetlist = Closet.objects.filter(closetid=myclosetid).values_list() #list
 	closettuple = closetlist[0]
-	print(closettuple)
 	imgurls = []
 	names = []
 	brands = []
@@ -734,10 +723,6 @@ def viewCloset(request):
 	return render(request, 'view_closet.html', {"results": result})
 
 def null_closet(mycloset):
-	for i in range(1,51):
+	for i in range(1,50):
 		cname = "product" + str(i)
-		Closet.objects.filter(closetid=mycloset).update(**{cname: 0})
-
-	for j in range(1,11):
-		cname = "outfit" + str(j)
 		Closet.objects.filter(closetid=mycloset).update(**{cname: 0})
