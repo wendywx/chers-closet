@@ -14,7 +14,7 @@ except:
 cur = conn.cursor()
 
 tops = ["tops","tank/cami/shell", "t-shirt/tee", "shirt", "polo", "sweater", \
-"camisole", "blouse/top", "sweatshirt", "sweatshirt/hoody/zipfront",\
+"camisole", "blouse/top", "sweatshirt",\
 "tunic", "shirtjacket", "swim top", "dress-shirt","sportshirt", "onesie", "sweatsuit/warm-ups"]
 
 bottoms = ["bottoms", "short", "stirrup/legging", "pant", "skirt"]
@@ -23,7 +23,7 @@ dresses = ["dresses", "dress", "jumpsuit/romper","skirt set"]
 
 outerwear = ["outerwear","jacket", "blazer", "short jacket/coat", "jacket/coat", \
 "3/4 or long coat", "anorak/parka", "sportcoat", "vest", "raincoat",\
-"poncho/cape", "bolero",]
+"poncho/cape", "bolero", "sweatshirt/hoody/zipfront"]
 
 shoes = ["shoes","sneaker", "flats", "sandals/slides", "loafers", "boots","pumps",\
 "athletic", "mule","clog","slip on","slippers","oxfords"]
@@ -34,17 +34,17 @@ junk = ["waist support/band", "panty/brief", "shoe tree","polish",
 parenttypes = [tops, bottoms, dresses, outerwear, shoes]
 
 
-dressy = ["dressy","onesie","skirt","dress","jumpsuit/romper","skirt set","3/4 or long coat","vest", \
-"bolero","sandals/slides","pumps","mule",]
+dressy = ["dressy","onesie","skirt","dress","jumpsuit/romper","skirt set","3/4 or long coat", \
+"bolero","sandals/slides","pumps","mule", "blouse/top"]
 
 work = ["work","blouse/top","dress-shirt","pant","blazer","sportcoat","flats","loafers","oxfords"]
 
-casual = ["casual","tank/cami/shell","shirt","polo","sweater","camisole","sweatshirt","tunic", \
+casual = ["casual","tank/cami/shell","shirt","polo","sweater","sweatshirt","tunic", \
 "shirtjacket","short","jacket","short jacket/coat","anorak/parka","raincoat","poncho/cape", \
-"sneaker","boots""clog","slip on","slippers"]
+"sneaker","boots","clog","slip on","slippers", "pant", "jacket/coat", "skirt", "vest" ]
 
-athletic = ["athletic","t-shirt/tee","sweatshirt/hoody/zipfront","swim top","sportshirt", \
-"sweatsuit/warm-ups","stirrup/legging","athletic",]
+athletic = ["athletic","t-shirt/tee","sweatshirt/hoody/zipfront","camisole","swim top","sportshirt", \
+"sweatsuit/warm-ups","stirrup/legging","athletic", "sneaker"]
 
 occasions = [dressy, work, casual, athletic]
 
@@ -68,7 +68,7 @@ spring = ["spr", "tank/cami/shell","tops","t-shirt/tee","shirt","polo","blouse/t
 summer = ["sum","tank/cami/shell","t-shirt/tee","shirt","polo","camisole","blouse/top","tunic","swim top", \
 "dress-shirt","sportshirt","onesie","sweatsuit/warm-ups","short","skirt","dress","jumpsuit/romper", \
 "skirt set","blazer","short jacket/coat","sportcoat","vest","raincoat","poncho/cape","bolero","sneaker", \
-"flats","sandals/slides","pumps","athletic","mule","clog","slip on","oxfords"]
+"flats","sandals/slides","pumps","athletic","mule","clog","slip on","oxfords","stirrup/legging","sweatshirt/hoody/zipfront"]
 
 seasons = [fall, spring, summer, winter]
 
@@ -122,9 +122,10 @@ for line in f:
 			if product_type.lower() in ptype:
 				parent_type = ptype[0]
 		
+		product_occasions = ""
 		for occasion in occasions:
 			if product_type.lower() in occasion:
-				occasion_type = occasion[0]
+				product_occasions += occasion[0] + ':'
 
 		product_seasons = ""
 		for season in seasons:
@@ -135,7 +136,7 @@ for line in f:
 		 	INSERT INTO types(typeName,parentType,season,occasion)
 		 	VALUES ('{0}','{1}','{2}','{3}')
 		 	ON CONFLICT DO NOTHING;
-		""".format(product_type, parent_type, product_seasons[:-1], occasion_type))
+		""".format(product_type, parent_type, product_seasons[:-1], product_occasions[:-1]))
 
 		cur.execute("""
 			INSERT INTO products(productId,productName,productType,brand,color,gender,price,imgurl)
