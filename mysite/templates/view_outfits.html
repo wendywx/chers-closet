@@ -96,29 +96,29 @@ li{
 	
 	<div id = "main">
 		Inside closet {{ results.0 }}
-	<form action="/createMyOutfit/" method="get">
 
-		{% for i in results.1 %}
-		<p id="imagewithcaption">
-		<img src={{ i }} width="197px" height="304px"/>
-		{{ results|index:3|index:forloop.counter0 }} 
-		{{ results|index:2|index:forloop.counter0 }}
-		<input id="pid" type="checkbox" name="pids[]" value={{ results|index:4|index:forloop.counter0}} /> 
-
-		</p>
-
-
-		<!-- <input id="type" type="checkbox" name="outfit[]" value={{ i }} />{{ i }}<br> -->
-		<!-- <img src={{ i }} width="197px" height="304px"> -->
-		{% endfor %}
-		<br>
-
-		<input type="hidden" name="closetid" value={{ results.0 }}>
-		<input type="submit" value="Create Outfit with Selected Products">
-		<br/>
-	</form>
 			</div>
+			<div id="main">
+			Outfits
+	<p>
+		{% for i in results.2 %}
+		
+			<fieldset>
+			Outfit {{ i }}
+			<br>
+			{% for x in results|index:2|index:forloop.counter0|get_range %}
+			<p id="imagewithcaption">
+			<img src={{ results|index:3|index:forloop.parentloop.counter0|index:x }} width="197px" height="304px">
+			{{ results|index:4|index:forloop.parentloop.counter0|index:x }}
+			{{ results|index:5|index:forloop.parentloop.counter0|index:x }} 
+			</p>
+			{% endfor %}
+			</fieldset>
 
-			
+		{% endfor %}
+	</p>
+
+		</font> 
+</div>
 </body>
 </html>
