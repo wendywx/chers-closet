@@ -98,11 +98,13 @@ li{
 		<p id="imagewithcaption">
 			<img src={{ i }} width="197px" height="304px"> 
 			{{ results|index:1|index:forloop.counter0 }}
-			{{ results|index:2|index:forloop.counter0 }} 	
-			{{ results|index:4|index:forloop.counter0 }}
+			{{ results|index:2|index:forloop.counter0 }}, 	
+			${{ results|index:4|index:forloop.counter0 }}
 
 		</p>
 		{% endfor %}
+
+		Total Price: ${{ results.5 }}
 		<center>
 				
 		<form action="/addOutfit/" method="get">
