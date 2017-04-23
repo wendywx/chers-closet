@@ -124,29 +124,29 @@ input[type=submit] {
 	<div id="main">
 
 	<div id = "filter">
-		<p>Select desired product filters: </p>
-		<form action="/filterProducts/" method="get">
+		<p>Select desired outfit filters: </p>
+		<form action="/filterOutfits/" method="get">
 		<fieldset>
-			    <legend>Type</legend>
+			    <legend>Season</legend>
 
 			    {% for i in results.0 %}
-			    <input id="type" type="checkbox" name="types[]" value="{{ i }}" />{{ i }}<br>
+			    <input id="season" type="checkbox" name="seasons[]" value="{{ i }}" />{{ i }}<br>
 			    {% endfor %}
 
 		</fieldset>
 	  	<fieldset>
-			    <legend>Brand</legend>
+			    <legend>Occasion</legend>
 
 			    {% for j in results.1 %}
-			    <input id="brand" type="checkbox" name="brands[]" value="{{ j }}" />{{ j }}<br>
+			    <input id="occasion" type="checkbox" name="occasions[]" value="{{ j }}" />{{ j }}<br>
 			    {% endfor %}
 			 	
 		</fieldset>
 		<fieldset>
-			    <legend>Price</legend>
+			    <legend>Total Outfit Price</legend>
 
 			    {% for k in results.2 %}
-			    <input id="price" type="checkbox" name="prices[]" value="{{ k }}" />{{ k }}<br>
+			    <input id="totalprice" type="checkbox" name="totalprices[]" value="{{ k }}" />{{ k }}<br>
 			    {% endfor %}
 			 	
 		</fieldset>

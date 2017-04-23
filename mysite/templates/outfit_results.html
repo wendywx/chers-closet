@@ -98,6 +98,7 @@ li{
 			<img src={{ i }} width="197px" height="304px"> 
 			{{ results|index:1|index:forloop.counter0 }}
 			{{ results|index:2|index:forloop.counter0 }} 	
+			{{ results|index:4|index:forloop.counter0 }}
 
 		</p>
 		{% endfor %}
@@ -108,8 +109,16 @@ li{
 			<input name='pids[]' type="hidden" value="{{ results.3 }}">
 		  <input type="submit" value="Add Outfit to Closet">
 		</form>
-		<form action="/createNewOutfit/" method="get">
-			<input type="hidden" name="newproductid" value={{ results.5 }}>
+		<form action="/filterOutfits/" method="get">
+			{% for i in results.6 %}
+			<input id="season" type="hidden" name="seasons[]" value={{ i }}>
+			{% endfor %}
+			{% for j in results.7 %}
+			<input id = "occasion" type="hidden" name="occasions[]" value={{ j }}>
+			{% endfor %}
+			{% for k in results.8 %}
+			<input id="totalprice" type="hidden" name="totalprices[]" value={{ k }}>
+			{% endfor %}
 		  <input type="submit" value="Regenerate Another Outfit">
 		</form>
 
