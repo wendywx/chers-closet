@@ -8,6 +8,11 @@ from .models import Product, Closet, Type, Outfit
 def home(request):
 	return render(request, 'home.html', {})
 
+def view_outfits(request):
+	return render(request, 'view_outfits.html', {})
+
+def view_products(request):
+	return render(request, 'view_products.html', {})
 
 def findprodattrib(productid, attribname):
 	myattrib_q = Product.objects.filter(productid=productid).values(attribname)
@@ -20,6 +25,14 @@ def findtypeattrib(mytypename, attribname):
 	myattrib = myattrib_q[0][attribname]
 	return myattrib
 
+def findoutfitprod(myoutfitid, product):
+	myattrib_q = Outfit.objects.filter(outfitid=myoutfitid).values(product)
+	if myattrib_q.exists():
+		myattrib = myattrib_q[0][product]
+	else:
+		print(product + " is not included in this outfit")
+		myattrib = None
+	return myattrib
 
 def generate_product(query, myseason, myoccasion):
 	product = list(query.values_list(flat=True)) #generate random products
@@ -369,7 +382,6 @@ def createMyOutfit(request):
 	result = []
 
 	for pid in pidList:
-
 		image_query = Product.objects.filter(productid=pid).values('imgurl')
 		imgurl = image_query[0]['imgurl']
 		result.append(imgurl)		
@@ -619,6 +631,9 @@ def addOutfit(request):
 	if(created):
 		null_closet(myclosetid)
 
+	imgurls =[]
+	brands = []
+	names = []
 
 	#FIRST ADD TO OUTFIT RELATION
 	outfitlen = Outfit.objects.count()
@@ -628,7 +643,11 @@ def addOutfit(request):
 	#		Closet.objects.filter(closetid=myclosetid).update(**{cname: addedproductid})
 	for i in range(0, len(pids)):
 		img = findprodattrib(pids[i], 'imgurl')
-		imgs.append(img)
+		imgurls.append(img)
+		brand = findprodattrib(pids[i], 'brand')
+		brands.append(brand)
+		name = findprodattrib(pids[i], 'productname')
+		names.append(name)
 
 		mytype = findprodattrib(pids[i], 'producttype')
 		myparent = findtypeattrib(mytype, 'parenttype')
@@ -666,8 +685,7 @@ def addOutfit(request):
 	if oid is 0:
 		#find an empty spot for the outfit to create an outfit id 
 		Closet.objects.filter(closetid=myclosetid).update(**{cname: myoutfitid})
-		
-		result = [myclosetid, pids, imgs]
+		result = [myclosetid, pids, imgurls, brands, names]
 	else:
 		print("closet is full, no more room for this outfit")
 		result = ["closet is full, no more room for this outfit"]
@@ -685,47 +703,148 @@ def generateNewOutfit(request):
 	result = ['createrandomoutfit']
 	return render(request, 'generate_new_outfit.html', {'results': result})
 
+def viewOutfits(request):
+	#TODO: change so that outfit:s and closets are separate??
+	myclosetid =  request.GET.get('closetid')
+	closetlist = Closet.objects.filter(closetid=myclosetid).values_list() #list
+	
+	if(closetlist.exists()):
+		closettuple = closetlist[0]
 
-#TODO: change so that outfits and closets are separate??
+		outfits = []
+		nums = []
+		#all of these outfit lists will also be lists of lists .....
+		oimgs =[]
+		obrands = []
+		onames = []
+		result =[]
+
+		for x in range(51, len(closettuple)):
+
+			if(closettuple[x] is not None and closettuple[x] != 0 and x > 50): #for every outfit
+				#valid outfit ids 
+				myimgs =[]
+				mybrands = []
+				mynames = []
+
+				oid = closettuple[x]
+				#list of outfit ids
+				outfits.append(oid) 
+				#using outfit id, get the individual products and then find all of their pids
+				topid = findoutfitprod(oid, 'top')
+				bottomid = findoutfitprod(oid, 'bottom')
+				dressid = findoutfitprod(oid, 'dress')
+				outerwearid = findoutfitprod(oid, 'outerwear')
+				shoesid = findoutfitprod(oid, 'shoes')
+				opids = [topid, bottomid, dressid, outerwearid, shoesid]
+				#grab stuff for each outfit 
+				for prod in opids:
+					if prod is not None:
+						imgurl = findprodattrib(prod, 'imgurl')
+						brand = findprodattrib(prod, 'brand')
+						name = findprodattrib(prod, 'productname')
+						myimgs.append(imgurl)
+						mybrands.append(brand)
+						mynames.append(name)
+				
+				num = len(myimgs)
+				print("appending this num to the array??" + str(num))
+
+				nums.append(num)
+				oimgs.append(myimgs)
+				obrands.append(mybrands)
+				onames.append(mynames)
+
+		print("view closet, pieces in outfit!!")
+		print(nums)
+		#result[7-9] is for an outfits associated imgs brands and names 
+		result = [myclosetid, outfits, nums, oimgs, obrands, onames]
+
+	else:
+		result = [myclosetid]
+
+	return render(request, 'view_outfits.html', {'results': result})
 
 def viewCloset(request):
 	myclosetid = request.GET.get('closetid')
 	closetlist = Closet.objects.filter(closetid=myclosetid).values_list() #list
-	closettuple = closetlist[0]
+	
+	if(closetlist.exists()):
+		closettuple = closetlist[0]
 
-	imgurls = []
-	names = []
-	brands = []
-	pids = []
-	outfits = []
-	result =[]
 
-	for x in range(1, len(closettuple)):
-		# product id 
-		if(closettuple[x] is not None and closettuple[x] != 0 and x < 51):
-			image_query = Product.objects.filter(productid=closettuple[x]).values('imgurl')
-			imgurl = image_query[0]['imgurl']
-			name_query = Product.objects.filter(productid=closettuple[x]).values('productname')
-			name = name_query[0]['productname']
-			brand_query = Product.objects.filter(productid=closettuple[x]).values('brand')
-			brand = brand_query[0]['brand']
+		imgurls = []
+		names = []
+		brands = []
+		pids = []
+		outfits = []
+		nums = []
+		#all of these outfit lists will also be lists of lists .....
+		oimgs =[]
+		obrands = []
+		onames = []
+		result =[]
 
-			pid_query = Product.objects.filter(productid=closettuple[x]).values('productid')
-			pid = pid_query[0]['productid']
+		for x in range(1, len(closettuple)):
+			# product id 
+			if(closettuple[x] is not None and closettuple[x] != 0 and x < 51):
+				image_query = Product.objects.filter(productid=closettuple[x]).values('imgurl')
+				imgurl = image_query[0]['imgurl']
+				name_query = Product.objects.filter(productid=closettuple[x]).values('productname')
+				name = name_query[0]['productname']
+				brand_query = Product.objects.filter(productid=closettuple[x]).values('brand')
+				brand = brand_query[0]['brand']
+				pid_query = Product.objects.filter(productid=closettuple[x]).values('productid')
+				pid = pid_query[0]['productid']
 
-			imgurls.append(imgurl)
-			names.append(name)
-			brands.append(brand)
-			pids.append(pid)
+				imgurls.append(imgurl)
+				names.append(name)
+				brands.append(brand)
+				pids.append(pid)
 
-		if(closettuple[x] is not None and closettuple[x] != 0 and x > 50):
-			#valid outfit ids 
-			outfits.append(closettuple[x])
+			if(closettuple[x] is not None and closettuple[x] != 0 and x > 50): #for every outfit
+				#valid outfit ids 
+				myimgs =[]
+				mybrands = []
+				mynames = []
 
-	result = [imgurls, names, brands, pids, outfits, myclosetid]
+				oid = closettuple[x]
+				#list of outfit ids
+				outfits.append(oid) 
+				#using outfit id, get the individual products and then find all of their pids
+				topid = findoutfitprod(oid, 'top')
+				bottomid = findoutfitprod(oid, 'bottom')
+				dressid = findoutfitprod(oid, 'dress')
+				outerwearid = findoutfitprod(oid, 'outerwear')
+				shoesid = findoutfitprod(oid, 'shoes')
+				opids = [topid, bottomid, dressid, outerwearid, shoesid]
+				#grab stuff for each outfit 
+				for prod in opids:
+					if prod is not None:
+						imgurl = findprodattrib(prod, 'imgurl')
+						brand = findprodattrib(prod, 'brand')
+						name = findprodattrib(prod, 'productname')
+						myimgs.append(imgurl)
+						mybrands.append(brand)
+						mynames.append(name)
+				
+				num = len(myimgs)
+				print("appending this num to the array??" + str(num))
+
+				nums.append(num)
+				oimgs.append(myimgs)
+				obrands.append(mybrands)
+				onames.append(mynames)
+
+		print("view closet, pieces in outfit!!")
+		print(nums)
+		#result[7-9] is for an outfits associated imgs brands and names 
+		result = [myclosetid, imgurls, names, brands, pids, outfits, nums, oimgs, obrands, onames]
+
+	else:
+		result = [myclosetid]
+
 	return render(request, 'view_closet.html', {"results": result})
-
-
 def null_closet(mycloset):
 	for i in range(1,51):
 		cname = "product" + str(i)

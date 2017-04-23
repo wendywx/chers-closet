@@ -1,5 +1,6 @@
 <html lang="en">
 <style>
+{% load nordstrom_extras %}
 #container{
 	width: 960px;
 	margin: 0 auto;
@@ -84,23 +85,37 @@ li{
 	</div>
 	<div id = "main">
 		<font face = "courier new" color = "black">
+<<<<<<< HEAD
 			<center>
 
 		adding outfit and associated products to closet {{ results.0 }}
 
+=======
+		Added outfit and associated products to closet {{ results.0 }}
+		<br>
+			
+		<center>
+>>>>>>> ab89eaf21d02bb8f91ee8f5eb4453bff6de51ebf
 		{% for i in results.2 %}
 	
 		<p id="imagewithcaption">
 			<img src={{ i }} width="197px" height="304px"> 
+<<<<<<< HEAD
 		
+=======
+			{{ results|index:3|index:forloop.counter0 }}
+			{{ results|index:4|index:forloop.counter0 }} 	
+
+>>>>>>> ab89eaf21d02bb8f91ee8f5eb4453bff6de51ebf
 		</p>
 		{% endfor %}
 
 		</center>
 
 		</font>
-		<center>
-	</center>
+		<p>
+
+	</p>
 	</div>
 	</div>
 

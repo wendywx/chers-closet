@@ -12,6 +12,11 @@ urlpatterns = [
     url(r'^filterOutfits/$', views.filterOutfits, name='filterOutfits'),  
     url(r'^outfit_results.html$', views.outfit_results, name = 'outfit_results'),
     url(r'^about.html$', views.about, name = 'about'),
+
+    url(r'^view_products.html$', views.view_products, name = 'view_products'),
+    url(r'^view_outfits.html$', views.view_outfits, name = 'view_outfits'),
+
+    url(r'^viewOutfits/$', views.viewOutfits, name = 'viewOutfits'),
     url(r'^acct_home.html$', views.acct_home, name = 'acct_home'),
     url(r'^contact.html$', views.contact, name = 'contact'),
     url(r'^create_new_closet.html$', views.create_new_closet, name = 'create_new_closet'),
