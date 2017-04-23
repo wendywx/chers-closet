@@ -16,7 +16,6 @@
 }
 #main{
 	margin: 0 auto;
-	height: 100%;
 	width: 70%;
 	background-color: #F0F8FF
 }
@@ -102,9 +101,13 @@ li{
 
 		</p>
 		{% endfor %}
+		<br>
 
 		</center>
-
+				<form action="/viewCloset/" method="get">
+			<input name="closetid" value={{ results.0 }} type="hidden">
+		  <input type="submit" value="View Closet">
+		</form>
 		</font>
 		<p>
 
