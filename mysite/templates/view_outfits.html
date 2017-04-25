@@ -1,43 +1,45 @@
 <html lang="en">
 <style>
 {% load nordstrom_extras %}
-body{
-	background-color: #F0F8FF; 
-	height: 100%;
-}
-#main{
-    margin: 10px; 
-    padding: 20px 20px;
-    background-color: #f8f2ec; 
-    overflow: scroll;
-    font-family: "Optima", Helvetica, sans-serif; 
-}
-.sidebar{
-	float: left;
-	width: 10%;
-	padding: 14px 16px;
-	background-color: #333;
-	font-size: 18px; 
-	font-family: "Trebuchet MS", Helvetica, sans-serif; 
-	overflow: scroll;
-}
 
 #imagewithcaption {
-	float:left;
-	width: 225px;
 	height: 350px;
 	text-align:center;
 	font-family: "Optima", Helvetica, sans-serif; 
 	display:inline-block;
 	vertical-align: top
 }
-
+#main{
+    margin: 10px; 
+    padding: 20px 20px;
+    background-color: #FBF9F6; 
+    overflow: scroll;
+    font-family: "Optima", Helvetica, sans-serif; 
+}
 fieldset{
 	float: left;
-	overflow: none;
-	margin-bottom: 15px;
+	overflow: scroll;
+	margin: 10px;
 }
-
+#ic{
+	font-size: 18px; 
+	font-weight: bold; 
+	padding-left: 10px; 
+}
+#outfits{
+	font-size: 16px; 
+	padding-left: 10px; 
+}
+.background{
+	background-image: url("http://media.istockphoto.com/vectors/retro-80s-seamless-pattern-background-vector-id484670778?k=6&m=484670778&s=170667a&w=0&h=DEZLCfAxNFNcbrKHlqSPraV_bCVMdH8JphruHsWUQOc="); 
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 50%;
+    z-index: -1; 
+}
 </style>
 
 <head>
@@ -45,12 +47,13 @@ fieldset{
 	<title>Cher's Closet</title>
 </head>
 
-{% load static %}
+	{% load static %}
 	<link rel="stylesheet" type="text/css" href="{% static 'header.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'buttons.css' %}" />
 
-
-<body background="https://s-media-cache-ak0.pinimg.com/736x/4b/99/1a/4b991a18a070d4d84dd77408ac92c074.jpg">
+<div class="background">
+<body > </body>
+</div>
 
 	<header>
 		<h1>
@@ -79,27 +82,25 @@ fieldset{
 	-->
 
 	<div id = "main">
-		Inside closet {{ results.0 }}
-		Outfits
+	<p id="ic"> Inside closet {{ results.0 }} </p>
+	<p id="outfits"> Outfits </p>
 	<center>
 	<p>
 		{% for i in results.2 %}
-			<fieldset overflow="none">
+			<fieldset>
 			<br>
 			{% for x in results|index:2|index:forloop.counter0|get_range %}
-			<p id="imagewithcaption">
+			<div id="imagewithcaption">
 			<img src={{ results|index:3|index:forloop.parentloop.counter0|index:x }} width="197px" height="304px"> <br>
 			{{ results|index:4|index:forloop.parentloop.counter0|index:x }} <br>
 			{{ results|index:5|index:forloop.parentloop.counter0|index:x }} 
-			</p>
+			</div>
 			{% endfor %}
 			</fieldset>
 
 		{% endfor %}
 	</p>
 	</center>
-
-		</font> 
 </div>
 </body>
 </html>

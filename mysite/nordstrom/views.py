@@ -36,28 +36,57 @@ def findoutfitprod(myoutfitid, product):
 
 def generate_product(query, myseason, myoccasion):
 	product = list(query.values_list(flat=True)) #generate random products
+
 	if len(product) > 0:
-		seasonflag = 0
-		occasionflag = 0
-		myproduct = 0
-
-		while seasonflag != 1 or occasionflag != 1:
-			seasonflag = 0
-			occasionflag = 0
-
+		if len(myseason) == 0 and len(myoccasion) == 0:
 			rand_num = random.randint(0,len(product)-1)
 			myproduct = product[rand_num]#pid
-			producttype = findprodattrib(myproduct, 'producttype')
-			productseason = findtypeattrib(producttype, 'season').split(':')
-			productoccasion = findtypeattrib(producttype, 'occasion').split(':')
 
-			for i in productseason:
-				if i in myseason:
-					seasonflag = 1
+		else:
+			if len(myseason) == 0:
+				seasonflag = 1
+			else:
+				seasonflag = 0
 
-			for j in productoccasion:
-				if j in myoccasion:
-					occasionflag = 1
+			if len(myoccasion) == 0:
+				occasionflag = 1
+			else:
+				occasionflag = 0
+
+			myproduct = 0
+
+			print('seasonflag')
+			print(seasonflag)
+			print('occasionflag')
+			print(occasionflag)
+
+			season_flag = 0
+			occasion_flag = 0
+
+			while season_flag != 1 or occasion_flag != 1:
+				if seasonflag == 1:
+					season_flag = seasonflag
+				else:
+					season_flag = 0
+
+				if occasionflag == 1:
+					occasion_flag = occasionflag
+				else:
+					occasion_flag = 0
+
+				rand_num = random.randint(0,len(product)-1)
+				myproduct = product[rand_num]#pid
+				producttype = findprodattrib(myproduct, 'producttype')
+				productseason = findtypeattrib(producttype, 'season').split(':')
+				productoccasion = findtypeattrib(producttype, 'occasion').split(':')
+
+				for i in productseason:
+					if i in myseason:
+						season_flag = 1
+
+				for j in productoccasion:
+					if j in myoccasion:
+						occasion_flag = 1
 
 		productimgurl = findprodattrib(myproduct, 'imgurl')
 		brand = findprodattrib(myproduct,'brand')
@@ -85,9 +114,9 @@ def browse_products(request):
 def browse_outfits(request):
 	season = ['Fall', 'Spring', 'Summer', 'Winter']
 	occasion = ['Athletic', 'Casual', 'Dressy', 'Work']
-	totalprice = ['$0-$200','$200-$400', '$400-$600', '$600-$800', '$800-$1000', '$1000-1500','$1500-$2000', '$2000-$3000', '$3000-$5000']
-	
-	result = [season, occasion, totalprice]
+	totalprice = ['$0-$300','$300-$600', '$600-$900', '$900-$1200', '$1200-$1500', '$1500-$1800','$2100-$3000','$3000-$5000']
+	gender = ['Male', 'Female']
+	result = [season, occasion, totalprice, gender]
 	return render(request, 'browse_outfits.html', {"results": result})
 
 
@@ -107,7 +136,7 @@ def view_closet(request):
 	return render(request, "view_closet.html", {})
 
 
-def generateOutfit(mypid):
+def generateOutfitFromProduct(mypid):
 	#modify to return a list of imgurls, brands and names
 	result = []
 	imgurls = []
@@ -122,11 +151,6 @@ def generateOutfit(mypid):
 	outerwear = list(Type.objects.filter(parenttype="outerwear").values_list(flat=True))
 	shoes = list(Type.objects.filter(parenttype="shoes").values_list(flat=True))
 	dresses = list(Type.objects.filter(parenttype="dresses").values_list(flat=True))
-
-	athletic = list(Type.objects.filter(occasion="athletic").values_list(flat=True))
-	work = list(Type.objects.filter(occasion="work").values_list(flat=True))
-	dressy = list(Type.objects.filter(occasion="dressy").values_list(flat=True))
-	casual = list(Type.objects.filter(occasion="casual").values_list(flat=True))
 
 	name = findprodattrib(mypid, 'productname')
 	myimgurl = findprodattrib(mypid, 'imgurl')
@@ -396,7 +420,7 @@ def create_my_outfit(request):
 def createNewOutfit(request):
 	addedproductid = request.GET.get('newproductid')
 
-	outfitinfo = generateOutfit(addedproductid)
+	outfitinfo = generateOutfitFromProduct(addedproductid)
 	# pids are the last of the outfitinfo 
 	result = outfitinfo
 	result.append(addedproductid)
@@ -522,10 +546,17 @@ def filterProducts(request):
 
 
 def filterOutfits(request):
-	season_list = request.GET.getlist('seasons[]')
-	print('season_list')
-	print(season_list)
+
+	imgurls = []
+	brands = []
+	names =[]
+	pids = []
+	prices = []
 	reformatted_season_list = []
+	reformatted_occasion_list = []
+	reformatted_price_list = []
+
+	season_list = request.GET.getlist('seasons[]')
 	for i in season_list:
 		if i == 'Fall':
 			reformatted_season_list.append('fall')
@@ -535,62 +566,122 @@ def filterOutfits(request):
 			reformatted_season_list.append('sum')
 		else:
 			reformatted_season_list.append('wint')
+	
 	occasion_list = request.GET.getlist('occasions[]')
-	reformatted_occasion_list = []
 	for j in occasion_list:
 		reformatted_occasion_list.append(j.lower())
+	
 	price_list = request.GET.getlist('totalprices[]')
-	reformatted_price_list = []
 	for i in price_list:
 		for char in '$':
 			i = i.replace(char,'')
 		reformatted_price_list.append(i.split('-'))
 
+	gender_list = request.GET.getlist('genders[]')
+
+	if len(gender_list) == 1:
+		first_query = Product.objects.filter(gender=gender_list[0])
+	else:
+		first_query = Product.objects.all()
+
+	tops = list(Type.objects.filter(parenttype="tops").values_list(flat=True))
+	bottoms = list(Type.objects.filter(parenttype="bottoms").values_list(flat=True))
+	outerwear = list(Type.objects.filter(parenttype="outerwear").values_list(flat=True))
+	shoes = list(Type.objects.filter(parenttype="shoes").values_list(flat=True))
+	dresses = list(Type.objects.filter(parenttype="dresses").values_list(flat=True))
+
+	tops_q = first_query.filter(producttype__in=tops)
+	bottoms_q = first_query.filter(producttype__in=bottoms)
+	dresses_q = first_query.filter(producttype__in=dresses)
+	shoes_q = first_query.filter(producttype__in=shoes)
+	outerwear_q = first_query.filter(producttype__in=outerwear)
+
+	generated_outerwear = []
+	generated_top = []
+	generated_bottom = []
+	generated_dress = []
+	generated_shoes = []
+
 	if len(reformatted_price_list) > 0:
 		minprice = int(reformatted_price_list[0][0])
 		maxprice = int(reformatted_price_list[-1][1])
-		outfitprice = 0
-		while outfitprice < minprice or outfitprice > maxprice:
-			seasonflag = 0
-			occasionflag = 0
-			firstproduct = 0
-
-			while seasonflag != 1 or occasionflag != 1:
-				seasonflag = 0
-				occasionflag = 0
-				products_q = list(Product.objects.filter(price__range=(minprice,maxprice)).values_list(flat=True)) #generate random products
-				rand_num = random.randint(0,len(products_q)-1)
-				firstproduct = products_q[rand_num]#pid
-				firstproducttype = findprodattrib(firstproduct, 'producttype')
-				productseason = findtypeattrib(firstproducttype, 'season').split(':')
-				productoccasion = findtypeattrib(firstproducttype, 'occasion').split(':')
-
-				if len(reformatted_season_list) == 0:
-					seasonflag = 1
-				else:
-					for i in productseason:
-						if i in reformatted_season_list:
-							seasonflag = 1
-
-				if len(reformatted_occasion_list) == 0:
-					occasionflag = 1
-				else:
-					for j in productoccasion:
-						if j in reformatted_occasion_list:
-							occasionflag = 1
-
-			generatedoutfit = generateOutfit(firstproduct)
-			outfitprice = generatedoutfit[5]
 	else:
-		allproducts = list(Product.objects.values_list(flat=True)) #randomly choose product from all products
-		rand_num = random.randint(0,len(allproducts)-1)
-		firstproduct = allproducts[rand_num]#pid
-		generatedoutfit = generateOutfit(firstproduct)
+		minprice = 0
+		maxprice = 10000
 
+	outfitprice = -1
+	while outfitprice < minprice or outfitprice > maxprice:
+
+		outfitprice = 0
+		#[productimgurl, brand, name, pid, price]
+
+		generated_outerwear = generate_product(outerwear_q, reformatted_season_list, reformatted_occasion_list)
+
+		if len(generated_outerwear) > 1:
+			outfitprice += generated_outerwear[4]
+
+		if 'dressy' in reformatted_occasion_list:
+			if random.randint(0,1) == 0: #randomly choose whether to match outerwear with dress or with top/bottom
+				generated_top = generate_product(tops_q, reformatted_season_list, reformatted_occasion_list)
+				outfitprice += generated_top[4]
+
+				generated_bottom = generate_product(bottoms_q, reformatted_season_list, reformatted_occasion_list)
+				outfitprice += generated_bottom[4]
+
+			else:
+				generated_dress = generate_product(dresses_q, reformatted_season_list, reformatted_occasion_list)
+				outfitprice += generated_dress[4]
+
+		else:
+			generated_top = generate_product(tops_q, reformatted_season_list, reformatted_occasion_list)
+			outfitprice += generated_top[4]
+
+			generated_bottom = generate_product(bottoms_q, reformatted_season_list, reformatted_occasion_list)
+			outfitprice += generated_bottom[4]
+
+		generated_shoes = generate_product(shoes_q, reformatted_season_list, reformatted_occasion_list)
+		outfitprice += generated_shoes[4]
+
+	if len(generated_outerwear) > 1:
+		imgurls.append(generated_outerwear[0])
+		brands.append(generated_outerwear[1])
+		names.append(generated_outerwear[2])
+		pids.append(generated_outerwear[3])
+		prices.append(generated_outerwear[4])
+
+	if len(generated_dress) > 1:
+		imgurls.append(generated_dress[0])
+		brands.append(generated_dress[1])
+		names.append(generated_dress[2])
+		pids.append(generated_dress[3])
+		prices.append(generated_dress[4])
+	else:
+		imgurls.append(generated_top[0])
+		brands.append(generated_top[1])
+		names.append(generated_top[2])
+		pids.append(generated_top[3])
+		prices.append(generated_top[4])
+
+		imgurls.append(generated_bottom[0])
+		brands.append(generated_bottom[1])
+		names.append(generated_bottom[2])
+		pids.append(generated_bottom[3])
+		prices.append(generated_bottom[4])
+
+	imgurls.append(generated_shoes[0])
+	brands.append(generated_shoes[1])
+	names.append(generated_shoes[2])
+	pids.append(generated_shoes[3])
+	prices.append(generated_shoes[4])
+
+	generatedoutfit = [imgurls, brands, names, pids, prices, outfitprice]
+	generatedoutfit.append(gender_list)
 	generatedoutfit.append(season_list)
 	generatedoutfit.append(occasion_list)
 	generatedoutfit.append(price_list)
 
+
+#result =[imgurls, brands, names, pids, prices, totalprice]
 
 	return render(request, "outfit_results.html", {"results": generatedoutfit})
 
