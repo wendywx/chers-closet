@@ -547,9 +547,9 @@ def filterOutfits(request):
 			while seasonflag != 1 or occasionflag != 1:
 				seasonflag = 0
 				occasionflag = 0
-				products_q = list(Product.objects.filter(price__range=(minprice,maxprice)).values_list(flat=True)) #generate random products
-				rand_num = random.randint(0,len(products_q)-1)
-				firstproduct = products_q[rand_num]#pid
+				products_query = list(Product.objects.filter(price__range=(minprice,maxprice)).values_list(flat=True)) #generate random products
+				rand_num = random.randint(0,len(products_query)-1)
+				firstproduct = products_query[rand_num]#pid
 				firstproducttype = findprodattrib(firstproduct, 'producttype')
 				productseason = findtypeattrib(firstproducttype, 'season').split(':')
 				productoccasion = findtypeattrib(firstproducttype, 'occasion').split(':')
@@ -571,9 +571,34 @@ def filterOutfits(request):
 			generatedoutfit = generateOutfit(firstproduct)
 			outfitprice = generatedoutfit[5]
 	else:
-		allproducts = list(Product.objects.values_list(flat=True)) #randomly choose product from all products
-		rand_num = random.randint(0,len(allproducts)-1)
-		firstproduct = allproducts[rand_num]#pid
+		
+		seasonflag = 0
+		occasionflag = 0
+		firstproduct = 0
+
+		while seasonflag != 1 or occasionflag != 1:
+			seasonflag = 0
+			occasionflag = 0
+			allproducts = list(Product.objects.values_list(flat=True)) #randomly choose product from all products
+			rand_num = random.randint(0,len(allproducts)-1)
+			firstproduct = allproducts[rand_num]#pid
+			firstproducttype = findprodattrib(firstproduct, 'producttype')
+			productseason = findtypeattrib(firstproducttype, 'season').split(':')
+			productoccasion = findtypeattrib(firstproducttype, 'occasion').split(':')
+
+			if len(reformatted_season_list) == 0:
+				seasonflag = 1
+			else:
+				for i in productseason:
+					if i in reformatted_season_list:
+						seasonflag = 1
+
+			if len(reformatted_occasion_list) == 0:
+				occasionflag = 1
+			else:
+				for j in productoccasion:
+					if j in reformatted_occasion_list:
+						occasionflag = 1
 		generatedoutfit = generateOutfit(firstproduct)
 
 	generatedoutfit.append(season_list)
