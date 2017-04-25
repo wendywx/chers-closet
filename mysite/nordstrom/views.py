@@ -423,7 +423,7 @@ def addToCloset(request):
 		print("closet full, add failed")
 		result = ["Closet is full, product add failed"]
 	else:
-		result = ["Succesfully added " + productname + "to closet " + myclosetid, imgurl, myclosetid]
+		result = ["Succesfully added " + productname + " to Closet " + myclosetid, imgurl, myclosetid]
 	return render(request, "added_to_closet.html", {"results": result})
 
 #assuming closet iexists

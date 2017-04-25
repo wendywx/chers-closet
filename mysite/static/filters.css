@@ -1,7 +1,7 @@
 #main{
     margin: 10px; 
     padding: 20px 20px;
-    background-color: #F0F8FF;
+    background-color: #FBF9F6; 
     overflow: scroll;
     font-family: "Optima", Helvetica, sans-serif; 
 }
@@ -12,13 +12,16 @@ fieldset{
 	overflow: scroll;
 
 }
+/*
 input[type=submit] {
-	margin: 20px;
+    margin: 20px;
     padding:5px 15px; 
     background:#ccc; 
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px; 
-    font-size: 16px; 	
+    font-size: 16px;    
+    display: inline-block; 
 }
+*/
