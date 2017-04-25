@@ -114,13 +114,13 @@ li{
 		</form>
 		<form action="/filterOutfits/" method="get">
 			{% for i in results.6 %}
-			<input id="season" type="hidden" name="seasons[]" value={{ i }}>
+			<input id="season" type="hidden" name="seasons[]" value="{{ i }}">
 			{% endfor %}
 			{% for j in results.7 %}
-			<input id = "occasion" type="hidden" name="occasions[]" value={{ j }}>
+			<input id = "occasion" type="hidden" name="occasions[]" value="{{ j }}">
 			{% endfor %}
 			{% for k in results.8 %}
-			<input id="totalprice" type="hidden" name="totalprices[]" value={{ k }}>
+			<input id="totalprice" type="hidden" name="totalprices[]" value="{{ k }}">
 			{% endfor %}
 		  <input type="submit" value="Regenerate Another Outfit">
 		</form>
