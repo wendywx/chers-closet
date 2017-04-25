@@ -17,9 +17,9 @@ tops = ["tops","tank/cami/shell", "t-shirt/tee", "shirt", "polo", "sweater", \
 "camisole", "blouse/top", "sweatshirt",\
 "tunic", "shirtjacket", "swim top", "dress-shirt","sportshirt", "onesie", "sweatsuit/warm-ups"]
 
-bottoms = ["bottoms", "short", "stirrup/legging", "pant", "skirt"]
+bottoms = ["bottoms", "short", "stirrup/legging", "pant", "skirt","skirt set"]
 
-dresses = ["dresses", "dress", "jumpsuit/romper","skirt set"]
+dresses = ["dresses", "dress", "jumpsuit/romper"]
 
 outerwear = ["outerwear","jacket", "blazer", "short jacket/coat", "jacket/coat", \
 "3/4 or long coat", "anorak/parka", "sportcoat", "vest", "raincoat",\
@@ -34,8 +34,8 @@ junk = ["waist support/band", "panty/brief", "shoe tree","polish",
 parenttypes = [tops, bottoms, dresses, outerwear, shoes]
 
 
-dressy = ["dressy","onesie","skirt","dress","jumpsuit/romper","skirt set","3/4 or long coat", \
-"bolero","sandals/slides","pumps","mule", "blouse/top"]
+dressy = ["dressy","onesie","dress","jumpsuit/romper","skirt set","3/4 or long coat", \
+"bolero","pumps", "mule", "sweatsuit/warm-ups"]
 
 work = ["work","blouse/top","dress-shirt","pant","blazer","sportcoat","flats","loafers","oxfords"]
 
@@ -43,31 +43,30 @@ casual = ["casual","tank/cami/shell","shirt","polo","sweater","sweatshirt","tuni
 "shirtjacket","short","jacket","short jacket/coat","anorak/parka","raincoat","poncho/cape", \
 "sneaker","boots","clog","slip on","slippers", "pant", "jacket/coat", "skirt", "vest" ]
 
-athletic = ["athletic","t-shirt/tee","sweatshirt/hoody/zipfront","camisole","swim top","sportshirt", \
-"sweatsuit/warm-ups","stirrup/legging","athletic", "sneaker"]
+athletic = ["sweatshirt/hoody/zipfront","camisole","swim top","sportshirt","stirrup/legging","athletic"]
 
 occasions = [dressy, work, casual, athletic]
 
 
 fall = ["fall","t-shirt/tee","shirt","polo","sweater","blouse/top","sweatshirt","sweatshirt/hoody/zipfront", \
-"tunic","shirtjacket","dress-shirt","sportshirt","sweatsuit/warm-ups","stirrup/legging","pant", \
+"tunic","shirtjacket","dress-shirt","sportshirt","stirrup/legging","pant", "short jacket/coat" \
 "skirt","dress","jumpsuit/romper","skirt set","jacket","blazer","jacket/coat", \
 "3/4 or long coat","anorak/parka","sportcoat","vest","raincoat","poncho/cape","sneaker","flats", \
 "loafers","boots","pumps","athletic","mule","clog","slip on","slippers","oxfords"]
 
 winter = ["wint","shirt","sweater","sweatshirt""sweatshirt/hoody/zipfront","dress-shirt","sportshirt", \
-"stirrup/legging","pant","jacket","blazer","jacket/coat","3/4 or long coat","sportcoat","raincoat", \
+"stirrup/legging","pant","blazer","jacket/coat","3/4 or long coat","sportcoat","raincoat", \
 "sneaker","loafers","boots","pumps","athletic","oxfords"]
 
 spring = ["spr", "tank/cami/shell","tops","t-shirt/tee","shirt","polo","blouse/top","sweatshirt/hoody/zipfront", \
 "tunic","shirtjacket","dress-shirt","sportshirt","sweatsuit/warm-ups","short","stirrup/legging", \
 "pant","skirt","dress","jumpsuit/romper","skirt set","blazer","short jacket/coat", \
-"jacket/coat","anorak/parka","sportcoat","vest","raincoat","poncho/cape","bolero","sneaker","flats", \
+"jacket/coat","anorak/parka","sportcoat","raincoat","poncho/cape","bolero","sneaker","flats", \
 "sandals/slides","loafers","pumps","athletic","mule","slip on","slippers","oxfords"]
 
-summer = ["sum","tank/cami/shell","t-shirt/tee","shirt","polo","camisole","blouse/top","tunic","swim top", \
+summer = ["sum","tank/cami/shell","t-shirt/tee","shirt","polo","camisole","blouse/top","swim top", \
 "dress-shirt","sportshirt","onesie","sweatsuit/warm-ups","short","skirt","dress","jumpsuit/romper", \
-"skirt set","blazer","short jacket/coat","sportcoat","vest","raincoat","poncho/cape","bolero","sneaker", \
+"skirt set","blazer","sportcoat","vest","raincoat","bolero","sneaker", "sweatsuit/warm-ups", "jacket" \
 "flats","sandals/slides","pumps","athletic","mule","clog","slip on","oxfords","stirrup/legging","sweatshirt/hoody/zipfront"]
 
 seasons = [fall, spring, summer, winter]

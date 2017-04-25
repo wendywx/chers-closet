@@ -123,6 +123,14 @@ input[type=submit] {
 		<p>Select desired outfit filters: </p>
 		<form action="/filterOutfits/" method="get">
 		<fieldset>
+			    <legend>Gender</legend>
+
+			    {% for l in results.3 %}
+			    <input id="gender" type="checkbox" name="genders[]" value="{{ l }}" />{{ l }}<br>
+			    {% endfor %}
+
+		</fieldset>
+		<fieldset>
 			    <legend>Season</legend>
 
 			    {% for i in results.0 %}
