@@ -77,8 +77,8 @@ def browse_products(request):
 		types.remove(i)
 	brands = Product.objects.order_by('brand').values_list('brand', flat=True).distinct()
 	prices = ['$0-$50','$50-$100', '$100-$200', '$200-$400','$400-$1000']
-	
-	result = [types, brands, prices]
+	gender = ['Male', 'Female']
+	result = [types, brands, prices, gender]
 	return render(request, 'browse_products.html', {"results": result})
 
 
@@ -454,6 +454,7 @@ def filterProducts(request):
 	type_list = request.GET.getlist('types[]')
 	brand_list = request.GET.getlist('brands[]')
 	price_list = request.GET.getlist('prices[]')
+	gender_list = request.GET.getlist('genders[]')
 	reformatted_price_list = []
 
 	for i in price_list:
@@ -471,32 +472,41 @@ def filterProducts(request):
 	results_query = Product.objects.none()
 	results_query_1 = Product.objects.none()
 	results_query_2 = Product.objects.none()
+	results_query_3 = Product.objects.none()
 
-	if len(type_list) == 0:
+	
+	if len(gender_list) == 0:
 		results_query = Product.objects.all()
 	else:
-		for i in type_list:
-			types_query = Product.objects.filter(producttype=i)
-			results_query = results_query | types_query
+		for m in gender_list:
+			gender_query = Product.objects.filter(gender=m)
+			results_query = results_query | gender_query
 
-	if len(brand_list) == 0:
+	if len(type_list) == 0:
 		results_query_1 = results_query
 	else:
+		for i in type_list:
+			types_query = results_query.filter(producttype=i)
+			results_query_1 = results_query_1 | types_query
+
+	if len(brand_list) == 0:
+		results_query_2 = results_query_1
+	else:
 		for j in brand_list:
-			brands_query = results_query.filter(brand=j)
-			results_query_1 = results_query_1 | brands_query
+			brands_query = results_query_1.filter(brand=j)
+			results_query_2 = results_query_2 | brands_query
 	
 		#results_query = results_query_1
 	if len(price_list) == 0:
-		results_query_2 = results_query_1
+		results_query_3 = results_query_2
 	else: 
 		for k in reformatted_price_list:
 			minimum = k[0]
 			maximum = k[1]
-			price_query = results_query_1.filter(price__range=(minimum,maximum))
-			results_query_2 = results_query_2 | price_query
+			price_query = results_query_2.filter(price__range=(minimum,maximum))
+			results_query_3 = results_query_3 | price_query
 
-	results_query = results_query_2
+	results_query = results_query_3
 
 	for product in results_query:
 		names.append(product.productname)
@@ -504,6 +514,7 @@ def filterProducts(request):
 		prices.append(product.price)
 		brands.append(product.brand)
 		productids.append(product.productid)
+		print(product); 
 
 	result = [names, images, prices, brands, productids]
 
